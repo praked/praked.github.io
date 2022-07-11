@@ -1,6 +1,5 @@
 ---
 title:  About me
-cover:  true
 ---
 
 
