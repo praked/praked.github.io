@@ -5,7 +5,7 @@ description: >
   Here you should be able to find everything you need to know to accomplish the most common tasks when blogging with Hydejack.
 hide_description: true
 sitemap: false
-permalink: /docs/
+permalink: /Publications/
 ---
 
 [**Pranav Kedia**, Madhav Rao, **GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics**, 2021 International Conference on Robotics and Automation (**ICRA 2021**), 2021, pp. 1910-1917, doi: 10.1109/ICRA48506.2021.9561654.](https://praked.github.io/docs/2021-06-01-GenGrid) 
