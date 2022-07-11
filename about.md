@@ -1,6 +1,6 @@
 ---
-title: "About me"
-cover: true
+title:  Welcome
+cover:  true
 ---
 
 
