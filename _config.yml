@@ -3,7 +3,7 @@
 
 # Uncomment and set the URL of your site (with protocol, e.g. `https://`)
 # NOTE: You don't need to provide this property when hosting on GitHub Pages or Netlify.
-# url:                   https://username.github.io
+# url:                   https://praked.github.io/
 
 # Uncomment and set the "base URL" of your site.
 # When your site is in a subdirectory, set to `/<name of directory>`,
@@ -42,10 +42,11 @@ logo:                  /assets/img/logo.png
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                <firstname> <lastname>
-  email:               <mail@domain.tld>
+  name:                Pranav Kedia
+  email:               pranavkedia11@gmail.com
   # # Used by `jekyll-seo-tag`:
-  # twitter:             <username>
+  twitter:             pranavkedia11
+  github:              praked
 
 # Add links to the sidebar.
 menu:
