@@ -8,42 +8,7 @@ sitemap: false
 permalink: /docs/
 ---
 
-Here you should be able to find everything you need to know to accomplish the most common tasks when blogging with Hydejack.
-Should you think something is missing, [please let me know](mailto:mail@qwtel.com).
-Should you discover a mistake in the docs (or a bug in general) feel free to [open an issue](https://github.com/hydecorp/hydejack/issues) on GitHub.
-
-While this manual tries to be beginner-friendly, as a user of Jekyll it is assumed that you are comfortable running shell commands and editing text files.
-{:.note}
-
-
-## Getting started
-* [Install]{:.heading.flip-title} --- How to install and run Hydejack.
-* [Upgrade]{:.heading.flip-title} --- You can skip this if you haven't used Hydejack before.
-* [Config]{:.heading.flip-title} --- Once Jekyll is running you can start editing your config file.
-{:.related-posts.faded}
-
-## Using Hydejack
-* [Basics]{:.heading.flip-title} --- How to add different types of content.
-* [Writing]{:.heading.flip-title} --- Producing markdown content for Hydejack.
-* [Scripts]{:.heading.flip-title} --- How to include 3rd party scripts on your site.
-* [Build]{:.heading.flip-title} --- How to build the static files for deployment.
-* [Advanced]{:.heading.flip-title} --- Guides for more advanced tasks.
-{:.related-posts.faded}
-
-## Other
-* [LICENSE]{:.heading.flip-title} --- The license of this project.
-* [NOTICE]{:.heading.flip-title} --- Parts of this program are provided under separate licenses.
-* [CHANGELOG]{:.heading.flip-title} --- Version history of Hydejack.
-{:.related-posts.faded}
-
-[install]: install.md
-[upgrade]: upgrade.md
-[config]: config.md
-[basics]: basics.md
-[writing]: writing.md
-[scripts]: scripts.md
-[build]: build.md
-[advanced]: advanced.md
-[LICENSE]: ../LICENSE.md
-[NOTICE]: ../NOTICE.md
-[CHANGELOG]: ../CHANGELOG.md
+Pranav Kedia, Madhav Rao, GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics, 2021 International Conference on Robotics and Automation (ICRA), 2021, pp. 1910-1917, doi: 10.1109/ICRA48506.2021.9561654.  
+Pratyush Nandi, Anubhav Mishra, Pranav Kedia, Madhav Rao, Design of a real-time autonomous in-cabin sensory system to detect passenger anomaly, 2020 IEEE Intelligent Vehicles Symposium (IV 2020), Las Vegas, 2020.
+Pranav Kedia, Pranav Aggarwal, Madhav Rao, Design and development of an autonomous in-seat passenger state identification in a modern vigilance enabled public transportation system, 2019 IEEE International Conference on Vehicular Electronics and Safety (ICVES 2019), Cairo, 2019,  DOI: 10.1109/ICVES.2019.8906349
+Pranav Kedia, Crime Mapping and Analysis using GIS: An Indian Perspective, Haryana Police Department, 2016, DOI: 10.13140/RG.2.2.11064.14081
