@@ -11,8 +11,18 @@ sitemap: false
  <i>**Updated on Feb 2022.** </i>
 </p>
 
-<object data=
-"http://praked.github.io/praked.github.io_Archive/files/PranavKediaCV_new.pdf" 
-                width="800" 
-                height="500"> 
-        </object>
+<div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script type="text/javascript">
+  document.addEventListener("adobe_dc_view_sdk.ready", function(){
+    var adobeDCView = new AdobeDC.View({clientId: "9cd5f6f4f41748578f8c97719bb4fe34", divId: "adobe-dc-view"});
+    adobeDCView.previewFile({
+      content:{ location:
+        { url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"}},
+      metaData:{fileName: "Bodea Brochure.pdf"}
+    },
+    {
+      embedMode: "SIZED_CONTAINER"
+    });
+  });
+</script>
