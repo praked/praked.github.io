@@ -1,6 +1,6 @@
 ---
 title: "Ultrasound based Occupancy Detection Sensor for Smart Buildings"
-image: https://praked.github.io/praked.github.io_Archive/files/Ultrasound.jpg
+image: https://praked.github.io/assets/img/project_img/Ultrasound.jpg
 collection: portfolio
 ---
 
