@@ -79,7 +79,7 @@ window.onload = function() {
 };
 
 </script>
-<kbd>
+
 <img src='https://praked.github.io/assets/img/profilepic.jpg' align="right" style="width:25%;border:15px solid white" >
 
 <p align="justify"> 
@@ -88,7 +88,7 @@ Hello! I'm Pranav Kedia, and I currently reside in Berlin, Germany, where I'm wo
 I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. You can find details of my <a href="https://praked.github.io/Publications/">Publications</a> and <a href="https://praked.github.io/Projects/">Projects</a> here.
 
 </p>
-</kbd>
+
 <h2 align="left"> Research and other interests</h2>
 <p align="justify"> I am interested in multi-agent and swarm robotics and its applications, human-robot interaction. Building novel robots has always excited me.</p> 
 
