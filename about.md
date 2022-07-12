@@ -2,7 +2,7 @@
 title:  About me
 cover: true
 ---
-<body>
+
 <head>
 <meta name="google-site-verification" content="PY0HOlPg1kjKYPy20mRGw7vIBzuM-56ngFJ0pgtMOso" />
 
@@ -103,6 +103,6 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify"><iframe width="320" height="205" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 </small>
 
-</body>
+
 
 
