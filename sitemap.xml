@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://praked.github.io/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/Projects/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/Publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/Publications/Design-of-a-real-time-autonomous-in-cabin-sensory-system-to-detect-passenger-anomaly</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/Publications/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/projects/2021-02-28-GenGrid/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/projects/2019-02-18-EVS/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/projects/2018-09-01-Occupancy/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/projects/2018-06-30-LEGO/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/projects/2017-11-23-Tiller/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/Publications/GIS_paper</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/licenses/Apache-2.0/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/projects/2017-11-17-CMOWC/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/licenses/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/licenses/MIT/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/licenses/GPL-3.0/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/licenses/W3C-20150513/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://praked.github.io/licenses/PRO/</loc>
+  <lastmod>2022-07-12T10:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
