@@ -20,9 +20,6 @@ sitemap: false
       content:{ location:
         { url: "https://praked.github.io/assets/docs/PranavKediaCV_new.pdf"}},
       metaData:{fileName: "CV.pdf"}
-    },
-    {
-      embedMode: "SIZED_CONTAINER"
-    });
-  });
+    }, {embedMode: "IN_LINE"});
+ });
 </script>
