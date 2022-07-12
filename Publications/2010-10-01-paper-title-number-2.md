@@ -1,7 +1,7 @@
 ---
 title: "Design and development of an autonomous in-seat passenger state identification in a modern vigilance enabled public transportation system"
 collection: publications
-permalink: /pk-publication/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle
+permalink: /Publications/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle
 excerpt: ''
 date: 2019-09-06
 venue: 'IEEE International Conference on Vehicular Electronics and Safety (ICVES)'
