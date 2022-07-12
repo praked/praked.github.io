@@ -79,7 +79,7 @@ window.onload = function() {
 };
 
 </script>
-<img src='https://praked.github.io/assets/img/profilepic.jpg' style="width:50%;border:15px solid white" >
+<img align="right" width="300" height="300" src='https://praked.github.io/assets/img/profilepic.jpg' >
 <p align="justify"> 
 Hello! I'm Pranav Kedia, and I currently reside in Berlin, Germany, where I'm working as a research assistant for the EU H2020 project <a href="https://www.hiveopolis.eu/">'Hiveopolis'</a> at the <a href="http://berlinbiorobotics.blog/">Biorobtics Lab</a> led by <a href="https://www.mi.fu-berlin.de/inf/groups/ag-ki/members/Professoren/Tim_Landgraf.html">Prof. Dr. Tim Landgraf</a> at  the <a href="https://www.fu-berlin.de/en/index.html">Free Univeristy of Berlin</a>.  I completed my master's majoring in electronics and communication with a specialization in embedded systems at <a href="https://www.iiitb.ac.in/">IIIT-B</a>. Previously, I was fortunate to be part of the <a href="https://www.iiitb.ac.in/sarl/sarl.html">Surgical and Assistive Robotics Lab</a>, led by <a href="https://www.iiitb.ac.in/faculty_page.php?name=madhavrao">Prof. Madhav Rao</a>. I was also part of the <a href="http://www.sc.iitb.ac.in/robotics/people.html">ARMS  lab</a>, led by <a href="https://sites.google.com/iitb.ac.in/arpitasinha">Dr. Arpita Sinha</a> at IIT Bombay, India, in the summer of 2019. <a href="https://www.iiitb.ac.in/faculty/sachit-rao">Prof. Sachit Rao</a> has also supervised me on some guided coursework and non-coursework-related projects. 
 
