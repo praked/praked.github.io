@@ -53,11 +53,11 @@ menu:
   - title:             About
     url:               /
   - title:             Projects
-    url:               /Projects/
+    url:               /projects/
   - title:             Publications
-    url:               /Publications/
+    url:               /publications/
   - title:             Curriculum Vitae
-    url:               /CV/
+    url:               /cv/
   - title:             Leisurely amusements
     url:               /misc/    
   - title:             Get in touch
@@ -82,7 +82,7 @@ permalink:             /:categories/:year-:month-:day-:title/
 
 # Pagination configuration (used by the `blog` layout)
 paginate:              10
-paginate_path:         /Projects/:num/
+paginate_path:         /projects/:num/
 
 
 # Theme
