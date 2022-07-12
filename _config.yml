@@ -56,6 +56,12 @@ menu:
     url:               /example/
   - title:             Publications
     url:               /Publications/
+  - title:             Curriculum Vitae
+    url:               /CV/
+  - title:             Leisurely amusements
+    url:               /misc/    
+  - title:             Get in touch
+    url:               /contact/    
   
 
 # Add links to the footer.
