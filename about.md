@@ -6,37 +6,6 @@ cover: true
 <head>
 <meta name="google-site-verification" content="PY0HOlPg1kjKYPy20mRGw7vIBzuM-56ngFJ0pgtMOso" />
 
-<style>
-
-#main1 {
-    background-color: white;
-    width: 100%;
-    padding: 7px;
-    box-shadow: 3px 5px #F1E5BE;
-    border-style: double;
-    border-radius: 15px;
-}
-
-
-
-.move {
-  font-family: 'Raleway', sans-serif;
-  background-color: white;
-  color: #C7BB8F
-  font-weight: 200;
-  font-style: italic;
-  
-}
-
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-svg{font-weight:bold;max-width:110px;height:auto;text-align:left;float:left;}
-img {
-  float: right;
-}
-</style>
-
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144334033-1"></script>
 <script>
@@ -116,7 +85,8 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify"> I am interested in multi-agent and swarm robotics and its applications, human-robot interaction. Building novel robots has always excited me.</p> 
 
 <p align="justify"> Apart from my work, I enjoy traveling and learning about new cultures and languages. I like to find interconnections and variations of languages in different places. I love to sketch and paint. I am also an avid reader of world politics and history.
-</a></p> 
+</p> 
+    
 <h2 align="left"> News/Updates</h2>
 <small>
 <p align="justify">Feb'21: Our paper titled <a href="https://praked.github.io/pk-publication/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics">"GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics"</a> was accepted at <a href="http://www.icra2021.org/">ICRA 2021</a>. This paper is based on my masters thesis and co-authored with my supervisor Prof. Madhav Rao. </p>
@@ -132,7 +102,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify"><iframe width="320" height="205"  src="https://www.youtube.com/embed/InnujVZMI3A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <p align="justify"><iframe width="320" height="205" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 </small>
-<a class="twitter-timeline" href="https://twitter.com/pranavkedia11?ref_src=twsrc%5Etfw">Tweets by pranavkedia11</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 </body>
 
 
