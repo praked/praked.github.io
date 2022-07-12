@@ -1,7 +1,7 @@
 ---
 title: "Crime Mapping and Analysis using GIS"
 collection: publications
-permalink: /Publications/GIS_paper
+permalink: /publications/GIS_paper
 excerpt: ''
 venue: 'preprint on ResearchGate'
 date: 2016-07-25
