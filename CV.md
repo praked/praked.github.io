@@ -7,7 +7,7 @@ hide_description: true
 sitemap: false
 ---
 
-<p><font color="#68C3DA"><a href="http://praked.github.io/praked.github.io_Archive/files/PranavKediaCV_new.pdf">Download CV here</a></font>
+<p><font color="#68C3DA"><a href="http://praked.github.io/assets/docs/PranavKediaCV_new.pdf">Download CV here</a></font>
  <i>**Updated on Feb 2022.** </i>
 </p>
 
@@ -18,7 +18,7 @@ sitemap: false
     var adobeDCView = new AdobeDC.View({clientId: "9cd5f6f4f41748578f8c97719bb4fe34", divId: "adobe-dc-view"});
     adobeDCView.previewFile({
       content:{ location:
-        { url: "https://praked.github.io/praked.github.io_Archive/files/PranavKediaCV_new.pdf"}},
+        { url: "https://praked.github.io/assets/docs/PranavKediaCV_new.pdf"}},
       metaData:{fileName: "CV.pdf"}
     },
     {
