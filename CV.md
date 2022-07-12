@@ -11,7 +11,7 @@ sitemap: false
  <i>**Updated on Feb 2022.** </i>
 </p>
 
-<div id="adobe-dc-view" style="height: 720px; width: 1000px;"></div>
+<div id="adobe-dc-view" style="height: 1200px; width: 600px;"></div>
 <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function(){
