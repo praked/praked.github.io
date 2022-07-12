@@ -175,7 +175,7 @@ This is my travelog in the form of images from various places I visited.
 
 <div class="mySlides fade">
   <div class="numbertext">10</div>
-  <img src="http://praked.github.io/assets/img/travel/files/mumbai.jpg" style="width:100%">
+  <img src="http://praked.github.io/assets/img/travel/mumbai.jpg" style="width:100%">
   <div class="text">Mumbai, India</div>
 </div>
 <div class="mySlides fade">
