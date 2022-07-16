@@ -7,13 +7,13 @@ hide_description: true
 sitemap: false
 ---
 
-[**Pranav Kedia**, Madhav Rao, **GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics**, 2021 International Conference on Robotics and Automation (**ICRA 2021**), 2021, pp. 1910-1917, doi: 10.1109/ICRA48506.2021.9561654.](https://praked.github.io/Publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics) 
+[**Pranav Kedia**, Madhav Rao, **GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics**, 2021 International Conference on Robotics and Automation (**ICRA 2021**), 2021, pp. 1910-1917, doi: 10.1109/ICRA48506.2021.9561654.](https://praked.github.io/publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics) 
 
-[Pratyush Nandi, Anubhav Mishra, **Pranav Kedia**, Madhav Rao, **Design of a real-time autonomous in-cabin sensory system to detect passenger anomaly**, 2020 IEEE Intelligent Vehicles Symposium (**IV 2020**), Las Vegas, 2020.](https://praked.github.io/Publications/Design-of-a-real-time-autonomous-in-cabin-sensory-system-to-detect-passenger-anomaly) 
-
-
-[**Pranav Kedia**, Pranav Aggarwal, Madhav Rao, **Design and development of an autonomous in-seat passenger state identification in a modern vigilance enabled public transportation system**, 2019 IEEE International Conference on Vehicular Electronics and Safety (**ICVES 2019**), Cairo, 2019,  DOI: 10.1109/ICVES.2019.8906349](https://praked.github.io/Publications/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle) 
+[Pratyush Nandi, Anubhav Mishra, **Pranav Kedia**, Madhav Rao, **Design of a real-time autonomous in-cabin sensory system to detect passenger anomaly**, 2020 IEEE Intelligent Vehicles Symposium (**IV 2020**), Las Vegas, 2020.](https://praked.github.io/publications/Design-of-a-real-time-autonomous-in-cabin-sensory-system-to-detect-passenger-anomaly) 
 
 
-[**Pranav Kedia**, **Crime Mapping and Analysis using GIS: An Indian Perspective**, Haryana Police Department, 2016, DOI: 10.13140/RG.2.2.11064.14081](https://praked.github.io/Publications/GIS_paper) 
+[**Pranav Kedia**, Pranav Aggarwal, Madhav Rao, **Design and development of an autonomous in-seat passenger state identification in a modern vigilance enabled public transportation system**, 2019 IEEE International Conference on Vehicular Electronics and Safety (**ICVES 2019**), Cairo, 2019,  DOI: 10.1109/ICVES.2019.8906349](https://praked.github.io/publications/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle) 
+
+
+[**Pranav Kedia**, **Crime Mapping and Analysis using GIS: An Indian Perspective**, Haryana Police Department, 2016, DOI: 10.13140/RG.2.2.11064.14081](https://praked.github.io/publications/GIS_paper) 
 
