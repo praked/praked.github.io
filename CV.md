@@ -2,7 +2,7 @@
 layout: page
 title: Curriculum Vitae
 description: >
-  Here you should be able to find everything you need to know to accomplish the most common tasks when blogging with Hydejack.
+  Here you would be able to find and download the CV (Curriculum Vitae) of Pranav Kedia 
 hide_description: true
 sitemap: True
 ---
