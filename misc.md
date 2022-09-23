@@ -264,5 +264,9 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 </script>
+  
+<img src="assets/img/travel/my-travel.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
 
 </body> 
