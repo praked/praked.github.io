@@ -6,12 +6,17 @@ description: >
 hide_description: true
 sitemap: True
 ---
-
+/* Slideshow container */
+.cv-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
 <p><font color="#68C3DA"><a href="http://praked.github.io/assets/docs/PranavKediaCV_new.pdf">Download CV here</a></font>
  <i>**Updated on Feb 2022.** </i>
 </p>
 
-<div id="adobe-dc-view" style="width: 900px;"></div>
+<div class="cv-container" id="adobe-dc-view"  style="width: 900px;"></div>
 <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function(){
