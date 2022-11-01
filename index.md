@@ -109,8 +109,8 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify">Sep'19: I presented our paper and research work at the 2019 IEEE International Conference on Vehicular Electronics and Safety <a href="http://icves2019.org/">ICVES 2019</a> in Cairo, Egypt at the German University in Cairo. </p>
 <p align="justify">July'19: Our paper titled <a href="https://praked.github.io/publications/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle">"Design and development of an autonomous in-seat passenger state identification in a modern vigilance enabled public transportation system"</a> was accepted at <a href="http://icves2019.org/">ICVES 2019</a>. My research focuses on building intelligent transportation systems and designing sensors for passenger state identification. </p> 
 <p align="justify">May'19 - July'19: Worked at the <a href="http://www.sc.iitb.ac.in/robotics/people.html">ARMS  lab</a>, led by <a href="https://www.sc.iitb.ac.in/~asinha/">Dr. Arpita Sinha</a> at IIT Bombay, India.  I worked on additive and subtractive self-assembly algorithms for a swarm of Kilobots. </p>
-<p align="justify"><iframe width="560" height="315"  src="https://www.youtube.com/embed/InnujVZMI3A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-<p align="justify"><iframe width="560" height="315" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p align="justify"><iframe width="100%" height="315"  src="https://www.youtube.com/embed/InnujVZMI3A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p align="justify"><iframe width="100%" height="315" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 </small>
 
 
