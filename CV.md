@@ -6,12 +6,7 @@ description: >
 hide_description: true
 sitemap: True
 ---
-/* Slideshow container */
-.cv-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
+
 <p><font color="#68C3DA"><a href="http://praked.github.io/assets/docs/PranavKediaCV_new.pdf">Download CV here</a></font>
  <i>**Updated on Feb 2022.** </i>
 </p>
