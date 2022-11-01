@@ -98,7 +98,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <h2 align="left"> News/Updates</h2>
 <small>
 <p align="justify">Nov'21: Prototypes of Dancing Honey Bee Robot developed this year at the Biorobotics lab at FU Berlin for the EU H2020 project 'Hiveopolis'. </p>   
-<p align="justify"><iframe width="60%" height="315" src="https://www.youtube.com/embed/AymwDn5S6bg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>  
+<p align="justify"><iframe width="100%" height="315" src="https://www.youtube.com/embed/AymwDn5S6bg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>  
 <p align="justify">Feb'21: Our paper titled <a href="https://praked.github.io/publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics">"GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics"</a> was accepted at <a href="http://www.icra2021.org/">ICRA 2021</a>. This paper is based on my masters thesis and co-authored with my supervisor Prof. Madhav Rao. </p>
 <p align="justify">Jan'21: I joined the Biorobotics lab at FU Berlin as a research assistant for the EU H2020 project 'Hiveopolis'. </p>  
 <p align="justify">Sep'20: Successfully defended my masters thesis. </p>
@@ -109,8 +109,8 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify">Sep'19: I presented our paper and research work at the 2019 IEEE International Conference on Vehicular Electronics and Safety <a href="http://icves2019.org/">ICVES 2019</a> in Cairo, Egypt at the German University in Cairo. </p>
 <p align="justify">July'19: Our paper titled <a href="https://praked.github.io/publications/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle">"Design and development of an autonomous in-seat passenger state identification in a modern vigilance enabled public transportation system"</a> was accepted at <a href="http://icves2019.org/">ICVES 2019</a>. My research focuses on building intelligent transportation systems and designing sensors for passenger state identification. </p> 
 <p align="justify">May'19 - July'19: Worked at the <a href="http://www.sc.iitb.ac.in/robotics/people.html">ARMS  lab</a>, led by <a href="https://www.sc.iitb.ac.in/~asinha/">Dr. Arpita Sinha</a> at IIT Bombay, India.  I worked on additive and subtractive self-assembly algorithms for a swarm of Kilobots. </p>
-<p align="justify"><iframe width="60%" height="315"  src="https://www.youtube.com/embed/InnujVZMI3A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-<p align="justify"><iframe width="60%" height="315" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p align="justify"><iframe width="100%" height="315"  src="https://www.youtube.com/embed/InnujVZMI3A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p align="justify"><iframe width="100%" height="315" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 </small>
 
 
