@@ -97,7 +97,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
     
 <h2 align="left"> News/Updates</h2>
 <small>
-<p align="justify">Oct'22: Our Bee Robot developed with the supervision of Tim Landgraf at Freie Universität Berlin was featured in MIT Technology Review in an article titled <a href="https://www.technologyreview.com/2022/10/10/1059060/how-robotic-honeybees-and-hives-could-help-the-species-fight-back/">"How robotic honeybees and hives could help the species fight back"</a>. </p>
+<p align="justify">Oct'22: My Bee Robot developed with the supervision of Tim Landgraf at Freie Universität Berlin was featured in MIT Technology Review in an article titled <a href="https://www.technologyreview.com/2022/10/10/1059060/how-robotic-honeybees-and-hives-could-help-the-species-fight-back/">"How robotic honeybees and hives could help the species fight back"</a>. </p>
 <p align="justify">June'22: Prototypes of Dancing Honey Bee Robot and Robot Dummy wings developed for 2022 season at the Biorobotics lab at FU Berlin for the EU H2020 project 'Hiveopolis'. </p>   
 <p align="justify"><iframe width="100%" height="315" src="https://www.youtube.com/embed/j9s76zt9LNE?start=631" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>   
 <p align="justify">Nov'21: Prototypes of Dancing Honey Bee Robot developed this year at the Biorobotics lab at FU Berlin for the EU H2020 project 'Hiveopolis'. </p>   
