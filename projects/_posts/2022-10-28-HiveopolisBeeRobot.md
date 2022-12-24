@@ -9,17 +9,17 @@ the EU H2020 funded project ’Hiveopolis’. In theory, such a robot could guid
 
 <h2 align="left">Robobee motion system with modular reproducible and modular body parts and electronics</h2>
 <p align="center">
-  <img src="https://praked.github.io/assets/img/1Trajectory2022.gif" style="width:100% alt="animated" />
+  <img src="https://praked.github.io/assets/img/1Trajectory2022.gif" alt="animated" />
 </p>
 <h2 align="left">Robobee Dummy with Thermoplastic polyurethane body and a electrically actuated flexible wing PCB</h2>
 <p align="center">
-  <img src="https://praked.github.io/assets/img/1Trajectory2022.gif" style="width:100% alt="animated" />
+  <img src="https://praked.github.io/assets/img/1Trajectory2022.gif"  alt="animated" />
 </p>
 <h2 align="left">Trajectory measurements of the dancing bee robot</h2>
 <p align="center">
-  <img src="https://praked.github.io/assets/img/1Trajectory2022.gif" style="width:100% alt="animated" />
+  <img src="https://praked.github.io/assets/img/1Trajectory2022.gif"  alt="animated" />
 </p>
 <h2 align="left">Experiments in a real hive conducted in 2022</h2>
 <p align="center">
-  <img src="https://praked.github.io/assets/img/BeeRobot2022.gif" style="width:100% alt="animated" />
+  <img src="https://praked.github.io/assets/img/BeeRobot2022.gif"  alt="animated" />
 </p>
