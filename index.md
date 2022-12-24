@@ -94,7 +94,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 
 <p align="justify"> Apart from my work, I enjoy traveling and learning about new cultures and languages. I like to find interconnections and variations of languages in different places. I love to sketch and paint. I am also an avid reader of world politics and history.
 </p> 
- ![](https://github.com/praked/praked.github.io/blob/gh-pages_pk/assets/img/BeeRobot2022.gif)   
+ ![](https://praked.github.io/assets/img/BeeRobot2022.gif)   
 <h2 align="left"> News/Updates</h2>
 <small>
 
