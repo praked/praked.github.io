@@ -102,7 +102,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify">Sep'22: Experiment highlights for season 2022 with the new Bee Robot and flexible PCB-based dummy bee. </p> 
 <p align="justify"><iframe width="100%" height="415" src="https://www.youtube.com/embed/tWZt-cFAdJM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>   
 <p align="justify">Jul'22: Traveled to University Graz for my first in-person meeting and workshop for the EU H2020 project 'Hiveopolis.' </p>  
-<p align="justify"><img src='https://praked.github.io/assets/img/Graz2022Group.jpg' style="width:80%;border:15px solid white" >  </p>  
+<p align="center"><img src='https://praked.github.io/assets/img/Graz2022Group.jpg' style="width:80%;border:15px solid white" >  </p>  
 <p align="justify">June'22: Prototypes of Dancing Honey Bee Robot and Robot Dummy wings developed for the 2022 season at the Biorobotics lab at FU Berlin for the EU H2020 project 'Hiveopolis.' </p>   
 <p align="justify"><iframe width="100%" height="415" src="https://www.youtube.com/embed/j9s76zt9LNE?start=631" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>   
 <p align="justify">Nov'21: Prototypes of Dancing Honey Bee Robot developed this year at the Biorobotics lab at FU Berlin for the EU H2020 project 'Hiveopolis.' </p>   
