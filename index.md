@@ -100,7 +100,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 
 <p align="justify">Oct'22: My Bee Robot, developed with the supervision of Prof. Dr. Tim Landgraf at Freie Universität Berlin, was featured in MIT Technology Review in an article titled <a href="https://www.technologyreview.com/2022/10/10/1059060/how-robotic-honeybees-and-hives-could-help-the-species-fight-back/">"How robotic honeybees and hives could help the species fight back"</a>. </p>
 <p align="justify">Sep'22: Experiment highlights for season 2022 with the new Bee Robot and flexible PCB-based dummy bee. </p> 
-![](https://praked.github.io/assets/img/BeeRobot2022.gif)
+<p align="justify">![](https://praked.github.io/assets/img/BeeRobot2022.gif)</p>
 <p align="justify">Jul'22: Traveled to University Graz for my first in-person meeting and workshop for the EU H2020 project 'Hiveopolis.' </p>  
 <p align="justify"><img src='https://praked.github.io/assets/img/Graz2022Group.jpg' style="width:80%;border:15px solid white" >  </p>  
 <p align="justify">June'22: Prototypes of Dancing Honey Bee Robot and Robot Dummy wings developed for the 2022 season at the Biorobotics lab at FU Berlin for the EU H2020 project 'Hiveopolis.' </p>   
