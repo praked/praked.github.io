@@ -8,11 +8,9 @@ I was involved in the design and development of a Robot bee platform for mimicki
 the EU H2020 funded project ’Hiveopolis’. In theory, such a robot could guide honeybees to a safe foraging site if humans determined that another site was contaminated with pesticides and was affecting the hive’s health. Also humans could direct honeybees away from a site that was being reserved for wild bees.
 
 <h2 align="center">Robobee motion system with modular reproducible and modular body parts and electronics</h2>
-<p align="center">
-  <img src="https://praked.github.io/assets/img/BeeRobo1.jpg" />
-</p>
-<p align="center">
-  <img src="https://praked.github.io/assets/img/BeeRobo2.jpg" />
+<p float="left">
+  <img src="https://praked.github.io/assets/img/BeeRobo1.jpg" width="50%" />
+   <img src="https://praked.github.io/assets/img/BeeRobo2.jpg" width="50%" />
 </p>
 <p align="center">
   <img src="https://praked.github.io/assets/img/BeeRobo3.gif" alt="animated" />
