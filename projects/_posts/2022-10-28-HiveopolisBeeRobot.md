@@ -18,3 +18,6 @@ the EU H2020 funded project ’Hiveopolis’. In theory, such a robot could guid
 
 <h2 align="left">Experiments in a real hive conducted in 2022</h2>
 ![](https://praked.github.io/assets/img/BeeRobot2022.gif)
+<p align="center">
+  <img src="https://praked.github.io/assets/img/BeeRobot2022.gif" alt="animated" />
+</p>
