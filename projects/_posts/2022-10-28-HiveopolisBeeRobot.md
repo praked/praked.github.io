@@ -9,8 +9,8 @@ the EU H2020 funded project ’Hiveopolis’. In theory, such a robot could guid
 
 <h2 align="center">Robobee motion system with modular reproducible and modular body parts and electronics</h2>
 <p float="center">
-  <img src="https://praked.github.io/assets/img/BeeRobo1.jpg" width="43%" />
-   <img src="https://praked.github.io/assets/img/BeeRobo2.jpg" width="43%" />
+  <img src="https://praked.github.io/assets/img/BeeRobo1.jpg" width="45%" />
+   <img src="https://praked.github.io/assets/img/BeeRobo2.jpg" width="45%" />
 </p>
 <p align="center">
   <img src="https://praked.github.io/assets/img/BeeRobo3.gif" alt="animated" />
