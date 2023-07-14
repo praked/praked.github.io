@@ -97,7 +97,8 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 
 <h2 align="left"> News/Updates</h2>
 <small>
-
+<p align="justify">May'23: Documentary "In Real Life: Voices of Nature" on Scripps News about using AI and robots to decipher animal communication. The piece covers my bee robot with many other interesting works. </p> 
+<p align="justify"><iframe width="100%" height="315" src="https://www.youtube.com/embed/oQFPL9JLQEY?start=693" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>   
 <p align="justify">Oct'22: My Bee Robot, developed with the supervision of Prof. Dr. Tim Landgraf at Freie Universität Berlin, was featured in MIT Technology Review in an article titled <a href="https://www.technologyreview.com/2022/10/10/1059060/how-robotic-honeybees-and-hives-could-help-the-species-fight-back/">"How robotic honeybees and hives could help the species fight back"</a>. </p>
 <p align="justify">Sep'22: Experiment highlights for season 2022 with the new Bee Robot and flexible PCB-based dummy bee. </p> 
 <p align="justify"><iframe width="100%" height="415" src="https://www.youtube.com/embed/tWZt-cFAdJM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>   
