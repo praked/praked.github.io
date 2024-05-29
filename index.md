@@ -97,7 +97,9 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 
 <h2 align="left"> News/Updates</h2>
 <small>
-<p align="justify">Sep'23: Joined the cyber physical group at the University of Konstanz, Germany as a PhD student. </p> 
+<p align="justify">May'24: Awarded a travel grant for the 'Maritime Informatics & Robotics' summer school. </p>
+<p align="justify">Apr'24: Won our first small grant from a DFG-funded excellence cluster for a project titled <a href="https://www.exc.uni-konstanz.de/collective-behaviour/research/structure/c-computational-methods/swarming-sailboats-collective-of-energy-aware-wind-powered-vessels/">Swarming sailboats: Collective of energy-aware wind-powered vessels</a>  </p> 
+<p align="justify">Sep'23: Joined the cyber-physical group at the University of Konstanz, Germany as a PhD student. </p> 
 <p align="justify">May'23: Documentary "In Real Life: Voices of Nature" on Scripps News about using AI and robots to decipher animal communication. The piece covers my bee robot with many other interesting works. </p> 
 <p align="justify"><iframe width="100%" height="315" src="https://www.youtube.com/embed/oQFPL9JLQEY?start=693" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>   
 <p align="justify">Oct'22: My Bee Robot, developed with the supervision of Prof. Dr. Tim Landgraf at Freie Universität Berlin, was featured in MIT Technology Review in an article titled <a href="https://www.technologyreview.com/2022/10/10/1059060/how-robotic-honeybees-and-hives-could-help-the-species-fight-back/">"How robotic honeybees and hives could help the species fight back"</a>. </p>
