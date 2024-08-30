@@ -6,7 +6,7 @@ description: >
 hide_description: true
 sitemap: false
 ---
-[**Pranav Kedia**, Charlie Apolinsky and Heiko Hamann, **Building SailSwarm: \\A Swarm of Autonomous Sailing Vessels**, 2024 Fourteenth International Conference on Swarm Intelligence (ANTS 2024), 2024 (Submitted) ](https://praked.github.io/publications/Building-SailSwarm-ANTS2024) 
+[**Pranav Kedia**, Charlie Apolinsky and Heiko Hamann, **Building SailSwarm: A Swarm of Autonomous Sailing Vessels**, 2024 Fourteenth International Conference on Swarm Intelligence (ANTS 2024), 2024 (Submitted) ](https://praked.github.io/publications/Building-SailSwarm-ANTS2024) 
 
 [**Pranav Kedia**, Madhav Rao, **GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics**, 2021 International Conference on Robotics and Automation (**ICRA 2021**), 2021, pp. 1910-1917, doi: 10.1109/ICRA48506.2021.9561654.](https://praked.github.io/publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics) 
 
