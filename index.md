@@ -103,6 +103,9 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify">May'23: Documentary "In Real Life: Voices of Nature" on Scripps News about using AI and robots to decipher animal communication. The piece covers my bee robot with many other interesting works. </p> 
 <p align="justify"><iframe width="100%" height="315" src="https://www.youtube.com/embed/oQFPL9JLQEY?start=693" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>   
 <p align="justify">Oct'22: My Bee Robot, developed with the supervision of Prof. Dr. Tim Landgraf at Freie Universität Berlin, was featured in MIT Technology Review in an article titled <a href="https://www.technologyreview.com/2022/10/10/1059060/how-robotic-honeybees-and-hives-could-help-the-species-fight-back/">"How robotic honeybees and hives could help the species fight back"</a>. </p>
+
+<details>
+  <summary>More...</summary>  
 <p align="justify">Sep'22: Experiment highlights for season 2022 with the new Bee Robot and flexible PCB-based dummy bee. </p> 
 <p align="justify"><iframe width="100%" height="415" src="https://www.youtube.com/embed/tWZt-cFAdJM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>   
 <p align="justify">Jul'22: Traveled to University Graz for my first in-person meeting and workshop for the EU H2020 project 'Hiveopolis.' </p>  
@@ -123,6 +126,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify">May'19 - July'19: Worked at the <a href="http://www.sc.iitb.ac.in/robotics/people.html">ARMS  lab</a>, led by <a href="https://www.sc.iitb.ac.in/~asinha/">Dr. Arpita Sinha</a> at IIT Bombay, India. I worked on additive and subtractive self-assembly algorithms for a swarm of Kilobots. </p>
 <p align="justify"><iframe width="100%" height="415"  src="https://www.youtube.com/embed/InnujVZMI3A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <p align="justify"><iframe width="100%" height="415" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+</details> 
 </small>
 
 
