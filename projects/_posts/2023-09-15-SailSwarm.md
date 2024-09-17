@@ -1,17 +1,21 @@
 ---
 layout: post
 title: "SailSwarm: Swarm of Autonomous Sail Boats"
-image: https://praked.github.io/assets/img/project_img/sailboat1.jpg
+image: https://praked.github.io/assets/img/project_img/sailboat2.jpg
 collection: portfolio
 ---
 
-I am working on a swarm of autonomous sailboats optimized for long-duration endurance. This has been a combination of learning about sailing and applying my skills and knowledge in Embedded systems and Robotics.
+<h2 align="left">Here you find various videos of Aqua Flash as a part of SailSwarm project.</h2>
 
-The project is in its nascent stages, so here are some cooling-looking robotic sailboats to amuse you. credits: SailDrone
+<h2 align="left">Sailing Maneuvers on Lake Constance by Aqua Flash sailboat robot (Overhead View)</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yjFFYILRCSQ?si=Pz0TvsHbKzs8-sen" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<iframe width="100%" height="415" src="https://www.youtube.com/embed/M0eTnF1QaoY?si=qbcmCcuQK5JACT77&amp;start=25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 align="left">Station Keeping by Autonomous Sailboat Aqua Flash on Lake Constance</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EpLK_BXpBp8?si=dgnVOCygEmNL5aUE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-But I guess our boat is going to look probably more like this and about 1.2m or so long. 
-<iframe width="100%" height="415" src="https://www.youtube.com/embed/_Wao6VeJTZ4?si=ZlXQBpV46smpexno&amp;start=25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 align="left">Multi Point Sailing by Autonomous Sailboat Aqua Flash on Lake Constance</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9-f9NiJ3-8c?si=LvClfTgUXWtIeGZL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 
 Stay tuned for what's coming! 
