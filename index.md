@@ -96,7 +96,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 </p> 
 
 <h2 align="left"> News/Updates</h2>
-<small>
+
 <p align="justify">May'24: Awarded a travel grant for the 'Maritime Informatics & Robotics' summer school. </p>
 <p align="justify">Apr'24: Won our first small grant from a DFG-funded excellence cluster for a project titled <a href="https://www.exc.uni-konstanz.de/collective-behaviour/research/structure/c-computational-methods/swarming-sailboats-collective-of-energy-aware-wind-powered-vessels/">Swarming sailboats: Collective of energy-aware wind-powered vessels</a>  </p> 
 <p align="justify">Sep'23: Joined the cyber-physical group at the University of Konstanz, Germany as a PhD student. </p> 
@@ -126,7 +126,7 @@ I enjoy working on Bio-inspired Swarm Robotics and Swarm Intelligence methods. Y
 <p align="justify"><iframe width="100%" height="415"  src="https://www.youtube.com/embed/InnujVZMI3A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <p align="justify"><iframe width="100%" height="415" src="https://www.youtube.com/embed/9_uDLp4NzWI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 </details> 
-</small>
+
 
 
 
