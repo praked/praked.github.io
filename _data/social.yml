@@ -8,7 +8,7 @@ amazon:
   icon: icon-amazon
 google:
   name: Google
-  icon: icon-google
+  icon: icon-google-scholar
 google-plus:
   name: Google+
   icon: icon-google-plus
