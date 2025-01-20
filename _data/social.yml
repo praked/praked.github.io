@@ -6,9 +6,9 @@ email:
 amazon:
   name: Amazon
   icon: icon-amazon
-google:
-  name: Google
-  icon: icon-google
+google-scholar:
+  name: Google Scholar
+  icon: fa-google-scholar
 google-plus:
   name: Google+
   icon: icon-google-plus
