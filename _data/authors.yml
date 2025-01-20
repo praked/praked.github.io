@@ -23,10 +23,10 @@ author1:
   social:
     twitter:         pranavkedia11
     github:          praked
-    email:           pranavkedia11@gmail.com
+    # email:           xxx@gmail
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
-    google:          https://scholar.google.com/citations?user=-5KzNN0AAAAJ&hl=en
+    google-scholar:          https://scholar.google.com/citations?user=-5KzNN0AAAAJ&hl=en
     # vk:              <username>
     youtube:         UC0BAFkYNG0oFONO-YXe4jPQ
     # vimeo:           <username>
