@@ -1,11 +1,10 @@
 # This file contains meta data for various social media sites
+
+bluesky_url: https://bsky.app/profile/paololeopardi.bsky.social 
 email:
   name: Email
   icon: icon-mail
   prepend: 'mailto:'
-bluesky_url:
-  name: Bluesky
-  icon: fa-bluesky
 amazon:
   name: Amazon
   icon: icon-amazon
