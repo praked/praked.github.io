@@ -3,6 +3,9 @@ email:
   name: Email
   icon: icon-mail
   prepend: 'mailto:'
+bluesky_url:
+  name: Bluesky
+  icon: <i class="fa-brands fa-bluesky"></i>
 amazon:
   name: Amazon
   icon: icon-amazon
