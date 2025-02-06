@@ -5,7 +5,7 @@ email:
   prepend: 'mailto:'
 bluesky_url:
   name: Bluesky
-  icon: fa-brands fa-bluesky
+  icon: fa-bluesky
 amazon:
   name: Amazon
   icon: icon-amazon
