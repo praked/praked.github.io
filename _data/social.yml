@@ -2,7 +2,7 @@
 
 bluesky_url: 
   name: Bluesky
-  icon: fa fa-bluesky
+  icon: fa-brands fa-bluesky
 email:
   name: Email
   icon: icon-mail
