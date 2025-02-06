@@ -12,7 +12,7 @@ amazon:
   icon: icon-amazon
 google-scholar:
   name: Google Scholar
-  icon: icon-google
+  icon: fa-brands fa-google-scholar
 google-plus:
   name: Google+
   icon: icon-google-plus
