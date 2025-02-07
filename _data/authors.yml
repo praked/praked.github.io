@@ -23,7 +23,7 @@ author1:
   # You can also provide an absolute URL (starting with https://) instead of usernames
   social:
     twitter:         pranavkedia11
-    github:          praked
+    #github:          praked
     bluesky_url:     https://bsky.app/profile/praked.bsky.social
     # email:           xxx@gmail
     # rss:             https://<url>/feed.xml
