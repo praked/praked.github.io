@@ -265,7 +265,7 @@ function showSlides(n) {
 }
 </script>
   
-<img src="https://praked.github.io/assets/img/travel/my-travel.png"
+<img src="https://praked.github.io/assets/img/travel/2025_travel_map.png"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
