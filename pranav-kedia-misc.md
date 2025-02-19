@@ -1,5 +1,5 @@
 ---
-layout: redirected
+layout: page
 sitemap: false
 permalink: /pranav-kedia-misc/
 
