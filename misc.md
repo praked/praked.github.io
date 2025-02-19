@@ -160,86 +160,182 @@ This is my travelog in the form of images from various places I visited.
   
 <div class="mySlides fade">
   <div class="numbertext">1</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/berlin.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Berlin, Germany</div>
 </div>
  <div class="mySlides fade">
   <div class="numbertext">2</div>
+   <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/leipzig.jpg" style="width:100%">
+     <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Leipzig, Germany</div>
 </div>
  <div class="mySlides fade">
   <div class="numbertext">3</div>
+   <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/dresden.jpg" style="width:100%">
+     <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Dresden, Germany</div>
 </div>
  <div class="mySlides fade">
   <div class="numbertext">4</div>
+   <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/frankfurt.jpg" style="width:100%">
+     <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Frankfurt, Germany</div>
 </div> 
  <div class="mySlides fade">
   <div class="numbertext">5</div>
+   <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/abu_dh.jpg" style="width:100%">
+     <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Abu Dhabi, UAE</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">6</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/sphinx.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Pyramids of Giza, Egypt</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">7</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/Zagazig.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Zagazig, Egypt</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">8</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/Auroville.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Auroville, India</div>
 </div>
 
 
 <div class="mySlides fade">
   <div class="numbertext">9</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/Rock_beach_aerial_view.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Pondicherry, India</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">10</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/mumbai.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Mumbai, India</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">11</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/gwalior.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Gwalior, India</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">12</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/mangalore.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Mangalore, India</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">13</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/delhi.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Delhi, India</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">14</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/Amsterdam.jpg" style="width:100%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Amsterdam, Netherlands</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">15</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/Hamburg.jpg" style="width:100%;height:60%">
+    <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>
   <div class="text">Hamburg, Germany</div>
 </div>
 <div class="mySlides fade">
   <div class="numbertext">16</div>
+  <div class="slide-image-container">
   <img src="http://praked.github.io/assets/img/travel/Prague.jpg" style="width:100%">
+  <!-- Left half for previous slide -->
+    <div class="click-area left" onclick="plusSlides(-1)"></div>
+    <!-- Right half for next slide -->
+    <div class="click-area right" onclick="plusSlides(1)"></div>
+  </div>  
   <div class="text">Prague, Czechia</div>
 </div>  
 
