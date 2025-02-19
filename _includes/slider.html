@@ -1,0 +1,19 @@
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    {% comment %}
+    Loop through all static files and filter those whose path includes '/assets/slider/'
+    Adjust the folder path as needed.
+    {% endcomment %}
+    {% assign slider_images = site.static_files | where_exp:"file", "file.path contains '/assets/slider/'" %}
+    {% for image in slider_images %}
+      <div class="swiper-slide">
+        <img src="{{ image.path }}" alt="Slider Image">
+      </div>
+    {% endfor %}
+  </div>
+  <!-- Optional: Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Optional: Navigation Buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
