@@ -264,7 +264,7 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 </script>
-{% include slider.html %}
+
  
 <img src="https://praked.github.io/assets/img/travel/2025_travel_map.png"
      alt="Markdown Monster icon"
