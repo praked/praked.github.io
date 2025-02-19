@@ -261,36 +261,12 @@ function showSlides(n) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-  
-var touchstartX = 0;
-var touchendX = 0;
-var threshold = 50; // Minimum distance (in px) for a swipe to be registered
-
-var sliderContainer = document.querySelector('.slideshow-container');
-
-sliderContainer.addEventListener('touchstart', function(event) {
-  touchstartX = event.changedTouches[0].screenX;
-}, false);
-
-sliderContainer.addEventListener('touchend', function(event) {
-  touchendX = event.changedTouches[0].screenX;
-  handleSwipe();
-}, false);
-
-function handleSwipe() {
-  // Swipe left (next slide)
-  if (touchendX < touchstartX - threshold) {
-    plusSlides(1);
-  }
-  // Swipe right (previous slide)
-  if (touchendX > touchstartX + threshold) {
-    plusSlides(-1);
+  if(dots[slideIndex-1]) {
+    dots[slideIndex-1].className += " active";
   }
 }
-
 </script>
+
 
  
 <img src="https://praked.github.io/assets/img/travel/2025_travel_map.png"
