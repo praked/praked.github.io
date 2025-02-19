@@ -105,6 +105,40 @@ img {vertical-align: middle;}
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
 }
+/* Clickable areas overlay for slide navigation */
+.slide-image-container {
+  position: relative;
+}
+
+.slide-image-container img {
+  display: block;
+  width: 100%;
+}
+
+/* Overlay clickable areas */
+.click-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0); /* Transparent by default */
+}
+
+.click-area.left {
+  left: 0;
+}
+
+.click-area.right {
+  right: 0;
+}
+
+/* Optional: Visual feedback on hover */
+.click-area:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+
 </style>
 
 </head> 
