@@ -398,8 +398,8 @@ function showSlides(n) {
 </script>
 <hr>
 <h3 class="activity-title">Travel </h3>
-<div style="max-width:980px;margin:5px auto 10px auto;font-size:14px;"><div style="position:relative;padding: 0 0 67% 0;height:0;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="//www.fla-shop.com/visited-countries/embed/?st=AE%2CAM%2CAT%2CBA%2CCH%2CCY%2CCZ%2CDE%2CEE%2CEG%2CES%2CFI%2CFR%2CGE%2CHR%2CHU%2CIN%2CIT%2CKW%2CLT%2CLV%2CME%2CNL%2CNO%2CPL%2CPT%2CRS%2CSE%2CSI%2CSK%2CTR%2CUS&vc=dd7c22&uc=b3c3ca&hc=40bfa6&bc=ffffff" frameborder="0" scrolling="no"></iframe></div>Create a map at <a href="https://www.fla-shop.com/visited-countries/">Fla-shop.com</a></div>
-</hr> 
+<div style="max-width:980px;margin:5px auto 10px auto;font-size:14px;"><div style="position:relative;padding: 0 0 67% 0;height:0;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="//www.fla-shop.com/visited-countries/embed/?st=AE%2CAM%2CAT%2CBA%2CCH%2CCY%2CCZ%2CDE%2CEE%2CEG%2CES%2CFI%2CFR%2CGE%2CHR%2CHU%2CIN%2CIT%2CKW%2CLT%2CLV%2CME%2CNL%2CNO%2CPL%2CPT%2CRS%2CSE%2CSI%2CSK%2CTR%2CUS&vc=dd7c22&uc=b3c3ca&hc=40bfa6&bc=ffffff" frameborder="0" scrolling="no"></iframe></div>
+
 <!-- <img src="https://praked.github.io/assets/img/travel/2025_travel_map.png"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
