@@ -8,9 +8,9 @@ sitemap: false
 ---
 <h2 align="left">Extended Abstract and Posters</h2>
 
-[**Pranav Kedia**, Charlie Apolinsky and Heiko Hamann, **Developing SailSwarm: Small Uncrewed Sailing Vessels for Maritime Environments**, 2024 International Conference on Intelligent Robots and Systems (IROS 2024), 2024 (Accepted) ](https://praked.github.io/publications/Developing-SailSwarm-IROS2024) 
+[**Pranav Kedia**, Charlie Apolinsky and Heiko Hamann, **Developing SailSwarm: Small Uncrewed Sailing Vessels for Maritime Environments**, 2024 International Conference on Intelligent Robots and Systems (IROS 2024)](https://praked.github.io/publications/Developing-SailSwarm-IROS2024) 
 
-[**Pranav Kedia**, Charlie Apolinsky and Heiko Hamann, **Building SailSwarm: A Swarm of Autonomous Sailing Vessels**, 2024 Fourteenth International Conference on Swarm Intelligence (ANTS 2024), 2024 (Accepted) ](https://praked.github.io/publications/Building-SailSwarm-ANTS2024) 
+[**Pranav Kedia**, Charlie Apolinsky and Heiko Hamann, **Building SailSwarm: A Swarm of Autonomous Sailing Vessels**, 2024 Fourteenth International Conference on Swarm Intelligence (ANTS 2024) ](https://praked.github.io/publications/Building-SailSwarm-ANTS2024) 
 
 <h2 align="left">Full Papers</h2>
 
