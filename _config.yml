@@ -98,12 +98,7 @@ remote_theme: hydecorp/hydejack@v9
 # ----------------------------------------------------------------------------------------
  
 # Sidebar image and theme color of the site.
-# Sidebar image and theme color of the site.
-accent_image:
-  path:                /assets/img/blog/parusnyy-sport-regata-gonka.jpg
-  background:          rgb(18,45,58)
-  overlay:             true
-#accent_image:          /assets/img/blog/parusnyy-sport-regata-gonka.jpg
+accent_image:          /assets/img/blog/parusnyy-sport-regata-gonka.jpg
 # accent_color:          rgb(79,177,186)
 
 # # This is used for the `theme-color` meta tag,
