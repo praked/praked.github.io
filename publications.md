@@ -8,7 +8,7 @@ sitemap: false
 ---
 <h2 align="left">Extended Abstract and Posters</h2>
 
-[**Pranav Kedia**, Rajini Makam, Heiko Hamann and Suresh Sundaram, **USBL Aided Navigation: Bounding Dead Reckoning Drift in Heterogeneous ASV–AUV Teams**, OCEANS 2026 Sanya (Submitted)](https://praked.github.io/publications/BIND-USBL-HetroTeams-OCEANS2026) 
+[**Pranav Kedia**, Rajini Makam, Heiko Hamann and Suresh Sundaram, **USBL Aided Navigation: Bounding Dead Reckoning Drift in Heterogeneous ASV–AUV Teams**, OCEANS 2026 Sanya (Submitted)](https://praked.github.io/publications/BIND-USBL-OCEANS2026) 
 
 [**Pranav Kedia**, Charlie Apolinsky and Heiko Hamann, **Developing SailSwarm: Small Uncrewed Sailing Vessels for Maritime Environments**, 2024 International Conference on Intelligent Robots and Systems (IROS 2024)](https://praked.github.io/publications/Developing-SailSwarm-IROS2024) 
 
