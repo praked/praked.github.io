@@ -18,6 +18,8 @@ sitemap: false
 <h2 align="left">Full Papers</h2>
 [**Pranav Kedia**, Aaron Gan and Heiko Hamann, **Swarm Coordination in Wind and Waves: Scalable Simulation of Cooperative Sailing Robots**, 2026 Fifteenth International Conference on Swarm Intelligence (ANTS 2026) (Submitted)](https://praked.github.io/publications/SailSwarmSim-ANTS2026) 
 
+[**Pranav Kedia**, Marie Messerich and Tim Landgraf, **COMB: Common Open Modular robotic platform for Beess**, 2026 International Conference on Robotics and Automation (**ICRA 2026**) (Submitted)](https://praked.github.io/publications/COMB-ICRA2026) 
+
 [**Pranav Kedia**, Madhav Rao, **GenGrid: A Generalised Distributed Experimental Environmental Grid for Swarm Robotics**, 2021 International Conference on Robotics and Automation (**ICRA 2021**), 2021, pp. 1910-1917, doi: 10.1109/ICRA48506.2021.9561654.](https://praked.github.io/publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics) 
 
 [Pratyush Nandi, Anubhav Mishra, **Pranav Kedia**, Madhav Rao, **Design of a real-time autonomous in-cabin sensory system to detect passenger anomaly**, 2020 IEEE Intelligent Vehicles Symposium (**IV 2020**), Las Vegas, 2020.](https://praked.github.io/publications/Design-of-a-real-time-autonomous-in-cabin-sensory-system-to-detect-passenger-anomaly) 
