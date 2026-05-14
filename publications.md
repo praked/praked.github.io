@@ -16,7 +16,7 @@ sitemap: false
 
 
 <h2 align="left">Full Papers</h2>
-[**Pranav Kedia**, Aaron Gan and Heiko Hamann, **Swarm Coordination in Wind and Waves: Scalable Simulation of Cooperative Sailing Robots**, 2026 Fifteenth International Conference on Swarm Intelligence (ANTS 2026) (Submitted)](https://praked.github.io/publications/SailSwarmSim-ANTS2026) 
+[**Pranav Kedia**, Aaron Gan and Heiko Hamann, **Speed-Weighted Adaptive Flocking for Sailing Swarms under Dynamic Environmental Forcings**, 18th International Conference on the Simulation of Adaptive Behavior (SAB 2026) (Submitted)](https://praked.github.io/publications/SailSwarmSim-SAB2026) 
 
 [**Pranav Kedia**, Marie Messerich and Tim Landgraf, **COMB: Common Open Modular robotic platform for Beess**, 2026 International Conference on Robotics and Automation (**ICRA 2026**) (Submitted)](https://praked.github.io/publications/COMB-ICRA2026) 
 
