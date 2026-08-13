@@ -25,10 +25,20 @@
   margin: 2rem 0 0;
   padding: 0;
   display: grid;
-  // auto-fit gives 3-up on desktop, 2-up on tablet and 1-up on mobile
-  // without needing any media queries.
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  // auto-fit scales the column count to the available width: 1-up on mobile,
+  // 2-up on tablet, 3-up on desktop, 4-up once `break-layout` gives us the
+  // full width on a large screen. A 20rem minimum stops very wide viewports
+  // from slicing the row into too many narrow cards.
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.75rem;
+
+  // `break-layout` adds right-hand width but squares off the right corners,
+  // which suits a full-bleed code block, not a grid of cards.
+  &.break-layout {
+    padding-right: 1.5rem;
+    border-top-right-radius: inherit !important;
+    border-bottom-right-radius: inherit !important;
+  }
 }
 
 .project-card {
