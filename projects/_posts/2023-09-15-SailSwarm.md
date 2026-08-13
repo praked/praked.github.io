@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "SailSwarm: Swarm of Autonomous Sail Boats"
-image: https://praked.github.io/assets/img/project_img/sailboat2.jpg
-collection: portfolio
+description: >
+  A swarm of autonomous sailing robots trialled on Lake Constance — sailing
+  manoeuvres, station keeping and multi-point navigation.
+image: /assets/img/project_img/sailboat2.jpg
 ---
 
 <h2 align="left">Here you find various videos of Aqua Flash as a part of SailSwarm project.</h2>

@@ -1,0 +1,66 @@
+---
+layout: page
+---
+{{ content }}
+
+{% comment %}
+  Card grid for the Projects page, in the spirit of hydejack.com/showcase.
+  Hydejack's own `projects`/`grid` layouts are PRO-only, so this is a
+  site-local layout. Site `_layouts/` take precedence over the remote theme's.
+
+  Project pages live in `projects/_posts/`, so Jekyll treats them as posts in
+  the `projects` category. Prefer the paginator (matching the theme's
+  `blog` layout) and fall back to the category when it isn't available.
+{% endcomment %}
+
+{% if site.plugins contains 'jekyll-paginate' and paginator %}
+  {% assign project_list = paginator.posts %}
+{% else %}
+  {% assign project_list = site.categories.projects %}
+{% endif %}
+
+<ul class="project-grid">
+  {% for project in project_list %}
+    {% comment %} `image` may be a plain string or a hash with a `path`. {% endcomment %}
+    {% if project.image.path %}
+      {% assign project_img = project.image.path %}
+    {% else %}
+      {% assign project_img = project.image %}
+    {% endif %}
+
+    <li class="project-card">
+      <a class="project-card__hit" href="{{ project.url | relative_url }}">
+        {% if project_img %}
+          <span class="project-card__media">
+            {%- comment -%}
+              alt is intentionally empty: the image is inside the same link as
+              the title, which already provides the accessible name.
+            {%- endcomment -%}
+            <img
+              class="project-card__img"
+              src="{{ project_img | relative_url }}"
+              alt=""
+              loading="lazy"
+              decoding="async">
+          </span>
+        {% endif %}
+        <h3 class="project-card__title">{{ project.title }}</h3>
+      </a>
+
+      {% if project.description %}
+        <p class="project-card__desc">
+          {{ project.description | strip_html | strip_newlines | truncate: 150 }}
+        </p>
+      {% endif %}
+
+      <a class="project-card__more" href="{{ project.url | relative_url }}"
+         tabindex="-1" aria-hidden="true">
+        Read more <span class="project-card__arrow">&rarr;</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% if site.plugins contains 'jekyll-paginate' and paginator %}
+  {% include components/pagination.html %}
+{% endif %}

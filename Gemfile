@@ -8,7 +8,9 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 3.9"
+# NOTE: Do not pin `jekyll` directly. The `github-pages` gem below pins the exact
+# Jekyll version GitHub Pages builds with; a second pin here can only drift from it.
+# `jekyll-remote-theme` (needed for `remote_theme:`) ships as one of its dependencies.
 
 # Required for `jekyll serve` in Ruby 3
 gem "webrick"

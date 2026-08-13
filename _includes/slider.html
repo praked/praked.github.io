@@ -1,19 +1,25 @@
-<div class="swiper-container">
+{% comment %}
+  Swiper 7 renamed the root class from `.swiper-container` to `.swiper`.
+  Initialised in `_includes/my-body.html`.
+{% endcomment %}
+<div class="swiper">
   <div class="swiper-wrapper">
     {% comment %}
-      Loop through all static files and filter those whose relative_path includes '/assets/slider/'
-      Make sure your slider images are placed in that folder.
+      Loop through all static files under the travel photo directory.
+      (Previously '/assets/slider/', a byte-identical duplicate of this folder.)
     {% endcomment %}
-    {% assign slider_images = site.static_files | where_exp:"file", "file.relative_path contains '/assets/slider/'" %}
-    
+    {% assign slider_images = site.static_files | where_exp:"file", "file.relative_path contains '/assets/img/travel/'" %}
+
     {% if slider_images.size > 0 %}
       {% for image in slider_images %}
         <div class="swiper-slide">
-          <img src="{{ image.relative_path }}" alt="Slider Image">
+          <img src="{{ image.relative_path | relative_url }}"
+               alt="{{ image.basename | replace: '_', ' ' }}"
+               loading="lazy">
         </div>
       {% endfor %}
     {% else %}
-      <p>No images found in /assets/slider/</p>
+      <p>No images found in /assets/img/travel/</p>
     {% endif %}
   </div>
   <!-- Pagination (optional) -->

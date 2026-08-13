@@ -23,8 +23,8 @@ lang:                  en
 title:                 Pranav Kedia
 
 description:           >
-  Pranav Kedia is a Research Assistant at the Universität Konstanz, an IIIT-Bangalore alum,
-  and an open-hardware and FOSS enthusiast.
+  Pranav Kedia is a Ph.D. researcher in the Cyber Physical Systems group at the
+  University of Konstanz, an IIIT-Bangalore alum, and an open-hardware and FOSS enthusiast.
 
 tagline:               FOSS and Open Hardware Creator and Enthusiast
 
@@ -68,16 +68,16 @@ menu:
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
+# LICENSE and NOTICE are kept for Hydejack's license compliance.
+# CHANGELOG was removed — it was the theme's own changelog, not site content.
 legal:
   - title:             LICENSE
     url:               /LICENSE/
   - title:             NOTICE
     url:               /NOTICE/
-  - title:             CHANGELOG
-    url:               /CHANGELOG/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             </> with ❤ by Pranav Kedia © 2021–2025. All rights reserved.
+copyright:             </> with ❤ by Pranav Kedia © 2021–2026. All rights reserved.
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
@@ -128,6 +128,11 @@ font:                  Noto Sans, Helvetica, Arial, sans-serif
 
 favicon: /assets/favicon/favicon.ico
 
+# Google Analytics 4 measurement id. Consumed by `_includes/my-head.html`.
+# NOT the theme's `google_analytics` key — that one emits the legacy, UA-only
+# analytics.js, which cannot use a G- measurement id.
+google_analytics_id:   G-23W34J48BH
+
 # The font used for headings. Expects a string that is a valid CSS font-family value.
 # To change font-weight, see _sass/variables.scss
 # font_heading:          Roboto Slab, Helvetica, Arial, sans-serif
@@ -137,17 +142,6 @@ favicon: /assets/favicon/favicon.ico
 # font_code:             Fira Code, Menlo, Monaco, Consolas, monospace;
 
 defaults:
-  # You can use this to provide a default accent color and background for
-  # all pages under a given path:
-  - scope:
-      path:            hyde/
-    values:
-      accent_color:    rgb(38,139,210)
-      theme_color:     rgb(32,32,32)
-      accent_image:
-        background:    rgb(32,32,32)
-        overlay:       false
-
   # Don't include documents in assets in the sitemap
   - scope:
       path:            assets/
@@ -168,9 +162,12 @@ defaults:
   #     comments:        true
 
   # `jekyll-seo-tag` will mark collection outputs as `BlogPosting`,
-  # but we want them to be `WebPage`s:
+  # but we want them to be `WebPage`s.
+  # Project pages live in `projects/_posts/`, so Jekyll types them as `posts`
+  # (not `projects`) — scope by path so this default actually matches.
   - scope:
-      type:            projects
+      path:            projects
+      type:            posts
     values:
       seo:
         type:          WebPage
@@ -257,7 +254,9 @@ hydejack:
 
   # Set to `true` when building with the `--lsi` option.
   # The net effect is to use the Jekyll-provided `site.related_posts` variable.
-  use_lsi:             true
+  # Kept `false`: classic GitHub Pages runs a fixed build command and cannot
+  # pass `--lsi`, so enabling this only mislabels an unranked "most recent" list.
+  use_lsi:             false
 
   # When using Google Analytics, set to `true` to display a cookie notice banner.
   # When enabled, no user-related data will be stored until the user gives consent.
@@ -273,7 +272,9 @@ hydejack:
   hide_dates:          false
 
   # Similarly, showing last modified date can devalue a post if it is too far in the past.
-  hide_last_modified:  false
+  # `true` because `jekyll-last-modified-at` is not available on GitHub Pages
+  # (see the `plugins` list) — there is no real value to display.
+  hide_last_modified:  true
 
   # Note that dark mode only works in the PRO version of Hydejack.
   dark_mode:
@@ -293,8 +294,7 @@ hydejack:
   offline:
     enabled:           false
     cache_version:     13
-    precache_assets:
-      - /assets/img/swipe.svg
+    precache_assets:   []
 
 
 # Collections
@@ -309,10 +309,6 @@ collections:
     permalink:         /tag-:name/
     output:            true
 
-  projects:
-    permalink:         /projects/:path/
-    output:            true
-
 
 # File inclusion/exclusion
 # ----------------------------------------------------------------------------------------
@@ -321,15 +317,10 @@ exclude:
   - .jekyll-cache
   - .sass-cache
   - .ruby-lsp
-  - .wrangler
-  - '*.toml'
   - vendor
   - Gemfile
   - Gemfile.lock
-  - functions
 include:
-  - _routes.json
-  - .well-known
   - LICENSE.md
 
 
@@ -348,14 +339,19 @@ plugins:
   - jekyll-sitemap
   - jekyll-titles-from-headings
   - jekyll-include-cache
-  - jekyll-last-modified-at
+  # NOTE: `jekyll-last-modified-at` was removed. It is not on the GitHub Pages
+  # plugin allowlist, so the classic Pages build silently ignored it and
+  # `page.last_modified_at` was always nil in production (it only ever worked
+  # in local builds). See `hide_last_modified` below.
 
 
 # SEO Tag
 # ---------------------------------------------------------------------------------------
 
-# Where you proof that you own this site (used by jekyll-seo-tag)
-# google_site_verification: <verification-id>
+# Where you proof that you own this site (used by jekyll-seo-tag).
+# Moved here from an inline <meta> in the body of `index.md`, where it was both
+# invalid (verification tags must be in <head>) and present on one page only.
+google_site_verification: PY0HOlPg1kjKYPy20mRGw7vIBzuM-56ngFJ0pgtMOso
 # -- or --
 # webmaster_verifications:
 #   google:              <verification-id>

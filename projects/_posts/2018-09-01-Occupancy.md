@@ -1,7 +1,10 @@
 ---
+layout: post
 title: "Ultrasound based Occupancy Detection Sensor for Smart Buildings"
-image: https://praked.github.io/assets/img/project_img/Ultrasound.jpg
-collection: portfolio
+description: >
+  A network of real-time ultrasound sensors that tracks people moving through
+  doorways in large public buildings.
+image: /assets/img/project_img/Ultrasound.jpg
 ---
 
 A network of real time ultrasound based smart door person occupancy detector was designed and developed to identify and monitor human movement through a door with applications in big public buildings with large footfall.

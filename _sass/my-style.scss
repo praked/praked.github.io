@@ -12,3 +12,117 @@
     margin: 1rem 0;
   }
 }
+
+// ==========================================================================
+// Projects card grid (`_layouts/grid.html`)
+//
+// Colours are deliberately derived from `currentColor` rather than hardcoded,
+// so the cards work in both light and dark mode without a second palette.
+// ==========================================================================
+
+.project-grid {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  // auto-fit gives 3-up on desktop, 2-up on tablet and 1-up on mobile
+  // without needing any media queries.
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.75rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 0 1rem;
+  border-radius: 6px;
+  // Fallback first, then a currentColor-derived border for themes that support it.
+  border: 1px solid rgba(128, 128, 128, .28);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+
+  // The theme underlines links site-wide; that looks wrong on a whole card.
+  a { text-decoration: none; }
+}
+
+.project-card__hit {
+  display: block;
+  color: inherit;
+}
+
+.project-card__media {
+  display: block;
+  // Uniform card heights regardless of the source image's aspect ratio.
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: rgba(128, 128, 128, .12);
+}
+
+.project-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.project-card__title {
+  margin: 1rem 1rem .5rem;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.project-card__desc {
+  margin: 0 1rem 1rem;
+  font-size: .9rem;
+  line-height: 1.5;
+  opacity: .8;
+  flex: 1 1 auto;
+}
+
+.project-card__more {
+  margin: 0 1rem;
+  font-size: .85rem;
+  font-weight: 700;
+  opacity: .85;
+}
+
+.project-card__arrow {
+  display: inline-block;
+  transition: transform .18s ease;
+}
+
+// Hover effects only where hovering is a real interaction — otherwise they
+// stick on after a tap on touch devices.
+@media (hover: hover) {
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+    border-color: rgba(128, 128, 128, .5);
+    border-color: color-mix(in srgb, currentColor 40%, transparent);
+  }
+
+  .project-card:hover .project-card__img { transform: scale(1.04); }
+  .project-card:hover .project-card__arrow { transform: translateX(3px); }
+}
+
+// Keep the keyboard focus ring visible — `:focus-within` above only moves the card.
+.project-card__hit:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__img,
+  .project-card__arrow {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within { transform: none; }
+  .project-card:hover .project-card__img { transform: none; }
+}

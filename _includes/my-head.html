@@ -1,9 +1,30 @@
-<!-- Add HTML tags here to be included in the head. You can delete the below: -->
-<head>
+<!--
+  Injected into the document <head> by the theme.
+  NOTE: do not add a <head> tag here — this content is already inside one.
+-->
 
+<!-- Google Analytics 4 (gtag.js), loaded site-wide. Id set in `_config.yml`.
+     Previously this was the legacy UA tag inline in the body of `index.md`, so it
+     only ever fired on homepage landings and never re-fired during hy-push-state
+     navigation. Pageviews for SPA navigations are sent from `my-body.html`.
+     NOTE: deliberately NOT using the theme's `google_analytics` config key —
+     Hydejack's built-in analytics include uses the legacy analytics.js, which is
+     Universal Analytics only and does not support a G- measurement id. -->
+{% if site.google_analytics_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics_id }}');
+</script>
+{% endif %}
+
+<!-- Font Awesome. Used by the `icon:` values in `_data/social.yml`
+     (e.g. `fa-brands fa-researchgate`). A second, stale copy of Font Awesome
+     (cdnjs 6.0.0-beta3) used to be loaded here as well and has been removed. -->
 <script src="https://kit.fontawesome.com/6c79039899.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-</head>
+<!-- Swiper (carousel). Pinned: an unpinned unpkg URL resolves to the latest release,
+     and Swiper 7 renamed the `.swiper-container` class to `.swiper`. -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
