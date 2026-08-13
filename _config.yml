@@ -228,9 +228,7 @@ hydejack:
 
   # Code blocks and tables "break" the layout by spanning the full available width.
   # Set this to true if you want them to be the same width as other content.
-  # `false` so wide content (the projects grid, tables, and the code blocks on the
-  # SAB 2026 page) can use the full width, while prose keeps a readable measure.
-  no_break_layout:     false
+  no_break_layout:     true
 
   # Set to `true` to disable the dynamic Table of Contents on large screens.
   no_toc:              false

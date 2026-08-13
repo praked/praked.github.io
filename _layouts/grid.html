@@ -19,12 +19,7 @@ layout: page
   {% assign project_list = site.categories.projects %}
 {% endif %}
 
-{% comment %}
-  `break-layout` is Hydejack's own hook (enabled by `no_break_layout: false`)
-  for letting an element span the full available width instead of being capped
-  at the prose column.
-{% endcomment %}
-<ul class="project-grid break-layout">
+<ul class="project-grid">
   {% for project in project_list %}
     {% comment %} `image` may be a plain string or a hash with a `path`. {% endcomment %}
     {% if project.image.path %}
