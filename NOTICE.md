@@ -5,9 +5,6 @@ sitemap: false
 
 # NOTICE
 
-* this list will be replaced by the toc
-{:toc .large-only}
-
 Copyright (c) 2020 Florian Klampfer <https://qwtel.com/>
 
 This program is free software: you can redistribute it and/or modify

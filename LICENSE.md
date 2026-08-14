@@ -5,9 +5,6 @@ sitemap: false
 
 # LICENSE
 
-* this list will be replaced by the toc
-{:toc .large-only}
-
 ## GNU GENERAL PUBLIC LICENSE
 {:.no_toc}
 

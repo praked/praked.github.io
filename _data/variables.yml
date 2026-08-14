@@ -13,7 +13,10 @@
 
   content_width: 42 #rem
   content_width_2: 48 #rem
-  content_width_5: 54 #rem
+  # Widened from the theme default of 54rem to use more of a wide screen.
+  # NOTE: break_point_dynamic is derived from this
+  # (content_width_5 + 2*content_margin_5 + 2*sidebar_width).
+  content_width_5: 64 #rem
 
   sidebar_width: 21 #rem
   border_radius: 0.5 #rem

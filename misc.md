@@ -8,8 +8,11 @@ hide_description: true
 sitemap: True
 ---
 <style>
-/* Scoped to the slideshow. These used to be global rules (`*`, `body`, `img`)
-   inside an invalid nested <head>, which overrode the site font on this page. */
+/* Scoped to the slideshow. These used to be global rules (star, body, img)
+   in an invalid nested head element, which overrode the site font here.
+   Do not write markup tag names literally in this file: Jekyll's livereload
+   injector matches them as text and splices a script tag into this style
+   block, which silently breaks every rule after it. */
 .slideshow-container, .slideshow-container * { box-sizing: border-box }
 .slideshow-container img { vertical-align: middle }
 .mySlides {display: none}

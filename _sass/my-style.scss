@@ -14,6 +14,61 @@
 }
 
 // ==========================================================================
+// Balance the content column on wide screens.
+//
+// The theme pins `.content` to `margin-left: 25rem` with `max-width: 54rem`,
+// so on a wide screen every spare pixel piles up on the right: ~176px at
+// 1440px and ~416px at 1680px. That right-hand space used to be reserved for
+// the table of contents, which this site no longer uses at all (`no_toc`).
+//
+// Centre the column within the area *after* the sidebar instead, so the
+// leftover splits evenly and reads as margin rather than dead space. Prose
+// keeps its 54rem measure — widening that hurts readability.
+//
+// `max()` keeps the theme's 25rem floor, so the content can never slide under
+// the 21rem sidebar on narrower screens.
+// ==========================================================================
+
+// The theme caps `.content` at a fixed `max-width` and pins it after the
+// sidebar, so every pixel past that cap becomes dead margin — the wider the
+// screen, the more dead space. Make the column fluid instead: it grows with
+// the viewport and only stops at a readability ceiling.
+//
+// `$content-ceiling` is the upper bound. Raise it to fill more of an ultrawide
+// display, lower it for a tighter line length.
+//
+// Two Sass 3.7 traps are avoided here deliberately:
+//   * Sass defines its own `min()`/`max()` and errors on non-numeric args
+//     ("25rem is not a number for `max'"), and
+//   * Sass evaluates arithmetic inside `calc()` unless it is opaque to it.
+// unquote() emits the whole expression as literal CSS, sidestepping both.
+$content-ceiling: 88rem;
+$content-gutter: $content-margin-5;
+
+@media screen and (min-width: 86em) {
+  .content {
+    margin-left: $sidebar-width + $content-gutter;
+    margin-right: $content-gutter;
+    max-width: unquote(
+      "min(#{$content-ceiling}, calc(100vw - #{$sidebar-width} - #{2 * $content-gutter}))"
+    );
+  }
+}
+
+// Past this width the ceiling binds, so the column stops growing and the
+// surplus would pile up on the right again. Centre it in the space after the
+// sidebar from here on, so the gap stays symmetric at any display size.
+$content-centre-from: $content-ceiling + $sidebar-width + (2 * $content-gutter);
+
+@media screen and (min-width: #{$content-centre-from}) {
+  .content {
+    margin-left: unquote(
+      "calc(#{$sidebar-width} + (100vw - #{$sidebar-width} - #{$content-ceiling}) / 2)"
+    );
+  }
+}
+
+// ==========================================================================
 // Projects card grid (`_layouts/grid.html`)
 //
 // Colours are deliberately derived from `currentColor` rather than hardcoded,

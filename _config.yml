@@ -1,15 +1,16 @@
 # Config
 # ========================================================================================
 
-# Uncomment and set the URL of your site (with protocol, e.g. `https://`)
-# NOTE: You don't need to provide this property when hosting on GitHub Pages or Netlify.
-# url:                   https://praked.github.io/
+# The URL of your site (with protocol, e.g. `https://`).
+# Set explicitly so local builds generate the same absolute URLs as production
+# (sitemap.xml and jekyll-seo-tag). Without it, a local build has no GitHub API
+# metadata and falls back to a wrong host.
+url:                   https://praked.github.io
 
-# Uncomment and set the "base URL" of your site.
-# When your site is in a subdirectory, set to `/<name of directory>`,
-# with a leading `/` but no trailing `/`. Use the empty string '' otherwise.
-# NOTE: You don't need to provide this property when hosting on GitHub Pages or Netlify.
-# baseurl:               '/hydejack-starter-kit'
+# The "base URL" of your site. Empty because this is a user page served at the
+# domain root. Set explicitly for the same reason as `url` above: without it a
+# local build derives a bogus '/pages/praked' prefix from missing API metadata.
+baseurl:               ''
 
 
 # General settings
@@ -231,7 +232,10 @@ hydejack:
   no_break_layout:     true
 
   # Set to `true` to disable the dynamic Table of Contents on large screens.
-  no_toc:              false
+  # `true`: this site uses no tables of contents, and leaving it on reserved a
+  # ~20.5rem column on the right of every large screen that nothing ever filled.
+  # The `{:toc}` markup has also been removed from the pages that had it.
+  no_toc:              true
 
   # When set to `true`, will not extend the content in the "third column" on large screens.
   # Instead, all content will remains within the center column.
