@@ -42,29 +42,23 @@
 //     ("25rem is not a number for `max'"), and
 //   * Sass evaluates arithmetic inside `calc()` unless it is opaque to it.
 // unquote() emits the whole expression as literal CSS, sidestepping both.
-$content-ceiling: 88rem;
+$content-ceiling: 88rem;   // upper bound, so ultrawide screens stay readable
 $content-gutter: $content-margin-5;
+$content-squeeze: 0.8;     // fraction of the available width to actually use
 
 @media screen and (min-width: 86em) {
   .content {
-    margin-left: $sidebar-width + $content-gutter;
+    // Held in custom properties so the centring calculation below can reuse
+    // the computed width instead of repeating (and drifting from) the formula.
+    --content-avail: #{unquote("calc(100vw - #{$sidebar-width} - #{2 * $content-gutter})")};
+    --content-w: #{unquote("min(#{$content-ceiling}, calc(var(--content-avail) * #{$content-squeeze}))")};
+
+    max-width: var(--content-w);
+
+    // Centre within the space after the sidebar, so the slack left over by the
+    // squeeze is split evenly instead of collecting on the right-hand side.
+    margin-left: #{unquote("calc(#{$sidebar-width} + (100vw - #{$sidebar-width} - var(--content-w)) / 2)")};
     margin-right: $content-gutter;
-    max-width: unquote(
-      "min(#{$content-ceiling}, calc(100vw - #{$sidebar-width} - #{2 * $content-gutter}))"
-    );
-  }
-}
-
-// Past this width the ceiling binds, so the column stops growing and the
-// surplus would pile up on the right again. Centre it in the space after the
-// sidebar from here on, so the gap stays symmetric at any display size.
-$content-centre-from: $content-ceiling + $sidebar-width + (2 * $content-gutter);
-
-@media screen and (min-width: #{$content-centre-from}) {
-  .content {
-    margin-left: unquote(
-      "calc(#{$sidebar-width} + (100vw - #{$sidebar-width} - #{$content-ceiling}) / 2)"
-    );
   }
 }
 
