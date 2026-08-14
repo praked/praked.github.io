@@ -1,14 +1,31 @@
 <!-- Swiper (carousel). Pinned to match the stylesheet in `my-head.html`. -->
 <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  // Swiper 7+ uses `.swiper` as the root class (was `.swiper-container`).
-  // Guarded so the script is a no-op on pages without a carousel.
+  /* IMPORTANT: use block comments only in inline scripts on this site.
+     `compress_html` collapses the script onto a single line, which turns a
+     `//` line comment into a comment covering the entire script. */
+  /* Swiper 7+ uses `.swiper` as the root class (was `.swiper-container`).
+     Guarded so this is a no-op on pages without a carousel. */
   (function () {
+    /* An auto-advancing carousel is hostile to anyone who needs time to read,
+       so honour the OS "reduce motion" setting and leave it manual there. */
+    var reduceMotion = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     function initSwiper() {
       if (typeof Swiper === 'undefined') return;
       document.querySelectorAll('.swiper:not(.swiper-initialized)').forEach(function (el) {
         new Swiper(el, {
           loop: true,
+          speed: 700,
+          autoplay: reduceMotion ? false : {
+            delay: 4000,
+            /* Keep advancing after the user clicks an arrow or a bullet;
+               the default is to stop autoplay permanently on interaction. */
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
+          keyboard: { enabled: true },
           pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
           navigation: {
             nextEl: el.querySelector('.swiper-button-next'),
@@ -20,8 +37,8 @@
 
     initSwiper();
 
-    // Re-initialise after hy-push-state swaps the page content, otherwise the
-    // carousel is dead on any page reached by client-side navigation.
+    /* Re-initialise after hy-push-state swaps the page content, otherwise the
+       carousel is dead on any page reached by client-side navigation. */
     var pushStateEl = document.getElementById('_pushState');
     if (pushStateEl) {
       pushStateEl.addEventListener('hy-push-state-after', initSwiper);

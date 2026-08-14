@@ -1,0 +1,25 @@
+# Captions for the travel carousel on /misc/.
+#
+# The carousel (`_includes/slider.html`) automatically picks up every .jpg in
+# `assets/img/travel/` — you do not need to edit any markup to add a photo.
+# This file only supplies the caption. Keys are the filename without extension.
+#
+# A photo with no entry here still appears; it just falls back to a caption
+# derived from its filename. Add a line here to give it a proper one.
+
+berlin:                 Berlin, Germany
+leipzig:                Leipzig, Germany
+dresden:                Dresden, Germany
+frankfurt:              Frankfurt, Germany
+Hamburg:                Hamburg, Germany
+Amsterdam:              Amsterdam, Netherlands
+Prague:                 Prague, Czechia
+abu_dh:                 Abu Dhabi, UAE
+sphinx:                 Pyramids of Giza, Egypt
+Zagazig:                Zagazig, Egypt
+Auroville:              Auroville, India
+Rock_beach_aerial_view: Pondicherry, India
+mumbai:                 Mumbai, India
+gwalior:                Gwalior, India
+mangalore:              Mangalore, India
+delhi:                  Delhi, India

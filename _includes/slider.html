@@ -1,30 +1,51 @@
 {% comment %}
+  Travel photo carousel.
+
+  Every .jpg in `assets/img/travel/` is picked up automatically — drop a file in
+  the folder and it appears here, no markup change needed. Captions come from
+  `_data/travel.yml`, keyed on the filename without its extension; anything not
+  listed there falls back to a caption derived from the filename.
+
+  Only .jpg is included on purpose: the folder also holds travel *map* PNGs,
+  which belong on the page as a static image rather than as carousel slides.
+
   Swiper 7 renamed the root class from `.swiper-container` to `.swiper`.
   Initialised in `_includes/my-body.html`.
 {% endcomment %}
-<div class="swiper">
-  <div class="swiper-wrapper">
-    {% comment %}
-      Loop through all static files under the travel photo directory.
-      (Previously '/assets/slider/', a byte-identical duplicate of this folder.)
-    {% endcomment %}
-    {% assign slider_images = site.static_files | where_exp:"file", "file.relative_path contains '/assets/img/travel/'" %}
 
-    {% if slider_images.size > 0 %}
-      {% for image in slider_images %}
-        <div class="swiper-slide">
-          <img src="{{ image.relative_path | relative_url }}"
-               alt="{{ image.basename | replace: '_', ' ' }}"
-               loading="lazy">
-        </div>
-      {% endfor %}
-    {% else %}
-      <p>No images found in /assets/img/travel/</p>
-    {% endif %}
+{% comment %}
+  Use `f.path`, not `f.relative_path`: Jekyll 3.9 does not expose
+  `relative_path` on static files to Liquid — it renders as an empty string,
+  so a filter on it silently matches nothing. `path` is already site-root
+  relative, e.g. "/assets/img/travel/berlin.jpg".
+{% endcomment %}
+{% assign slides = site.static_files
+   | where_exp: "f", "f.path contains '/assets/img/travel/'"
+   | where_exp: "f", "f.extname == '.jpg'"
+   | sort: "path" %}
+
+{% if slides.size > 0 %}
+<div class="swiper travel-swiper">
+  <div class="swiper-wrapper">
+    {% for image in slides %}
+      {% assign caption = site.data.travel[image.basename] %}
+      {% if caption == nil or caption == empty %}
+        {% assign caption = image.basename | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
+      {% endif %}
+      <div class="swiper-slide">
+        <img src="{{ image.path | relative_url }}"
+             alt="{{ caption | escape }}"
+             loading="lazy"
+             decoding="async">
+        <div class="travel-swiper__caption">{{ caption | escape }}</div>
+      </div>
+    {% endfor %}
   </div>
-  <!-- Pagination (optional) -->
+
   <div class="swiper-pagination"></div>
-  <!-- Navigation arrows (optional) -->
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
 </div>
+{% else %}
+<p>No photos found in <code>/assets/img/travel/</code>.</p>
+{% endif %}

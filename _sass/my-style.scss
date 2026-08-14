@@ -69,6 +69,52 @@ $content-centre-from: $content-ceiling + $sidebar-width + (2 * $content-gutter);
 }
 
 // ==========================================================================
+// Travel carousel (`_includes/slider.html`)
+//
+// Slides are globbed from assets/img/travel/, so heights vary. A fixed
+// aspect ratio keeps the carousel from jumping as it loops.
+// ==========================================================================
+
+.travel-swiper {
+  margin: 2rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(128, 128, 128, .12);
+
+  .swiper-slide {
+    position: relative;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  // Theme sets a light accent for these; keep them legible over photos.
+  .swiper-button-prev,
+  .swiper-button-next,
+  .swiper-pagination-bullet-active {
+    color: #fff;
+    --swiper-theme-color: #fff;
+  }
+}
+
+.travel-swiper__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.5rem 1rem .75rem;
+  color: #fff;
+  font-size: .95rem;
+  text-align: center;
+  // Gradient rather than a solid bar, so bright photos stay readable.
+  background: linear-gradient(to top, rgba(0, 0, 0, .72), rgba(0, 0, 0, 0));
+}
+
+// ==========================================================================
 // Projects card grid (`_layouts/grid.html`)
 //
 // Colours are deliberately derived from `currentColor` rather than hardcoded,
