@@ -1,0 +1,22 @@
+# Invited talks, listed on /talks/.
+#
+# Add a talk by appending an entry here — no markup to edit. Entries are sorted
+# automatically, newest first, so order in this file does not matter.
+#
+#   title: what the talk was called
+#   venue: the event, seminar series, lab or group that hosted it
+#   place: city, country
+#   date:  full ISO date (YYYY-MM-DD). Only the month and year are displayed,
+#          as "May '24" — the day is just there so sorting works. If you only
+#          remember the month, use the 1st.
+#
+# Optional:
+#   url:   link to slides, a recording, or the event page
+#
+# The entry below is an example so the page renders. Replace it.
+
+- title: "Example: Swarms of Autonomous Sailing Vessels"
+  venue: Example Seminar Series
+  place: Konstanz, Germany
+  date: 2026-05-01
+  # url: https://example.org/

@@ -63,6 +63,62 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
 }
 
 // ==========================================================================
+// Entry list — shared by /talks/ and /tools/
+//
+// Title and meta on the left, date on the right; stacks on narrow screens.
+// ==========================================================================
+
+.entry-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.entry {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(128, 128, 128, .22);
+
+  &:first-child { border-top: 1px solid rgba(128, 128, 128, .22); }
+}
+
+.entry__main { flex: 1 1 auto; min-width: 0; }
+
+.entry__title {
+  margin: 0 0 .25rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.entry__meta {
+  margin: 0;
+  font-size: .9rem;
+  opacity: .75;
+}
+
+.entry__date {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: .85rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  opacity: .7;
+}
+
+// Below this the two columns crowd each other, so stack them.
+@media screen and (max-width: 30em) {
+  .entry {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .25rem;
+  }
+}
+
+// ==========================================================================
 // Travel carousel (`_includes/slider.html`)
 //
 // Slides are globbed from assets/img/travel/, so heights vary. A fixed

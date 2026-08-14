@@ -1,0 +1,32 @@
+# Tools listed on /tools/.
+#
+# Same idea as talks.yml — add an entry, no markup to edit. Order in this file
+# is the order shown on the page.
+#
+#   name:        what the tool is called
+#   description: one line on what it does
+#   kind:        short label shown on the right, e.g. "Open hardware",
+#                "Simulator", "Firmware", "Dataset"
+#   url:         optional link (repository, docs, release)
+#
+# These entries are drawn from work already described elsewhere on the site.
+# Check the wording and links, and add anything missing.
+
+- name: SailSwarmSwIM
+  description: >
+    Reduced-order simulator for swarms of autonomous sailing robots, including
+    the speed-weighted flocking controller from the SAB 2026 paper.
+  kind: Simulator
+  url: https://github.com/praked/SailSwarmSwIM
+
+- name: GenGrid
+  description: >
+    Open-source modular grid of computing nodes for swarm robotics experiments,
+    supporting Kilobot, Colias and similar platforms.
+  kind: Open hardware
+
+- name: COMB
+  description: >
+    Common Open Modular robotic platform for Bees — a modular robotic bee for
+    experiments inside a live hive.
+  kind: Open hardware
