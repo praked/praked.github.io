@@ -63,6 +63,65 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
 }
 
 // ==========================================================================
+// Media inside project and publication pages
+//
+// These pages were written as raw HTML with `<p align="center">` wrappers and
+// percentage widths, so images rendered small and inconsistently. Centre them
+// and let them use the full column width so they are actually legible.
+// ==========================================================================
+
+.page,
+.post {
+  p[align="center"],
+  p[align="justify"],
+  p[float="center"] {
+    img,
+    video {
+      display: inline-block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+  }
+
+  // A lone image or video in a centred paragraph: give it the full column.
+  p[align="center"] {
+    text-align: center;
+    margin: 1.5rem 0;
+
+    > img:only-child,
+    > video:only-child {
+      width: 100%;
+    }
+  }
+
+  // Side-by-side pairs (the `<p float="center">` blocks) stay side by side on
+  // wide screens and stack on narrow ones, rather than shrinking to 48% there.
+  p[float="center"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+
+    > img {
+      flex: 1 1 20rem;
+      width: auto !important;
+      object-fit: cover;
+    }
+  }
+
+  // Videos converted from the old GIFs.
+  video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem auto;
+    border-radius: 4px;
+  }
+}
+
+// ==========================================================================
 // Entry list — shared by /talks/ and /tools/
 //
 // Title and meta on the left, date on the right; stacks on narrow screens.
@@ -107,6 +166,20 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   opacity: .7;
+}
+
+// Small label distinguishing an invited seminar from a conference talk.
+.entry__tag {
+  display: inline-block;
+  margin-right: .5rem;
+  padding: .05rem .4rem;
+  border: 1px solid rgba(128, 128, 128, .4);
+  border-radius: 3px;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  opacity: .9;
 }
 
 // Below this the two columns crowd each other, so stack them.

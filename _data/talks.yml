@@ -1,22 +1,69 @@
-# Invited talks, listed on /talks/.
+# Talks and presentations, listed on /talks/.
 #
-# Add a talk by appending an entry here — no markup to edit. Entries are sorted
-# automatically, newest first, so order in this file does not matter.
+# Add an entry here — no markup to edit. Sorted automatically, newest first.
 #
 #   title: what the talk was called
 #   venue: the event, seminar series, lab or group that hosted it
 #   place: city, country
-#   date:  full ISO date (YYYY-MM-DD). Only the month and year are displayed,
-#          as "May '24" — the day is just there so sorting works. If you only
-#          remember the month, use the 1st.
+#   date:  full ISO date (YYYY-MM-DD). Only month and year are displayed, as
+#          "May '24" — the day exists so sorting works. For multi-day events
+#          this is the opening day.
+#   kind:  "Invited talk" | "Conference" | "Workshop" | "Competition"
+#          Shown as a small label, so an invited seminar is not conflated with
+#          a conference paper presentation.
+#   url:   optional link to slides, recording or the event page
 #
-# Optional:
-#   url:   link to slides, a recording, or the event page
-#
-# The entry below is an example so the page renders. Replace it.
+# The three SCyPhy entries were taken from the seminar series' own listing at
+# https://www.giovannireina.com/scyphy/ (its seminars.json).
 
-- title: "Example: Swarms of Autonomous Sailing Vessels"
-  venue: Example Seminar Series
+- title: "COMB: Common Open Modular robotic platform for Bees"
+  venue: IEEE International Conference on Advanced Robotics and Mechatronics (ICARM 2026)
+  place: Évry, Paris-Saclay, France
+  date: 2026-07-21
+  kind: Conference
+
+- title: "COMB: Common Open Modular robotic platform for Bees"
+  venue: Short Cyber-Physical Seminars (SCyPhy)
   place: Konstanz, Germany
-  date: 2026-05-01
-  # url: https://example.org/
+  date: 2026-07-15
+  kind: Invited talk
+  url: https://www.giovannireina.com/scyphy/
+
+- title: "BIND-USBL: Bounding IMU Navigation Drift using USBL in Heterogeneous ASV–AUV Teams"
+  venue: OCEANS 2026 Sanya
+  place: Sanya, China
+  date: 2026-05-25
+  kind: Conference
+
+- title: "A winter of simulation: Above, on, and under water"
+  venue: Short Cyber-Physical Seminars (SCyPhy)
+  place: Konstanz, Germany
+  date: 2026-02-18
+  kind: Invited talk
+  url: https://www.giovannireina.com/scyphy/
+
+# TODO: replace the title with your actual pitch title.
+- title: "Falling Walls Lab pitch"
+  venue: Falling Walls Lab Baden-Württemberg
+  place: Konstanz, Germany
+  date: 2025-07-18
+  kind: Competition
+
+- title: "Be a MeSS: BioMimetic Sailboat Swarm"
+  venue: Short Cyber-Physical Seminars (SCyPhy)
+  place: Konstanz, Germany
+  date: 2025-03-19
+  kind: Invited talk
+  url: https://www.giovannireina.com/scyphy/
+
+- title: "Developing SailSwarm: Small Uncrewed Sailing Vessels for Maritime Environments"
+  venue: Maritime Heterogeneous Unmanned Robotic Systems Workshop, IROS 2024
+  place: Abu Dhabi, UAE
+  date: 2024-10-14
+  kind: Workshop
+
+- title: "Building SailSwarm: A Swarm of Autonomous Sailing Vessels"
+  venue: 14th International Conference on Swarm Intelligence (ANTS 2024)
+  place: Konstanz, Germany
+  date: 2024-10-09
+  kind: Conference

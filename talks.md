@@ -24,6 +24,7 @@ permalink: /talks/
           {% endif %}
         </h3>
         <p class="entry__meta">
+          {%- if talk.kind %}<span class="entry__tag">{{ talk.kind }}</span>{% endif -%}
           {{ talk.venue }}{% if talk.place %} &middot; {{ talk.place }}{% endif %}
         </p>
       </div>

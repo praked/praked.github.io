@@ -12,6 +12,13 @@
 # These entries are drawn from work already described elsewhere on the site.
 # Check the wording and links, and add anything missing.
 
+- name: BoatLogExplorer
+  description: >
+    Explorer for sensor-data logs from the SailSwarm boats — load a run and
+    inspect the recorded telemetry.
+  kind: Software
+  url: https://github.com/praked/BoatLogExplorer
+
 - name: SailSwarmSwIM
   description: >
     Reduced-order simulator for swarms of autonomous sailing robots, including
