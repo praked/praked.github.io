@@ -5,6 +5,9 @@ description: >
   A robot bee that mimics the honeybee waggle dance inside a real hive, built
   for the EU H2020 project Hiveopolis.
 image: /assets/img/project_img/BeeRobot1.jpg
+# Focal point for the 16:9 card crop on /projects/ — computed from where
+# the image detail concentrates. "50% 0%" = top, "50% 100%" = bottom.
+image_focus: 50% 5%
 ---
 I was involved in the design and development of a Robot bee platform for mimicking bee wangle dance in a real beehive as a part of
 the EU H2020 funded project ’Hiveopolis’. In theory, such a robot could guide honeybees to a safe foraging site if humans determined that another site was contaminated with pesticides and was affecting the hive’s health. Also humans could direct honeybees away from a site that was being reserved for wild bees.

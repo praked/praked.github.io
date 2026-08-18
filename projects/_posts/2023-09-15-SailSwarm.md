@@ -5,6 +5,9 @@ description: >
   A swarm of autonomous sailing robots trialled on Lake Constance — sailing
   manoeuvres, station keeping and multi-point navigation.
 image: /assets/img/project_img/sailboat2.jpg
+# Focal point for the 16:9 card crop on /projects/ — computed from where
+# the image detail concentrates. "50% 0%" = top, "50% 100%" = bottom.
+image_focus: 50% 5%
 ---
 
 <h2 align="left">Here you find various videos of Aqua Flash as a part of SailSwarm project.</h2>

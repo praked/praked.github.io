@@ -41,7 +41,8 @@ layout: page
               src="{{ project_img | relative_url }}"
               alt=""
               loading="lazy"
-              decoding="async">
+              decoding="async"
+              {%- if project.image_focus %} style="object-position: {{ project.image_focus }}"{% endif %}>
           </span>
         {% endif %}
         <h3 class="project-card__title">{{ project.title }}</h3>
