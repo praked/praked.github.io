@@ -1,3 +1,9 @@
+# Every text file is stored AND checked out with LF endings, whatever the
+# local core.autocrlf says. Jekyll, the CI runner and the editors all handle
+# LF fine, and it stops Git's "LF will be replaced by CRLF" warnings on
+# Windows. Binary files (images, PDFs, video) are detected and left alone.
+* text=auto eol=lf
+
 # The link-preservation harness in tools/ runs on Windows locally AND on
 # ubuntu-latest in CI. Without this, a checkout on Windows can give the shell
 # scripts CRLF endings, which bash rejects with the famously opaque
