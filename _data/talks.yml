@@ -42,8 +42,7 @@
   kind: Invited talk
   url: https://www.giovannireina.com/scyphy/
 
-# TODO: replace the title with your actual pitch title.
-- title: "Falling Walls Lab pitch"
+- title: "SailSwarm: Breaking the Wall of Autonomous Ocean Discovery"
   venue: Falling Walls Lab Baden-Württemberg
   place: Konstanz, Germany
   date: 2025-07-18
