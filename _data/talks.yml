@@ -13,21 +13,23 @@
 #          a conference paper presentation.
 #   url:   optional link to slides, recording or the event page
 #
-# The three SCyPhy entries were taken from the seminar series' own listing at
+# The SCyPhy entries were taken from the seminar series' own listing at
 # https://www.giovannireina.com/scyphy/ (its seminars.json).
+#
+# Workshops I organised are listed separately, in _data/workshops.yml.
+
+- title: "Speed-Weighted Adaptive Flocking for Sailing Swarms under Dynamic Environmental Forcing"
+  venue: 18th International Conference on the Simulation of Adaptive Behavior (SAB 2026)
+  place: Berlin, Germany
+  date: 2026-10-19
+  kind: Conference
+  url: /publications/SailSwarmSim-SAB2026
 
 - title: "COMB: Common Open Modular robotic platform for Bees"
   venue: IEEE International Conference on Advanced Robotics and Mechatronics (ICARM 2026)
   place: Évry, Paris-Saclay, France
   date: 2026-07-21
   kind: Conference
-
-- title: "COMB: Common Open Modular robotic platform for Bees"
-  venue: Short Cyber-Physical Seminars (SCyPhy)
-  place: Konstanz, Germany
-  date: 2026-07-15
-  kind: Invited talk
-  url: https://www.giovannireina.com/scyphy/
 
 - title: "BIND-USBL: Bounding IMU Navigation Drift using USBL in Heterogeneous ASV–AUV Teams"
   venue: OCEANS 2026 Sanya
@@ -41,6 +43,20 @@
   date: 2026-02-18
   kind: Invited talk
   url: https://www.giovannireina.com/scyphy/
+
+- title: "Swarming Sailboats: Collective of Energy-Aware Wind-Powered Vessels"
+  venue: WildDrone Summer School 2025, Max Planck Institute of Animal Behavior
+  place: Konstanz, Germany
+  date: 2025-09-22
+  kind: Invited talk
+  url: https://wilddrone.eu/wilddrone-summer-school-2025/
+
+- title: "Swarming Sailboats: Collective of Energy-Aware Wind-Powered Vessels"
+  venue: Konstanz School of Collective Behaviour 2025
+  place: Konstanz, Germany
+  date: 2025-07-21
+  kind: Invited talk
+  url: https://www.exc.uni-konstanz.de/kscb/
 
 - title: "SailSwarm: Breaking the Wall of Autonomous Ocean Discovery"
   venue: Falling Walls Lab Baden-Württemberg

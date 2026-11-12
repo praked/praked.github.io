@@ -1,0 +1,37 @@
+# Workshops I organised or co-organised, listed under "Workshops organised"
+# on /talks/. Sorted automatically, newest first.
+#
+#   title: name of the workshop
+#   role:  e.g. "Co-organiser" (shown as a small label)
+#   venue: host institution
+#   place: city, country
+#   date:  full ISO date (YYYY-MM-DD); only month and year are displayed.
+#          For multi-day events this is the opening day.
+#   days:  optional — the length, e.g. "2 days", shown after the place
+#   about: optional — one sentence on the workshop's focus
+#   url:   optional link to the event page
+
+- title: "Workshop: Collective Movement"
+  role: Co-organiser
+  venue: University of Konstanz
+  place: Konstanz, Germany
+  date: 2026-10-09
+  days: 3 days
+  about: >
+    An interdisciplinary workshop on how moving agents, biological and
+    engineered, acquire, represent and act on information under uncertainty:
+    sensing and information representation; the information–movement–decision
+    junction; and air–surface interface swarm robotics.
+  url: https://hjwilliams-move.info/workshops/collective-movement/
+
+- title: "Sino-German Workshop 2026: Swarm Intelligence in Biology and Robotics"
+  role: Co-organiser
+  venue: University of Konstanz
+  place: Konstanz, Germany
+  date: 2026-08-03
+  days: 2 days
+  about: >
+    Brought together researchers in collective behaviour, bio-inspired and
+    swarm robotics, and intelligent systems, on how natural collectives can
+    inspire robots and how robots can test biological hypotheses.
+  url: https://www.li-lab.de/workshop/SinoGerman2026/
