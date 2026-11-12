@@ -1,0 +1,57 @@
+{%- comment -%}
+  "Latest" tiles: at most three, newest first.
+
+  Composition: the newest LinkedIn entry and the newest X entry from
+  _data/updates.yml (both entered by hand; see that file for why), with the
+  remaining slots filled by the newest publications, which are read straight
+  from the pages in publications/ and so are always current.
+
+  Liquid cannot merge and sort two differently-shaped lists, so each candidate
+  is flattened to one "date|~|label|~|title|~|url|~|meta" record. ISO dates
+  sort correctly as plain strings, which is what makes the single sort work.
+{%- endcomment -%}
+{%- assign none = "" | split: "" -%}
+{%- assign manual = site.data.updates | default: none -%}
+{%- assign li = manual | where: "kind", "linkedin" | sort: "date" | reverse -%}
+{%- assign tw = manual | where: "kind", "x" | sort: "date" | reverse -%}
+{%- assign pubs = site.pages | where_exp: "p", "p.path contains 'publications/'" | where_exp: "p", "p.date" | where_exp: "p", "p.title" | sort: "date" | reverse -%}
+
+{%- assign pub_slots = 3 -%}
+{%- if li.size > 0 %}{% assign pub_slots = pub_slots | minus: 1 %}{% endif -%}
+{%- if tw.size > 0 %}{% assign pub_slots = pub_slots | minus: 1 %}{% endif -%}
+
+{%- capture records -%}
+  {%- for u in li limit: 1 -%}
+    {{- u.date | date: "%Y-%m-%d" }}|~|LinkedIn|~|{{ u.title | strip_newlines }}|~|{{ u.url }}|~|@@@
+  {%- endfor -%}
+  {%- for u in tw limit: 1 -%}
+    {{- u.date | date: "%Y-%m-%d" }}|~|X|~|{{ u.title | strip_newlines }}|~|{{ u.url }}|~|@@@
+  {%- endfor -%}
+  {%- for p in pubs limit: pub_slots -%}
+    {{- p.date | date: "%Y-%m-%d" }}|~|Publication|~|{{ p.title | strip_newlines }}|~|{{ p.url | relative_url }}|~|{{ p.venue | strip_newlines }}@@@
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign items = records | split: "@@@" | sort | reverse -%}
+
+<ul class="tiles">
+  {%- for record in items -%}
+    {%- assign f = record | strip | split: "|~|" -%}
+    {%- if f.size < 4 %}{% continue %}{% endif -%}
+    <li class="tile">
+      <a class="tile__link" href="{{ f[3] }}">
+        <span class="tile__source">{{ f[1] }}</span>
+        <span class="tile__title">{{ f[2] }}</span>
+        {%- if f[4] and f[4] != "" %}<span class="tile__meta">{{ f[4] }}</span>{% endif %}
+        <time class="tile__date" datetime="{{ f[0] }}">{{ f[0] | date: "%B %Y" }}</time>
+      </a>
+    </li>
+  {%- endfor -%}
+</ul>
+
+{%- assign me = site.data.authors.author1.social -%}
+<p class="tiles__more">
+  More on
+  <a href="{{ me['google-scholar'] }}">Google Scholar</a>,
+  <a href="https://www.linkedin.com/in/{{ me.linkedin }}">LinkedIn</a> and
+  <a href="https://x.com/{{ me.twitter }}">X</a>.
+</p>

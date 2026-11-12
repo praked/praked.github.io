@@ -1,0 +1,18 @@
+{%- comment -%}
+  Primary navigation, from `menu:` in _config.yml.
+
+  aria-current="page" marks the active entry — compared on the resolved URL so
+  that "/" does not match every page. Styled in _sass/_chrome.scss.
+{%- endcomment -%}
+{%- if site.menu -%}
+<nav aria-label="Primary">
+  <ul class="nav">
+    {%- for entry in site.menu -%}
+      {%- assign target = entry.url | relative_url -%}
+      <li>
+        <a href="{{ target }}"{% if page.url == entry.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+{%- endif -%}

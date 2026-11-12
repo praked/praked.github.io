@@ -1,0 +1,126 @@
+# Published-path contract for praked.github.io — DO NOT EDIT BY HAND.
+#
+# Regenerate with `./tools/make-baseline.sh`, and only when you have
+# deliberately added a URL. `./tools/check-links.sh` fails if any path listed
+# here stops being published, which is what keeps old links working across
+# the theme replacement and build-pipeline change.
+#
+# Paths are normalised: "/foo/index.html" is recorded as "/foo/", because that
+# is what the server serves. Publication pages keep their ".html" because
+# their permalinks have no trailing slash — "/publications/GIS_paper" is
+# served by "GIS_paper.html" existing.
+#
+# Theme-internal assets (assets/css, assets/js, assets/icons, assets/icomoon,
+# assets/bower_components) are excluded on purpose: they belong to whatever
+# theme is installed, and replacing the theme is supposed to change them.
+#
+# Generated: 2026-11-12 00:54 UTC
+#
+/
+/404.html
+/CV/
+/LICENSE/
+/NOTICE/
+/about/
+/assets/docs/PranavKediaCV_full__academic.pdf
+/assets/docs/PranavKediaCV_full__academic_2025.pdf
+/assets/docs/Pranav_SAB2026_SailSwarmSwIM.pdf
+/assets/docs/Pranav_UKON_IISc_OCEANS2025_HOLOSWARM.pdf
+/assets/favicon/favicon.ico
+/assets/img/1Trajectory2022.mp4
+/assets/img/BeeRobo1.jpg
+/assets/img/BeeRobo2.jpg
+/assets/img/BeeRobo3.mp4
+/assets/img/BeeRobo4.mp4
+/assets/img/BeeRobot2022.mp4
+/assets/img/Graz2022Group.jpg
+/assets/img/SailSwarmSim/ablation_luffing.png
+/assets/img/SailSwarmSim/boxplot_3panel_align.png
+/assets/img/SailSwarmSim/boxplot_3panel_area.png
+/assets/img/SailSwarmSim/boxplot_3panel_safety.png
+/assets/img/SailSwarmSim/median_delta_area.png
+/assets/img/SailSwarmSim/median_delta_collisions.png
+/assets/img/SailSwarmSim/median_delta_polarisation.png
+/assets/img/SailSwarmSim/uni_couzin_median_delta_area.png
+/assets/img/SailSwarmSim/uni_couzin_median_delta_collisions.png
+/assets/img/SailSwarmSim/uni_couzin_median_delta_polarisation.png
+/assets/img/blog/parusnyy-sport-regata-gonka.jpg
+/assets/img/profilepic.jpg
+/assets/img/profilepicsmall.jpg
+/assets/img/project_img/BeeRobot1.jpg
+/assets/img/project_img/Cushion_Side.png
+/assets/img/project_img/Ultrasound.jpg
+/assets/img/project_img/board1.png
+/assets/img/project_img/cmoc.jpg
+/assets/img/project_img/lego.jpg
+/assets/img/project_img/sailboat2.jpg
+/assets/img/project_img/tiller.jpg
+/assets/img/publication_img/Oceans2026/case_fail_metrics.png
+/assets/img/publication_img/Oceans2026/case_fail_xy.png
+/assets/img/publication_img/Oceans2026/case_study_angle.png
+/assets/img/publication_img/Oceans2026/case_study_heatmap.png
+/assets/img/publication_img/Oceans2026/case_study_per_auv.png
+/assets/img/publication_img/Oceans2026/sweep_comparison.png
+/assets/img/robodummy.mp4
+/assets/img/travel/2025_travel_map.png
+/assets/img/travel/Amsterdam.jpg
+/assets/img/travel/Auroville.jpg
+/assets/img/travel/Hamburg.jpg
+/assets/img/travel/Prague.jpg
+/assets/img/travel/Rock_beach_aerial_view.jpg
+/assets/img/travel/Zagazig.jpg
+/assets/img/travel/abu_dh.jpg
+/assets/img/travel/berlin.jpg
+/assets/img/travel/delhi.jpg
+/assets/img/travel/dresden.jpg
+/assets/img/travel/frankfurt.jpg
+/assets/img/travel/gwalior.jpg
+/assets/img/travel/leipzig.jpg
+/assets/img/travel/mangalore.jpg
+/assets/img/travel/mumbai.jpg
+/assets/img/travel/sphinx.jpg
+/assets/site.webmanifest
+/assets/version.json
+/contact/
+/download/
+/feed.xml
+/googleeb03f743354b2cc4.html
+/licenses/
+/licenses/Apache-2.0/
+/licenses/GPL-3.0/
+/licenses/MIT/
+/licenses/PRO/
+/licenses/W3C-20150513/
+/misc/
+/portfolio/portfolio-1/
+/pranav-kedia-cv/
+/pranav-kedia-misc/
+/pranav-kedia-projects/
+/pranav-kedia-publications/
+/pranav-kedia/
+/projects/
+/projects/2017-11-17-CMOWC/
+/projects/2017-11-23-Tiller/
+/projects/2018-06-30-LEGO/
+/projects/2018-09-01-Occupancy/
+/projects/2019-02-18-EVS/
+/projects/2021-02-28-GenGrid/
+/projects/2022-10-28-HiveopolisBeeRobot/
+/projects/2023-09-15-SailSwarm/
+/publications/
+/publications/BIND-USBL-OCEANS2026.html
+/publications/Building-SailSwarm-ANTS2024.html
+/publications/COMB-ICARM2026.html
+/publications/COMB-ICRA2026.html
+/publications/Design-and-development-of-an-autonomous-emergency-vigilance-system-for-passenger-vehicle.html
+/publications/Design-of-a-real-time-autonomous-in-cabin-sensory-system-to-detect-passenger-anomaly.html
+/publications/Developing-SailSwarm-IROS2024.html
+/publications/GIS_paper.html
+/publications/GenGrid-ICRA2021.html
+/publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics.html
+/publications/SailSwarmSim-SAB2026.html
+/redirects.json
+/robots.txt
+/sitemap.xml
+/talks/
+/tools/

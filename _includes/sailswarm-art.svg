@@ -1,0 +1,29 @@
+{%- comment -%}
+  Line-art background for the sidebar and the full-screen cover: the water,
+  seen from a low camera, with a horizon and drawn wave lines.
+
+  The boats are NOT in this file. assets/js/site.js runs a small sailing-swarm
+  simulation and draws the fleet into the empty groups below, every frame:
+  wind streaks, wakes, links between neighbours, the waypoint buoy, and the
+  boats themselves. Without JavaScript only the water is shown.
+
+  Everything is stroked in currentColor; colour and strength are set in
+  _sass/_art.scss.
+{%- endcomment -%}
+<svg class="sidebar-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"
+     preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+  <path class="art-horizon" d="M0,345 L1600,345" fill="none" stroke="currentColor"/>
+  <path class="art-wave" d="M-200,372 q25,-1.2 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="150 150" stroke-dashoffset="0" fill="none" stroke="currentColor" opacity="0.20"/>
+  <path class="art-wave" d="M-200,410 q25,-1.8 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="90 60 60 90" stroke-dashoffset="77" fill="none" stroke="currentColor" opacity="0.24"/>
+  <path class="art-wave" d="M-200,462 q25,-2.6 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="120 180" stroke-dashoffset="154" fill="none" stroke="currentColor" opacity="0.28"/>
+  <path class="art-wave" d="M-200,530 q25,-3.6 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="70 50 110 70" stroke-dashoffset="231" fill="none" stroke="currentColor" opacity="0.32"/>
+  <path class="art-wave" d="M-200,612 q25,-4.8 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="150 150" stroke-dashoffset="8" fill="none" stroke="currentColor" opacity="0.36"/>
+  <path class="art-wave" d="M-200,706 q25,-6.0 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="90 60 60 90" stroke-dashoffset="85" fill="none" stroke="currentColor" opacity="0.40"/>
+  <path class="art-wave" d="M-200,806 q25,-7.4 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="120 180" stroke-dashoffset="162" fill="none" stroke="currentColor" opacity="0.44"/>
+  <path class="art-wave" d="M-200,878 q25,-8.4 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" pathLength="2000" stroke-dasharray="70 50 110 70" stroke-dashoffset="239" fill="none" stroke="currentColor" opacity="0.48"/>
+  <path class="art-wind" fill="none" stroke="currentColor" stroke-linecap="round"/>
+  <g class="art-wakes" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></g>
+  <path class="art-links" fill="none" stroke="currentColor" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <path class="art-buoy" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+  <g class="art-fleet" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></g>
+</svg>

@@ -1,0 +1,31 @@
+---
+layout: base
+---
+{%- comment -%}
+  Project pages (projects/_posts/*.md). `image:` may be a plain string or a
+  hash with a `path` — _layouts/grid.html handles both, so this must too.
+{%- endcomment -%}
+<article class="post">
+  {%- if page.image.path %}{% assign hero = page.image.path %}
+  {%- else %}{% assign hero = page.image %}{% endif %}
+
+  <h1 class="post-title">{{ page.heading | default: page.title }}</h1>
+
+  {%- if page.date %}
+  <p class="post-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %Y" }}</time>
+  </p>
+  {%- endif %}
+
+  {%- if hero %}
+  <div class="post-hero">
+    <img src="{{ hero | relative_url }}" alt="" loading="eager" decoding="async">
+  </div>
+  {%- endif %}
+
+  {%- if page.description and page.hide_description != true %}
+  <p class="page-description">{{ page.description | strip_html | strip_newlines }}</p>
+  {%- endif %}
+
+  {{ content }}
+</article>

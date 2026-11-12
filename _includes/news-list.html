@@ -1,0 +1,33 @@
+{%- comment -%}
+  One run of timeline entries, grouped under year headings.
+  Called by _includes/news.html with `items=`.
+{%- endcomment -%}
+{%- assign current_year = "" -%}
+{%- for entry in include.items -%}
+  {%- assign year = entry.date | date: "%Y" -%}
+  {%- if year != current_year -%}
+    {%- unless forloop.first %}</ol>{% endunless -%}
+    <h3 class="timeline__year">{{ year }}</h3>
+    <ol class="timeline">
+    {%- assign current_year = year -%}
+  {%- endif -%}
+  <li class="timeline__item">
+    <time class="timeline__month" datetime="{{ entry.date | date: "%Y-%m" }}">{{ entry.date | date: "%b" }}</time>
+    <div class="timeline__body">
+      <p>{{ entry.text }}</p>
+      {%- for v in entry.videos %}
+      <div class="embed">
+        <iframe src="https://www.youtube.com/embed/{{ v.id }}{% if v.start %}?start={{ v.start }}{% endif %}"
+                title="Video: {{ entry.text | strip_html | strip_newlines | truncate: 80 | escape }}"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      {%- endfor %}
+      {%- if entry.image %}
+      <img class="timeline__photo" src="{{ entry.image | relative_url }}" alt="" loading="lazy" decoding="async">
+      {%- endif %}
+    </div>
+  </li>
+  {%- if forloop.last %}</ol>{% endif -%}
+{%- endfor -%}

@@ -20,10 +20,10 @@
 </script>
 {% endif %}
 
-<!-- Font Awesome. Used by the `icon:` values in `_data/social.yml`
-     (e.g. `fa-brands fa-researchgate`). A second, stale copy of Font Awesome
-     (cdnjs 6.0.0-beta3) used to be loaded here as well and has been removed. -->
-<script src="https://kit.fontawesome.com/6c79039899.js" crossorigin="anonymous"></script>
+<!-- Font Awesome's CDN kit used to load here on every page. It is gone:
+     only nine icons were ever rendered, and they now come from the inline
+     sprite in `_includes/icons.svg`. That removes a render-blocking
+     third-party request and the 288KB icomoon webfont with it. -->
 
 <!-- Swiper (carousel). Pinned: an unpinned unpkg URL resolves to the latest release,
      and Swiper 7 renamed the `.swiper-container` class to `.swiper`. -->

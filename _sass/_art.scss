@@ -1,0 +1,63 @@
+// Line-art background of the sidebar and cover (_includes/sailswarm-art.svg).
+// The fleet is drawn into it by the simulation in assets/js/site.js.
+
+.sidebar-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  // Strength of the whole drawing; parts carry their own opacity for depth.
+  color: rgba(255, 255, 255, .55);
+
+  // One pen weight, whatever the distance or the screen size.
+  path { vector-effect: non-scaling-stroke; stroke-width: 1.2px; }
+}
+
+.art-horizon { opacity: .13; }
+.art-wind    { opacity: .22; }
+.art-wakes   { opacity: .22; }
+.art-links   { opacity: .45; }
+.art-buoy    { opacity: .6; }
+
+// Hull and sail are filled with the background colour so a nearer boat hides
+// what is behind it instead of the outlines tangling. Depth fading is done
+// with stroke-opacity for the same reason: the fill has to stay solid.
+.art-solid { fill: var(--sidebar-bg); }
+.art-line  { fill: none; }
+
+// A light blur behind each individual item (the name, the tagline, every
+// navigation link, every social icon) instead of one frosted panel behind the
+// whole block. The fleet stays visible between the items and is only softened
+// directly under the text.
+%item-blur {
+  background: rgba(14, 14, 14, .28);
+  background: color-mix(in srgb, var(--sidebar-bg) 32%, transparent);
+  -webkit-backdrop-filter: blur(2.4px);
+  backdrop-filter: blur(2.4px);
+  border-radius: .75rem;   // clearly rounded corners on every blur zone
+}
+
+.sidebar-title a,
+.sidebar-tagline,
+.nav a,
+.social a {
+  @extend %item-blur;
+}
+
+// Padding gives each blur a little margin round the text; the matching
+// negative margin keeps the text itself exactly where it was.
+.sidebar-title a { display: inline-block; padding: .1rem .5rem; margin: -.1rem -.5rem; }
+.sidebar-tagline { width: fit-content; padding: .15rem .5rem; margin-left: -.5rem; margin-right: -.5rem; }
+.nav a           { padding-left: .5rem; padding-right: .5rem; margin-left: -.5rem; }
+.social a        { padding: .3rem; margin: -.3rem; }
+
+// The current page was marked by a bottom border, which would now span the
+// padded box. An underline follows the word instead.
+.nav a[aria-current="page"] {
+  border-bottom-color: transparent;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .45em;
+}

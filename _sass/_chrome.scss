@@ -1,0 +1,181 @@
+// Sidebar, navigation, social icons, theme toggle.
+//
+// On narrow screens the sidebar is a normal block that scrolls away at the top
+// of the page — no drawer, no JavaScript. Hydejack used hy-drawer plus
+// hy-push-state for this; dropping both removes ~1.3MB of theme JS and the
+// entire class of "the carousel is dead after client-side navigation" bugs.
+
+.sidebar {
+  position: relative;   // contains the line-art layer
+  overflow: hidden;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-color);
+  padding: 2rem 1.25rem 1.75rem;
+  // The accent image, when a page sets one, sits behind a dark scrim.
+  background-size: cover;
+  background-position: center;
+}
+
+.sidebar-inner {
+  max-width: $content-width-2;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar--image {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .7);   // flat neutral scrim, no gradient
+  }
+}
+
+.sidebar-avatar {
+  display: block;
+  width: 5.5rem; height: 5.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.sidebar-title {
+  margin: 0 0 .3rem;
+  font-family: $font-serif;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+  line-height: 1.2;
+  a { color: inherit; text-decoration: none; }
+}
+
+.sidebar-tagline {
+  margin: 0 0 1.1rem;
+  color: var(--sidebar-muted);
+  font-size: .95rem;
+}
+
+// Fixed column from the breakpoint where _layout.scss starts reserving space.
+@media screen and (min-width: $break-point-3) {
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: $sidebar-width;
+    overflow-y: auto;
+    padding: 2.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-inner { margin: 0; }
+}
+
+.nav {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .15rem .9rem;
+
+  li { margin: 0; }
+
+  a {
+    display: block;
+    padding: .3rem 0;
+    color: var(--sidebar-muted);
+    text-decoration: none;
+    font-size: .96rem;
+    border-bottom: 2px solid transparent;
+    &:hover { color: #fff; }
+  }
+
+  // Current page.
+  a[aria-current="page"] {
+    color: #fff;
+    border-bottom-color: currentColor;
+  }
+}
+
+@media screen and (min-width: $break-point-3) {
+  .nav {
+    flex-direction: column;
+    gap: 0;
+    // inline-block so the current-page underline is as wide as the word,
+    // not the whole column.
+    a { display: inline-block; padding: .32rem 0; }
+  }
+}
+
+// Social links: a row of evenly spaced icons, set off from the navigation
+// above by a hairline so the two groups do not read as one list.
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  // Spread edge to edge, so the first and last icon line up with the ends of
+  // the rule above and with the text block, instead of bunching at the left.
+  justify-content: space-between;
+  gap: .5rem;
+  max-width: 17.5rem;
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  a { color: var(--sidebar-muted); display: inline-flex; }
+  a:hover { color: #fff; }
+}
+
+.social-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: currentColor;
+  display: block;
+}
+
+// Theme toggle: top-right corner of the page.
+//
+// Positioned against the page, not the screen, so it scrolls away with the
+// content instead of floating over the text. While the full-screen cover is
+// open the page cannot scroll, so it simply sits in the corner of the cover;
+// the z-index keeps it above the cover and the phone drawer.
+//
+// Hidden until JS confirms it works, so a no-JS visitor is not shown a dead
+// control.
+.theme-toggle {
+  position: absolute;
+  top: calc(.95rem + env(safe-area-inset-top, 0px));
+  right: 1.25rem;
+  z-index: 45;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--muted);
+  font: inherit;
+  font-size: .82rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  &:hover { color: var(--body-color); }
+  // Icon only (the button carries an aria-label), 30% larger than the old
+  // .95rem icon that sat beside a text label.
+  svg { width: 1.235rem; height: 1.235rem; fill: currentColor; }
+}
+// `hidden` must win over the display rule above.
+.theme-toggle[hidden] { display: none; }
+
+// Over the cover photo it needs the light sidebar colours instead.
+.cover-open .theme-toggle {
+  color: var(--sidebar-muted);
+  &:hover { color: #fff; }
+}
+
+// Show the correct glyph for the state we are about to switch TO.
+.theme-toggle .i-sun  { display: none; }
+:root[data-theme="dark"] .theme-toggle .i-sun  { display: block; }
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .i-sun  { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
+}

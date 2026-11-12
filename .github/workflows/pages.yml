@@ -1,0 +1,102 @@
+# Build and deploy praked.github.io with GitHub Actions.
+#
+# This replaces the classic GitHub Pages builder, which pinned Jekyll 3.9 and
+# libsass and enforced a plugin allowlist. Nothing about the site's URLs
+# changes here — see tools/urls-baseline.txt for the contract, which the
+# `harness` step below enforces on every run.
+#
+# ONE-TIME MANUAL STEP before this takes effect:
+#   Settings -> Pages -> Build and deployment -> Source: "GitHub Actions"
+# Until that is flipped, the classic builder keeps serving the live site and
+# this workflow runs without deploying.
+
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [gh-pages_pk]
+  # Runs build + link harness WITHOUT deploying, so a branch can be verified
+  # green before it is merged.
+  pull_request:
+    branches: [gh-pages_pk]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race. `cancel-in-progress: false` because cancelling a
+# half-finished deploy can leave the site in a partial state.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # Reads .ruby-version. bundler-cache keys on Gemfile.lock, which is
+          # tracked precisely so CI installs the dependency set verified
+          # locally (and why `bundle lock --add-platform x86_64-linux` was run).
+          ruby-version-file: .ruby-version
+          bundler-cache: true
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # Kept as its own step so a build failure and a link failure are
+      # distinguishable at a glance in the Actions UI.
+      - name: Build site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      # THE DEPLOY GATE. Asserts every path in tools/urls-baseline.txt is still
+      # published, every legacy redirect still resolves to the right target,
+      # no internal link 404s, and the SEO head tags survive. A failure here
+      # stops the deploy — that is the entire point.
+      #
+      # Invoked via `bash` rather than `./` so the script's mode bit does not
+      # matter on a fresh checkout.
+      - name: Link-preservation harness
+        run: bash tools/check-links.sh --no-build
+
+      # Linux-only assertion. This permalink contains a ":", which Windows
+      # cannot write — local builds silently truncate it to
+      # _site/publications/GenGrid, so CI is the only place it can be proven.
+      # Remove this step once the permalink is renamed to GenGrid-ICRA2021;
+      # at that point the same assertion applies to the redirect stub instead.
+      - name: Assert the colon permalink was written
+        run: |
+          f='_site/publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics.html'
+          if [ ! -s "$f" ]; then
+            echo "::error::colon permalink missing or empty: $f"
+            ls -la _site/publications/
+            exit 1
+          fi
+          echo "ok: $(wc -c < "$f") bytes"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    # Only deploy from the default branch; a pull_request run stops after build.
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,14 @@
+{%- comment -%}
+  Site footer. `legal:` in _config.yml carries the LICENSE/NOTICE links, which
+  are frozen URLs in tools/urls-baseline.txt.
+{%- endcomment -%}
+<footer class="footer">
+  {%- if site.legal -%}
+  <ul class="footer-links">
+    {%- for entry in site.legal -%}
+      <li><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+  {%- if site.copyright -%}<p><small>{{ site.copyright }}</small></p>{%- endif -%}
+</footer>

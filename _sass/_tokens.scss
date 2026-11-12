@@ -1,0 +1,67 @@
+// Colour, as CSS custom properties rather than Sass variables, so the dark
+// theme is a value swap at runtime instead of a second compiled stylesheet.
+//
+// The palette is deliberately plain: ink on paper, one link colour, hairline
+// rules. No teal accent, no tinted surfaces, no shadows — the page should read
+// like a document, not a product landing page.
+//
+// Three declarations:
+//   :root                                  -> the complete light palette
+//   @media (prefers-color-scheme: dark)    -> OS preference, unless the
+//                                             visitor explicitly chose light
+//   :root[data-theme="dark"]               -> the explicit toggle, which must
+//                                             win even on a light OS
+// Every colour is defined in the first block; nothing gets its only
+// definition inside a media query.
+
+:root {
+  --body-bg:           #fff;
+  --body-color:        #1c1c1c;
+  --muted:             #6b6862;
+  --border:            #e3e1dc;
+  --surface:           #f6f5f2;
+  --surface-2:         #eeece8;
+
+  --link:              #1a4a7a;
+  --link-hover:        #0e2f52;
+  --link-underline:    #b9c6d6;
+
+  // Kept as names because older rules reference them; all resolve to the
+  // single link colour now.
+  --accent:            var(--link);
+  --accent-strong:     var(--link);
+  --accent-faded:      rgba(26, 74, 122, .08);
+
+  --sidebar-bg:        #1b1b1b;
+  --sidebar-color:     #f2f0ec;
+  --sidebar-muted:     rgba(242, 240, 236, .68);
+
+  --shadow:            none;
+
+  color-scheme:        light;
+}
+
+@mixin dark-palette {
+  --body-bg:           #151515;
+  --body-color:        #e3e1dc;
+  --muted:             #a09d97;
+  --border:            #323130;
+  --surface:           #1d1d1c;
+  --surface-2:         #262524;
+
+  --link:              #a9c6e6;
+  --link-hover:        #d2e2f4;
+  --link-underline:    #4d5e72;
+
+  --accent-faded:      rgba(169, 198, 230, .1);
+
+  --sidebar-bg:        #0e0e0e;
+
+  color-scheme:        dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark-palette; }
+}
+
+:root[data-theme="dark"] { @include dark-palette; }

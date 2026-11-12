@@ -1,0 +1,32 @@
+# LinkedIn posts and tweets featured in the "Latest" tiles on the homepage
+# (_includes/updates.html).
+#
+# These are entered BY HAND. Neither LinkedIn nor X offers a free way to read
+# your own posts from a static site: LinkedIn has no public posts API or RSS,
+# and reading a timeline through the X API is a paid tier. So when you post
+# something worth featuring, add an entry at the top of this list.
+#
+# Publications are NOT listed here. The tiles pick those up automatically
+# from the pages in publications/, newest first.
+#
+# The tiles show: the newest LinkedIn entry, the newest X entry, and the rest
+# filled with the newest publications, up to three tiles, sorted by date.
+#
+#   kind:  linkedin | x
+#   date:  YYYY-MM-DD the post went up
+#   title: one line saying what the post is about
+#   url:   link to the post itself
+#
+# Example (delete the leading "# " to use):
+#
+# - kind: linkedin
+#   date: 2026-07-22
+#   title: Presenting COMB at ICARM 2026 in Paris-Saclay
+#   url: https://www.linkedin.com/posts/praked_...
+#
+# - kind: x
+#   date: 2026-05-20
+#   title: SailSwarmSwIM, our sailing-swarm simulator, is now open source
+#   url: https://x.com/pranavkedia11/status/...
+
+[]

@@ -1,0 +1,40 @@
+# Legacy URLs that must keep redirecting, and where each must land.
+#
+#   <published path>    <target path>
+#
+# These are the old-site URLs still in the wild. They are produced by
+# `jekyll-redirect-from` from `redirect_to:` / `redirect_from:` front matter,
+# and `check-links.sh` asserts that each stub still exists and still points at
+# the right place. Breaking one of these breaks an inbound link that someone
+# else controls, so they are checked as hard failures.
+#
+# Blank lines and lines starting with "#" are ignored. Columns are whitespace
+# separated. Targets are compared as site-relative paths, so `url:` in
+# _config.yml can change without invalidating this file.
+
+# --- Old personal-site URL scheme -----------------------------------------
+/pranav-kedia/                  /
+/pranav-kedia-cv/               /CV/
+/pranav-kedia-misc/             /misc/
+/pranav-kedia-projects/         /projects/
+/pranav-kedia-publications/     /publications/
+
+# --- Pages that moved or merged into the homepage -------------------------
+/about/                         /
+
+# NOTE: `/download/` is a `redirect_from:` on `about.md`, so jekyll-redirect-from
+# aims it at that page's own URL (`/about/`), which then redirects again to `/`.
+# Two hops. This is recorded as-is so the harness is green against the current
+# tree; it is corrected to a single hop in the source-hygiene step, and this
+# expectation is updated in the same commit.
+/download/                      /about/
+
+# --- Old portfolio scheme -------------------------------------------------
+/portfolio/portfolio-1/         /projects/2021-02-28-GenGrid/
+
+# --- Publication renamed when the venue changed (ICRA -> ICARM) -----------
+/publications/COMB-ICRA2026.html    /publications/COMB-ICARM2026
+
+# --- Publication permalink renamed away from an unbuildable colon URL ---
+# Verified in CI only: Windows cannot create the stub's filename.
+/publications/GenGrid:-A-Generalised-Distributed-Experimental-Environmental-Grid-for-Swarm-Robotics.html    /publications/GenGrid-ICRA2021

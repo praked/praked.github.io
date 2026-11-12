@@ -37,7 +37,7 @@ layout: page
               the title, which already provides the accessible name.
             {%- endcomment -%}
             <img
-              class="project-card__img"
+              class="project-card__img{% if project.image_fit == 'contain' %} project-card__img--fit{% endif %}"
               src="{{ project_img | relative_url }}"
               alt=""
               loading="lazy"

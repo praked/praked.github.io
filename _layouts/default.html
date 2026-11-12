@@ -1,0 +1,12 @@
+---
+layout: base
+---
+{%- comment -%}
+  Bare fallback. jekyll-default-layout falls through to `default` for anything
+  that declares no layout and is not a page or post, so this must exist even
+  though nothing on the site currently uses it directly.
+{%- endcomment -%}
+<article>
+  {%- if page.title %}<h1 class="page-title">{{ page.title }}</h1>{% endif %}
+  {{ content }}
+</article>

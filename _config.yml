@@ -87,22 +87,32 @@ copyright:             </> with ❤ by Pranav Kedia © 2021–2026. All rights r
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
 
-# Pagination configuration (used by the `blog` layout)
-paginate:              10
-paginate_path:         /projects/:num/
+# Pagination intentionally removed. `jekyll-paginate` could never work on this
+# site: projects/index.html pins `permalink: /projects/`, so every generated
+# pager page overwrote the same file and the "Older" link pointed at a page
+# that was never built. `_layouts/grid.html` falls back to
+# `site.categories.projects`, which is what has actually been rendering all
+# along. Keeping `permalink: /projects/` is deliberate — it is in the URL
+# contract (tools/urls-baseline.txt).
 
 
 # Theme
 # ---------------------------------------------------------------------------------------
 
-# theme: jekyll-theme-hydejack
-remote_theme: hydecorp/hydejack@v9
+# No theme. Layouts, includes and styles are site-local, in _layouts/,
+# _includes/ and _sass/. Hydejack v9 used to be pulled in here via
+# `remote_theme:`; it was replaced because its dark mode was a paid feature,
+# it shipped 21MB of MathJax this site never used, and overriding it was
+# costing more than owning the ~500 lines it has been replaced with.
 
 
 # Customizaton
 # ----------------------------------------------------------------------------------------
  
 # Sidebar image and theme color of the site.
+# NOTE: no longer read. The sidebar and cover background is now the line-art
+# drawing in _includes/sailswarm-art.svg. The photo itself is kept because its
+# URL is in tools/urls-baseline.txt.
 accent_image:          /assets/img/blog/parusnyy-sport-regata-gonka.jpg
 # accent_color:          rgb(79,177,186)
 
@@ -147,18 +157,30 @@ google_analytics_id:   G-23W34J48BH
 # font_code:             Fira Code, Menlo, Monaco, Consolas, monospace;
 
 defaults:
+  # NOTE on `path:` values — do NOT add a trailing slash.
+  # Jekyll matches a scope with `path == scope` or `path.start_with?("#{scope}/")`,
+  # so a scope written as `assets/` is compared against `assets//` and silently
+  # matches nothing. Both scopes below used to carry a trailing slash, which is
+  # why the CV/paper PDFs and the theme licence pages were still being submitted
+  # in sitemap.xml despite `sitemap: false`. The `projects` scope further down
+  # has always worked because it has no trailing slash.
+
   # Don't include documents in assets in the sitemap
   - scope:
-      path:            assets/
+      path:            assets
     values:
       sitemap:         false
 
-  # Don't include licenses in sitemap (feel free to delete)
+  # Don't include licenses in sitemap (feel free to delete).
+  # `noindex` as well as `sitemap: false`: dropping them from the sitemap only
+  # stops them being *submitted*, it does not remove the six already-indexed
+  # theme licence pages from search results.
   - scope:
-      path:            licenses/
+      path:            licenses
     values:
       layout:          plain
       sitemap:         false
+      noindex:         true
 
   # # You can use the following to enable comments on all posts.
   # - scope:
@@ -176,6 +198,15 @@ defaults:
     values:
       seo:
         type:          WebPage
+
+  # Publication pages carry a `date:`, so `jekyll-seo-tag` types them as
+  # `BlogPosting` — wrong for a paper, and it tells Google nothing useful.
+  # `ScholarlyArticle` is the schema.org type for a published work.
+  - scope:
+      path:            publications
+    values:
+      seo:
+        type:          ScholarlyArticle
   - scope:
       type:            featured_categories
     values:
@@ -187,7 +218,21 @@ defaults:
       seo:
         type:          WebPage
 
+# GitHub Pages forced `future: true`; Jekyll 4 defaults to false, which would
+# silently drop any document dated ahead of the build clock — and take its
+# path out of the URL contract with it. Several publications are future-dated.
+future:                true
+
 kramdown:
+  # The classic builder ran kramdown with the GFM parser. Building with
+  # Jekyll 4's default parser produced zero visible-text differences on every
+  # page, so the content is insensitive to this — it is set explicitly so the
+  # two parsers stay provably identical rather than coincidentally so.
+  input:               GFM
+  hard_wrap:           false
+  syntax_highlighter:  rouge
+  syntax_highlighter_opts:
+    default_lang:      plaintext
   math_engine:         mathjax
   math_engine_opts:    {}
   footnote_backlink:   '&#x21a9;&#xfe0e;'
@@ -197,113 +242,8 @@ kramdown:
 # ----------------------------------------------------------------------------------------
 # These settings are specific to Hydejack.
 
-hydejack:
-  # Configure the order of complementary content on blog posts
-  post_addons:         [about, newsletter, related, random, comments]
-
-  # Configure the order of complementary content on project pages
-  project_addons:      [about, newsletter, other, comments]
-
-  # Set to `true` if you don't want to show an icon indicating external links
-  no_mark_external:    false
-
-  # Set to `true` if third party plugins fail to work with dynamically loaded pages
-  no_push_state:       false
-
-  # Set to `true` if you want to disable the drawer
-  no_drawer:           false
-
-  # Set to `true` if you don't to use the auto-hiding (JavaScript based) navbar.
-  # Note that this will not hide the navbar completely, only replace it with a static one.
-  # Use custom css to hide completely, e.g. `#_navbar { display: none }`.
-  no_navbar:           false
-
-  # Set to true to disable the built-in search functionality.
-  # Note that search is disabled during local use to save on build time.
-  # Run Jekyll with the `JEKYLL_ENV` environment variable set to `production` to enable.
-  no_search:           false
-
-  # Set to `true` if you do not want parts of the css inlined in <head/>
-  # This will increase site build speed dramatically!
-  no_inline_css:       false
-
-  # Set to `true` if you don't intend on changing the accent color on a per-page basis. 
-  # This will increase site build speed!
-  no_page_style:       false
-
-  # Code blocks and tables "break" the layout by spanning the full available width.
-  # Set this to true if you want them to be the same width as other content.
-  no_break_layout:     true
-
-  # Set to `true` to disable the dynamic Table of Contents on large screens.
-  # `true`: this site uses no tables of contents, and leaving it on reserved a
-  # ~20.5rem column on the right of every large screen that nothing ever filled.
-  # The `{:toc}` markup has also been removed from the pages that had it.
-  no_toc:              true
-
-  # When set to `true`, will not extend the content in the "third column" on large screens.
-  # Instead, all content will remains within the center column.
-  # Note that this will not affect the Table of Contents, use `no_toc` instead.
-  no_third_column:     false
-
-  # Set to `true` if you don't like oversized headlines on large screens.
-  no_large_headings:   false
-
-  # Set to `true` if you do not want to expose your resume and projects
-  # in machine-readable formats.
-  no_structured_data:  false
-
-  # You can set this to `true` if you don't want to set the `theme-color` meta tag,
-  # This only affects the meta tag, not the color specified in the app manifest.
-  no_theme_color:      false
-
-  # Disable the breadcrumbs above the title
-  no_breadcrumbs:      false
-
-  # Set to `true` when building with the `--lsi` option.
-  # The net effect is to use the Jekyll-provided `site.related_posts` variable.
-  # Kept `false`: classic GitHub Pages runs a fixed build command and cannot
-  # pass `--lsi`, so enabling this only mislabels an unranked "most recent" list.
-  use_lsi:             false
-
-  # When using Google Analytics, set to `true` to display a cookie notice banner.
-  # When enabled, no user-related data will be stored until the user gives consent.
-  cookies_banner:      false
-
-  # Set to `true` if you would like to add a "Powered by Hydejack" link in the footer.
-  # Note that this setting has no effect when using the free version.
-  advertise:           false
-
-  # Buyers of the PRO version can opt to hide all dates from the theme.
-  # Frequent consumers of online content will know that nothing devalues a post like
-  # seeing an old date. 
-  hide_dates:          false
-
-  # Similarly, showing last modified date can devalue a post if it is too far in the past.
-  # `true` because `jekyll-last-modified-at` is not available on GitHub Pages
-  # (see the `plugins` list) — there is no real value to display.
-  hide_last_modified:  true
-
-  # Note that dark mode only works in the PRO version of Hydejack.
-  dark_mode:
-    # Set to `true` to always use the dark theme.
-    always:            false
-
-    # Set to `true` to use the dark theme based on visitors' preference (OS setting).
-    dynamic:           true
-
-    # Set to `true` to allow visitors to switch between light and dark mode.
-    icon:              true
-
-  # ⚡️ DANGER ZONE ⚡️
-  # ----------------
-  # This is an _experimental_ feature.
-  # Only use if you know what Service Workers are and how they can impact your site!
-  offline:
-    enabled:           false
-    cache_version:     13
-    precache_assets:   []
-
+# The `hydejack:` block that used to sit here configured theme features
+# (push-state, drawer, search, PRO-only dark mode). All gone with the theme.
 
 # Collections
 # ----------------------------------------------------------------------------------------
@@ -328,6 +268,16 @@ exclude:
   - vendor
   - Gemfile
   - Gemfile.lock
+  # Local tooling, not site content. `serve.sh` was being published at
+  # https://praked.github.io/serve.sh; `tools/` holds the link-preservation
+  # harness and the SEO baseline.
+  #
+  # The trailing slash on `tools/` is REQUIRED: Jekyll's exclude matching is
+  # prefix based, so a bare `tools` also matches the file `tools.md` and
+  # silently deletes the /tools/ page. (Note this is the opposite of the
+  # `defaults:` scope rule above, where a trailing slash breaks the match.)
+  - serve.sh
+  - tools/
 include:
   - LICENSE.md
 
@@ -339,7 +289,6 @@ plugins:
   - jekyll-default-layout
   - jekyll-feed
   - jekyll-optional-front-matter
-  - jekyll-paginate
   - jekyll-readme-index
   - jekyll-redirect-from
   - jekyll-relative-links
@@ -410,6 +359,11 @@ compress_html:
 
 sass:
   style:               compressed
+  # jekyll-sass-converter 3.x defaults sourcemaps to :always. Inert today only
+  # because the theme compiles CSS through the `scssify` Liquid filter rather
+  # than a real .scss asset — the first hand-rolled assets/css/*.scss would
+  # start emitting /assets/css/*.css.map.
+  sourcemap:           never
 
 # Jekyll Compose Defaults
 # ---------------------------------------------------------------------------------------
