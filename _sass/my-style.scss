@@ -192,49 +192,243 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
 }
 
 // ==========================================================================
-// Travel carousel (`_includes/slider.html`)
+// Travel gallery (`_includes/slider.html`)
 //
-// Slides are globbed from assets/img/travel/, so heights vary. A fixed
-// aspect ratio keeps the carousel from jumping as it loops.
+// A scroll-snap track: swipeable and keyboard-scrollable with no JavaScript.
+// 60% of the text column on wide screens (deliberately smaller than the
+// column), full width on phones. Fixed 3:2 frame so the page does not jump
+// between portrait and panorama shots.
 // ==========================================================================
 
-.travel-swiper {
-  margin: 2rem 0;
-  border-radius: 6px;
-  overflow: hidden;
-  background: rgba(128, 128, 128, .12);
+.gallery {
+  width: 60%;
+  // The track holds every slide side by side; without these it can push the
+  // text column wider than a phone screen.
+  min-width: 0;
+  max-width: 100%;
+  contain: inline-size;
+  margin: 2rem auto;
+  @media (max-width: 40em) { width: 100%; }
+}
 
-  .swiper-slide {
-    position: relative;
-  }
+.gallery__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 1px 3px var(--shadow);
+  &::-webkit-scrollbar { display: none; }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { scroll-behavior: auto; }
+}
+
+.gallery__slide {
+  position: relative;
+  flex: 0 0 100%;
+  margin: 0;
+  scroll-snap-align: start;
 
   img {
     display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 3 / 2;
     object-fit: cover;
   }
 
-  // Theme sets a light accent for these; keep them legible over photos.
-  .swiper-button-prev,
-  .swiper-button-next,
-  .swiper-pagination-bullet-active {
+  figcaption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 2rem .9rem .6rem;
     color: #fff;
-    --swiper-theme-color: #fff;
+    font-size: .88rem;
+    // Gradient rather than a solid bar, so bright photos stay readable.
+    background: linear-gradient(to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0));
   }
 }
 
-.travel-swiper__caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 2.5rem 1rem .75rem;
-  color: #fff;
-  font-size: .95rem;
+.gallery__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: .6rem;
+  &[hidden] { display: none; }
+}
+
+.gallery__btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--body-bg);
+  color: var(--body-color);
+  cursor: pointer;
+  svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  &:hover { border-color: var(--accent); color: var(--accent); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+}
+
+.gallery__count {
+  min-width: 4.5em;
   text-align: center;
-  // Gradient rather than a solid bar, so bright photos stay readable.
-  background: linear-gradient(to top, rgba(0, 0, 0, .72), rgba(0, 0, 0, 0));
+  font-size: .85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.gallery__thumbs {
+  display: flex;
+  gap: .4rem;
+  margin: .6rem 0 0;
+  padding: .2rem;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  &[hidden] { display: none; }
+
+  li { flex: 0 0 auto; margin: 0; }
+
+  button {
+    display: block;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity .2s;
+    &:hover, &[aria-current="true"] { opacity: 1; }
+    &[aria-current="true"] { outline: 2px solid var(--accent); outline-offset: 1px; }
+    &:focus-visible { outline: 2px solid var(--accent); }
+  }
+
+  img {
+    display: block;
+    width: 3.6rem;
+    height: 2.4rem;
+    object-fit: cover;
+  }
+}
+
+// ==========================================================================
+// Travel map (`_includes/travel-map.html`)
+//
+// Inline SVG world map. Land is a faint tint of the text colour, so it works
+// on both themes; visited countries get the accent via a rule generated in
+// the include.
+// ==========================================================================
+
+.travel-map {
+  margin: 1.5rem 0 2rem;
+  min-width: 0;
+  max-width: 100%;
+
+  svg { display: block; width: 100%; height: auto; }
+
+  path {
+    fill: color-mix(in srgb, var(--body-color) 14%, transparent);
+    stroke: var(--body-bg);
+    stroke-width: .4;
+    stroke-linejoin: round;
+    transition: fill .15s;
+  }
+  // Not-yet-visited countries light up orange under the pointer; visited
+  // ones deepen to the strong accent (rule generated in the include, which
+  // is more specific than this one).
+  path:hover { fill: #f28c38; }
+
+  .travel-map__dot {
+    fill: var(--accent);
+    stroke: var(--surface);
+    stroke-width: 1;
+  }
+
+  figcaption { margin-top: .75rem; }
+}
+
+.travel-map__frame {
+  position: relative;   // anchors the zoom buttons
+  padding: .75rem;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 1px 3px var(--shadow);
+
+  svg {
+    cursor: grab;
+    // Pinch and drag belong to the map once zoomed; at full size, a finger
+    // on the map still scrolls the page vertically.
+    touch-action: pan-y;
+    &:active { cursor: grabbing; }
+  }
+  // Borders stay hairline at any zoom.
+  path { vector-effect: non-scaling-stroke; stroke-width: .6px; }
+}
+.travel-map.is-zoomed svg { touch-action: none; }
+
+.travel-map__zoom {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  &[hidden] { display: none; }
+
+  button {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--body-bg);
+    color: var(--body-color);
+    font: inherit;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    &:hover { border-color: var(--accent); color: var(--accent); }
+    &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  }
+}
+
+.travel-map__hint {
+  margin: .4rem 0 0;
+  font-size: .75rem;
+  color: var(--muted);
+  text-align: center;
+  &[hidden] { display: none; }
+}
+
+.travel-map__count {
+  margin: 0 0 .4rem;
+  color: var(--muted);
+  strong { color: var(--accent); font-size: 1.4em; }
+}
+
+.travel-map__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem .4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .82rem;
+
+  li {
+    margin: 0;
+    padding: .1rem .55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+  }
 }
 
 // ==========================================================================

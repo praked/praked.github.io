@@ -1,45 +1,4 @@
-<!-- Swiper (carousel). Pinned to match the stylesheet in `my-head.html`. -->
-<script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  /* IMPORTANT: use block comments only in inline scripts on this site.
-     `compress_html` collapses the script onto a single line, which turns a
-     `//` line comment into a comment covering the entire script. */
-  /* Swiper 7+ uses `.swiper` as the root class (was `.swiper-container`).
-     Guarded so this is a no-op on pages without a carousel. */
-  (function () {
-    /* An auto-advancing carousel is hostile to anyone who needs time to read,
-       so honour the OS "reduce motion" setting and leave it manual there. */
-    var reduceMotion = window.matchMedia
-      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function initSwiper() {
-      if (typeof Swiper === 'undefined') return;
-      document.querySelectorAll('.swiper:not(.swiper-initialized)').forEach(function (el) {
-        new Swiper(el, {
-          loop: true,
-          speed: 700,
-          autoplay: reduceMotion ? false : {
-            delay: 4000,
-            /* Keep advancing after the user clicks an arrow or a bullet;
-               the default is to stop autoplay permanently on interaction. */
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          },
-          keyboard: { enabled: true },
-          pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
-          navigation: {
-            nextEl: el.querySelector('.swiper-button-next'),
-            prevEl: el.querySelector('.swiper-button-prev'),
-          },
-        });
-      });
-    }
-
-    initSwiper();
-
-  })();
-</script>
-
-<!-- The GA pageview shim for hy-push-state navigation was removed with the
-     theme. Without SPA navigation every page view is a real page load, so
-     the plain gtag snippet in `my-head.html` records all of them. -->
+<!-- Nothing to load here any more. Swiper was removed: the /misc/ gallery
+     is self-contained in _includes/slider.html. The GA pageview shim for
+     hy-push-state went with the old theme; the plain gtag snippet in
+     my-head.html records every page view. -->

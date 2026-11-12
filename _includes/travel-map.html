@@ -1,0 +1,130 @@
+{%- comment -%}
+  Visited-countries map on /misc/. Drawn here as inline SVG instead of the
+  fla-shop.com iframe it replaces: no third-party request, it follows the
+  site's light/dark colours, and hovering a country shows its name.
+
+  Visited countries come from _data/visited.yml; the outlines from
+  _includes/world-map-paths.svg. The colouring is one generated CSS rule.
+{%- endcomment -%}
+{%- assign visited = site.data.visited -%}
+<figure class="travel-map">
+  <style>
+    {% for c in visited %}.travel-map path[data-c="{{ c.code }}"]{% for a in c.also %},.travel-map path[data-c="{{ a }}"]{% endfor %}{% unless forloop.last %},{% endunless %}{% endfor %} { fill: var(--accent); }
+    {% for c in visited %}.travel-map path[data-c="{{ c.code }}"]:hover{% for a in c.also %},.travel-map path[data-c="{{ a }}"]:hover{% endfor %}{% unless forloop.last %},{% endunless %}{% endfor %} { fill: var(--accent-strong); }
+  </style>
+  <div class="travel-map__frame">
+    <svg viewBox="0 0 1010 501.8" role="img" aria-labelledby="travel-map-title">
+      <title id="travel-map-title">World map with the {{ visited.size }} countries I have visited highlighted</title>
+      <g class="travel-map__land">
+{% include world-map-paths.svg %}
+      </g>
+      {%- comment -%} Countries too small to see at this scale get a dot. {%- endcomment -%}
+      {%- for c in visited %}{% if c.dot %}
+      <circle class="travel-map__dot" cx="{{ c.dot[0] }}" cy="{{ c.dot[1] }}" r="3.2"><title>{{ c.name }}</title></circle>
+      {%- endif %}{% endfor %}
+    </svg>
+    <div class="travel-map__zoom" hidden>
+      <button type="button" data-z="in" aria-label="Zoom in">+</button>
+      <button type="button" data-z="out" aria-label="Zoom out">&minus;</button>
+      <button type="button" data-z="reset" aria-label="Reset zoom">&#8634;</button>
+    </div>
+    <p class="travel-map__hint" hidden>Drag to move · pinch, double-click or Ctrl + scroll to zoom</p>
+  </div>
+  <script>
+    /* Block comments only: compress_html puts this script on one line.
+       Zoom and pan by changing the SVG viewBox. A plain scroll wheel keeps
+       scrolling the page; only Ctrl/Cmd + wheel zooms, so the map never
+       traps someone scrolling past it. */
+    (function () {
+      var fig = document.currentScript.closest('.travel-map');
+      var svg = fig.querySelector('svg');
+      var W = 1010, H = 501.8, MAX = 12;
+      var v = { x: 0, y: 0, w: W, h: H };
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var clamp = function () {
+        v.w = Math.min(W, Math.max(W / MAX, v.w)); v.h = v.w * H / W;
+        v.x = Math.min(W - v.w, Math.max(0, v.x));
+        v.y = Math.min(H - v.h, Math.max(0, v.y));
+      };
+      var draw = function () {
+        clamp();
+        svg.setAttribute('viewBox', v.x + ' ' + v.y + ' ' + v.w + ' ' + v.h);
+        fig.classList.toggle('is-zoomed', v.w < W - 0.5);
+      };
+      /* Map coordinates under a screen point. */
+      var at = function (cx, cy) {
+        var r = svg.getBoundingClientRect();
+        return { x: v.x + (cx - r.left) / r.width * v.w, y: v.y + (cy - r.top) / r.height * v.h, r: r };
+      };
+      /* Zoom by factor k, keeping the point under (cx, cy) fixed. */
+      var zoom = function (k, cx, cy) {
+        var r = svg.getBoundingClientRect();
+        if (cx == null) { cx = r.left + r.width / 2; cy = r.top + r.height / 2; }
+        var p = at(cx, cy);
+        v.w /= k; v.h /= k;
+        v.x = p.x - (cx - r.left) / r.width * v.w;
+        v.y = p.y - (cy - r.top) / r.height * v.h;
+        draw();
+      };
+      var animate = function (k) {
+        if (reduce) return zoom(k);
+        var steps = 8, f = Math.pow(k, 1 / steps), i = 0;
+        (function step() { zoom(f); if (++i < steps) requestAnimationFrame(step); })();
+      };
+
+      fig.querySelectorAll('[data-z]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var z = b.dataset.z;
+          if (z === 'in') animate(2);
+          else if (z === 'out') animate(0.5);
+          else { v = { x: 0, y: 0, w: W, h: H }; draw(); }
+        });
+      });
+      svg.addEventListener('dblclick', function (e) { e.preventDefault(); zoom(2, e.clientX, e.clientY); });
+      svg.addEventListener('wheel', function (e) {
+        if (!(e.ctrlKey || e.metaKey)) return;
+        e.preventDefault();
+        zoom(Math.exp(-e.deltaY * 0.002), e.clientX, e.clientY);
+      }, { passive: false });
+
+      /* Drag to pan, two fingers to pinch. */
+      var pts = new Map(), last = null;
+      var mid = function () {
+        var a = Array.from(pts.values());
+        return a.length < 2 ? a[0] : { x: (a[0].x + a[1].x) / 2, y: (a[0].y + a[1].y) / 2, d: Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y) };
+      };
+      svg.addEventListener('pointerdown', function (e) {
+        pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        svg.setPointerCapture(e.pointerId);
+        last = mid();
+      });
+      svg.addEventListener('pointermove', function (e) {
+        if (!pts.has(e.pointerId)) return;
+        pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        var m = mid(), r = svg.getBoundingClientRect();
+        if (pts.size === 2 && last && last.d) zoom(m.d / last.d, m.x, m.y);
+        if (last) {
+          v.x -= (m.x - last.x) / r.width * v.w;
+          v.y -= (m.y - last.y) / r.height * v.h;
+          draw();
+        }
+        last = m;
+      });
+      var up = function (e) { pts.delete(e.pointerId); last = pts.size ? mid() : null; };
+      svg.addEventListener('pointerup', up);
+      svg.addEventListener('pointercancel', up);
+
+      fig.querySelector('.travel-map__zoom').hidden = false;
+      fig.querySelector('.travel-map__hint').hidden = false;
+    })();
+  </script>
+  <figcaption>
+    <p class="travel-map__count"><strong>{{ visited.size }}</strong> countries visited so far</p>
+    <ul class="travel-map__list">
+      {%- for c in visited %}
+      <li>{{ c.name }}</li>
+      {%- endfor %}
+    </ul>
+  </figcaption>
+</figure>

@@ -1,51 +1,134 @@
-{% comment %}
-  Travel photo carousel.
+{%- comment -%}
+  Travel photo gallery on /misc/. No library: a CSS scroll-snap track that
+  works by swipe, trackpad and keyboard even without JavaScript, plus a small
+  script for the arrows, the "3 / 16" counter and the thumbnail strip.
 
-  Every .jpg in `assets/img/travel/` is picked up automatically — drop a file in
-  the folder and it appears here, no markup change needed. Captions come from
-  `_data/travel.yml`, keyed on the filename without its extension; anything not
-  listed there falls back to a caption derived from the filename.
+  Photos: every .jpg directly in assets/img/travel/ is shown. Order and
+  captions come from _data/travel.yml (in the order listed there); a photo not
+  listed is appended at the end with a caption made from its filename.
 
-  Only .jpg is included on purpose: the folder also holds travel *map* PNGs,
-  which belong on the page as a static image rather than as carousel slides.
-
-  Swiper 7 renamed the root class from `.swiper-container` to `.swiper`.
-  Initialised in `_includes/my-body.html`.
-{% endcomment %}
-
-{% comment %}
-  Use `f.path`, not `f.relative_path`: Jekyll 3.9 does not expose
-  `relative_path` on static files to Liquid — it renders as an empty string,
-  so a filter on it silently matches nothing. `path` is already site-root
-  relative, e.g. "/assets/img/travel/berlin.jpg".
-{% endcomment %}
-{% assign slides = site.static_files
+  Sizes: tools/optimize-travel-photos.py writes WebP copies to
+  assets/img/travel-web/ and records them in _data/travel_sizes.yml. A photo
+  that has not been through the script falls back to its original JPEG.
+{%- endcomment -%}
+{%- assign files = site.static_files
    | where_exp: "f", "f.path contains '/assets/img/travel/'"
-   | where_exp: "f", "f.extname == '.jpg'"
-   | sort: "path" %}
+   | where_exp: "f", "f.extname == '.jpg'" -%}
+{%- assign ordered = "" | split: "" -%}
+{%- for pair in site.data.travel -%}
+  {%- assign hit = files | where: "basename", pair[0] | first -%}
+  {%- if hit -%}{%- assign ordered = ordered | push: hit -%}{%- endif -%}
+{%- endfor -%}
+{%- assign rest = files | sort: "path" -%}
+{%- for f in rest -%}
+  {%- unless site.data.travel[f.basename] -%}{%- assign ordered = ordered | push: f -%}{%- endunless -%}
+{%- endfor -%}
 
-{% if slides.size > 0 %}
-<div class="swiper travel-swiper">
-  <div class="swiper-wrapper">
-    {% for image in slides %}
-      {% assign caption = site.data.travel[image.basename] %}
-      {% if caption == nil or caption == empty %}
-        {% assign caption = image.basename | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
-      {% endif %}
-      <div class="swiper-slide">
-        <img src="{{ image.path | relative_url }}"
-             alt="{{ caption | escape }}"
-             loading="lazy"
-             decoding="async">
-        <div class="travel-swiper__caption">{{ caption | escape }}</div>
-      </div>
-    {% endfor %}
+{%- if ordered.size > 0 %}
+<section class="gallery" aria-roledescription="carousel" aria-label="Travel photos">
+  <div class="gallery__track" tabindex="0">
+    {%- for image in ordered %}
+    {%- assign caption = site.data.travel[image.basename] -%}
+    {%- if caption == nil or caption == empty -%}
+      {%- assign caption = image.basename | replace: '_', ' ' | replace: '-', ' ' | capitalize -%}
+    {%- endif -%}
+    {%- assign sz = site.data.travel_sizes[image.basename] %}
+    <figure class="gallery__slide" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ ordered.size }}: {{ caption | escape }}">
+      {%- comment -%}
+        Candidates: the downscaled WebP copies (if any) plus the original
+        JPEG at its own width, so the sharpest version is always on offer
+        and small photos are never served re-compressed.
+      {%- endcomment %}
+      <img src="{{ image.path | relative_url }}" alt="{{ caption | escape }}"
+           {%- if sz %}
+           srcset="{% for w in sz.widths %}{% if w > 240 %}{{ '/assets/img/travel-web/' | append: image.basename | append: '-' | append: w | append: '.webp' | relative_url }} {{ w }}w, {% endif %}{% endfor %}{{ image.path | relative_url }} {{ sz.w }}w"
+           sizes="(min-width: 60em) 38rem, calc(100vw - 2.5rem)"
+           width="{{ sz.w }}" height="{{ sz.h }}"
+           {%- endif %}
+           {% unless forloop.first %}loading="lazy"{% endunless %} decoding="async">
+      <figcaption>{{ caption | escape }}</figcaption>
+    </figure>
+    {%- endfor %}
   </div>
 
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-</div>
-{% else %}
+  <div class="gallery__bar" hidden>
+    <button type="button" class="gallery__btn" data-dir="-1" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+    </button>
+    <span class="gallery__count" aria-live="polite">1 / {{ ordered.size }}</span>
+    <button type="button" class="gallery__btn" data-dir="1" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <ol class="gallery__thumbs" hidden>
+    {%- for image in ordered %}
+    {%- assign sz = site.data.travel_sizes[image.basename] -%}
+    {%- assign caption = site.data.travel[image.basename] | default: image.basename %}
+    <li><button type="button" data-i="{{ forloop.index0 }}" aria-label="Show {{ caption | escape }}"{% if forloop.first %} aria-current="true"{% endif %}>
+      <img src="{% if sz %}{{ '/assets/img/travel-web/' | append: image.basename | append: '-240.webp' | relative_url }}{% else %}{{ image.path | relative_url }}{% endif %}"
+           alt="" loading="lazy" decoding="async" width="240" height="160">
+    </button></li>
+    {%- endfor %}
+  </ol>
+</section>
+
+<script>
+  /* Block comments only: compress_html puts this script on one line. */
+  (function () {
+    var g = document.querySelector('.gallery');
+    if (!g) return;
+    var track = g.querySelector('.gallery__track');
+    var slides = g.querySelectorAll('.gallery__slide');
+    var thumbs = g.querySelectorAll('.gallery__thumbs button');
+    var strip = g.querySelector('.gallery__thumbs');
+    var count = g.querySelector('.gallery__count');
+    var cur = 0;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var how = reduce ? 'auto' : 'smooth';
+
+    /* Wraps round at either end. */
+    var go = function (i) {
+      i = (i + slides.length) % slides.length;
+      track.scrollTo({ left: i * track.clientWidth, behavior: how });
+    };
+    var mark = function (i) {
+      cur = i;
+      count.textContent = (i + 1) + ' / ' + slides.length;
+      thumbs.forEach(function (t, k) {
+        if (k === i) {
+          t.setAttribute('aria-current', 'true');
+          strip.scrollTo({ left: t.parentNode.offsetLeft - strip.clientWidth / 2 + t.clientWidth / 2, behavior: how });
+        } else {
+          t.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    g.querySelectorAll('.gallery__btn').forEach(function (b) {
+      b.addEventListener('click', function () { go(cur + Number(b.dataset.dir)); });
+    });
+    thumbs.forEach(function (t) {
+      t.addEventListener('click', function () { go(Number(t.dataset.i)); });
+    });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+    });
+    /* Which slide is in view, however it got there: arrow, swipe or thumb. */
+    var tick = null;
+    track.addEventListener('scroll', function () {
+      clearTimeout(tick);
+      tick = setTimeout(function () {
+        var i = Math.round(track.scrollLeft / track.clientWidth);
+        if (i !== cur) mark(i);
+      }, 80);
+    }, { passive: true });
+
+    g.querySelector('.gallery__bar').hidden = false;
+    strip.hidden = false;
+  })();
+</script>
+{%- else %}
 <p>No photos found in <code>/assets/img/travel/</code>.</p>
-{% endif %}
+{%- endif %}

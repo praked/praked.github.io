@@ -1,0 +1,53 @@
+# Countries Pranav has visited, drawn on the world map on /misc/
+# (_includes/travel-map.html). Add a line to colour another country in.
+#
+#   code: ISO 3166-1 alpha-2, lowercase (the data-c values in
+#         _includes/world-map-paths.svg). QUOTE "no" (Norway): unquoted,
+#         YAML reads it as the boolean false.
+#   name: shown in the list under the map
+#   also: optional extra map codes coloured with it (e.g. an overseas
+#         territory drawn separately); not counted or listed
+#   dot:  optional [x, y] on the map, for countries too small to see
+#         (drawn as a small accent circle)
+
+- { code: al, name: Albania }
+- { code: am, name: Armenia }
+- { code: at, name: Austria }
+- { code: be, name: Belgium }
+- { code: cn, name: China }
+- { code: hr, name: Croatia }
+- { code: cy, name: Cyprus }
+- { code: cz, name: Czech Republic }
+- { code: eg, name: Egypt }
+- { code: ee, name: Estonia }
+- { code: fi, name: Finland }
+- { code: fr, name: France }
+- { code: ge, name: Georgia }
+- { code: de, name: Germany }
+- { code: hk, name: Hong Kong, dot: [825.3, 257.8] }
+- { code: hu, name: Hungary }
+- { code: in, name: India }
+- { code: it, name: Italy }
+- { code: kz, name: Kazakhstan }
+- { code: kw, name: Kuwait }
+- { code: lv, name: Latvia }
+- { code: li, name: Liechtenstein, dot: [531.8, 178.7] }
+- { code: lt, name: Lithuania }
+- { code: me, name: Montenegro }
+- { code: ma, name: Morocco }
+- { code: np, name: Nepal }
+- { code: nl, name: Netherlands }
+- { code: "no", name: Norway }
+- { code: om, name: Oman }
+- { code: pl, name: Poland }
+- { code: pt, name: Portugal }
+- { code: rs, name: Serbia }
+- { code: sk, name: Slovakia }
+- { code: si, name: Slovenia }
+- { code: es, name: Spain }
+- { code: se, name: Sweden }
+- { code: ch, name: Switzerland }
+- { code: th, name: Thailand }
+- { code: tr, name: Turkey }
+- { code: ae, name: United Arab Emirates }
+- { code: us, name: United States }

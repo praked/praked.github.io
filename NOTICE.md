@@ -17,7 +17,7 @@ without permission. Papers are subject to their publishers' copyright.
 
 | Work                                                   | License        | Use
 |:-------------------------------------------------------|:---------------|:-
-| [Swiper][swiper] by Vladimir Kharlampidi               | [MIT]          | Photo slider on [Misc](/misc/), loaded from unpkg
+| [Natural Earth][ne] countries, India point of view     | Public domain  | Travel map on [Misc](/misc/); outlines simplified
 | [Simple Icons][si]                                     | [CC0-1.0]      | Social brand icons, inlined as SVG
 
 The site is built with [Jekyll][jekyll] (MIT) and its plugins, which are used
@@ -30,9 +30,8 @@ Earlier versions of this site were built on the [Hydejack][hj] theme by
 Florian Klampfer (GPL-3.0). The site has since been rewritten with its own
 layouts and styles, and no longer uses the theme.
 
-[swiper]: https://swiperjs.com/
+[ne]: https://www.naturalearthdata.com/
 [si]: https://simpleicons.org/
 [jekyll]: https://jekyllrb.com/
 [hj]: https://hydejack.com/
-[MIT]: licenses/MIT.md
 [CC0-1.0]: https://creativecommons.org/publicdomain/zero/1.0/deed.en

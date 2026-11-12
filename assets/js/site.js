@@ -259,9 +259,11 @@
 
   /* ---- Scroll reveal --------------------------------------------------- */
   if (!reduceMotion && 'IntersectionObserver' in window) {
+    /* Gallery slides are excluded: they sit side by side in a horizontal
+       scroller, so the off-screen ones would never intersect and never show. */
     var targets = document.querySelectorAll(
       '.tile, .timeline__item, .timeline__year, .project-card, .entry, ' +
-      '.post-hero, .embed, .swiper, main h2, main figure, main p > img, ' +
+      '.post-hero, .embed, .gallery, main h2, main figure:not(.gallery__slide), main p > img, ' +
       'main video, main iframe'
     );
     var io = new IntersectionObserver(function (entries) {
