@@ -8,7 +8,7 @@ sitemap: True
 ---
 
 <p><font color="#68C3DA"><a href="/assets/docs/PranavKediaCV_full__academic.pdf">Download CV here</a></font>
- <i>**Updated on Feb 2025.** </i>
+ <em><strong>Updated in November 2026.</strong></em>
 </p>
 <embed src="/assets/docs/PranavKediaCV_full__academic.pdf" type="application/pdf" width="100%" height="1200">
 
