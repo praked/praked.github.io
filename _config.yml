@@ -73,7 +73,7 @@ menu:
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
-# LICENSE and NOTICE are kept for Hydejack's license compliance.
+# LICENSE and NOTICE: site copyright and third-party credits.
 # CHANGELOG was removed — it was the theme's own changelog, not site content.
 legal:
   - title:             LICENSE
