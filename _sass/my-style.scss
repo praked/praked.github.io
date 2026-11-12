@@ -579,9 +579,10 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
   }
   // News photos: a cap, not a fixed width. A fixed width plus the height cap
   // in _news.scss squashed portrait photos; with max-width the browser keeps
-  // the photo's own proportions.
+  // the photo's own proportions. The 30rem ceiling stops them growing with
+  // the window on wide screens.
   .timeline__photo {
-    max-width: 70%;
+    max-width: min(70%, 30rem);
     margin-left: auto;
     margin-right: auto;
   }
