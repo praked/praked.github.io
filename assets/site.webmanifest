@@ -1,0 +1,21 @@
+---
+# Front matter makes Jekyll template this file. It replaces the manifest the
+# theme used to supply at this same path, which is a frozen URL in
+# tools/urls-baseline.txt and is linked from every page.
+---
+{
+  "name": {{ site.title | jsonify }},
+  "short_name": {{ site.title | jsonify }},
+  "description": {{ site.description | strip_newlines | strip | jsonify }},
+  "start_url": {{ "/" | relative_url | jsonify }},
+  "display": "minimal-ui",
+  "background_color": "#ffffff",
+  "theme_color": {{ site.theme_color | default: "#122d3a" | jsonify }},
+  "icons": [
+    {
+      "src": {{ site.logo | relative_url | jsonify }},
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

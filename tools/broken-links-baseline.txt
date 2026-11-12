@@ -1,0 +1,11 @@
+# Internal links that `check-links.sh` is allowed to find unresolved.
+#
+# Anything NOT listed here that fails to resolve is a hard failure. Keep this
+# file as short as possible — an entry here is a link that is broken for at
+# least some visitors.
+
+# (empty)
+# The GenGrid colon permalink used to be listed here. It was renamed to
+# /publications/GenGrid-ICRA2021 with a redirect_from, so the old URL is now
+# an asserted redirect in tools/redirects-expected.txt rather than a
+# tolerated breakage.

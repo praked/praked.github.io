@@ -1,0 +1,18 @@
+---
+layout: base
+---
+<article class="page">
+  {%- if page.title %}
+  <h1 class="page-title">{{ page.heading | default: page.title }}</h1>
+  {%- endif %}
+
+  {%- comment -%}
+    `hide_description: true` keeps the description as a meta tag for search
+    results without repeating it on the page. Several pages rely on this.
+  {%- endcomment -%}
+  {%- if page.description and page.hide_description != true %}
+  <p class="page-description">{{ page.description | strip_html | strip_newlines }}</p>
+  {%- endif %}
+
+  {{ content }}
+</article>

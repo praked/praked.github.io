@@ -279,7 +279,9 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
 .project-card__media {
   display: block;
   // Uniform card heights regardless of the source image's aspect ratio.
-  aspect-ratio: 16 / 9;
+  // 4:3 rather than 16:9: half the project photos are exactly 4:3 and so
+  // are shown uncropped, and the portrait ones lose far less.
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: rgba(128, 128, 128, .12);
 }
@@ -291,6 +293,10 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
   object-fit: cover;
   transition: transform .35s ease;
 }
+
+// `image_fit: contain` in a project's front matter: show the whole image
+// inside the frame instead of cropping it to fill.
+.project-card__img--fit { object-fit: contain; }
 
 .project-card__title {
   margin: 1rem 1rem .5rem;
@@ -349,4 +355,33 @@ $content-squeeze: 0.8;     // fraction of the available width to actually use
   .project-card:hover,
   .project-card:focus-within { transform: none; }
   .project-card:hover .project-card__img { transform: none; }
+}
+
+// ==========================================================================
+// Embedded media at 70% of the column width
+//
+// YouTube embeds, videos and photos inside the text are shown at 70% of the
+// column, centred, rather than spanning it. Below $break-point-1 (phones) they
+// stay full width: half of a phone screen is too small to watch.
+//
+// Deliberately NOT included: the header image of a project page (.post-hero),
+// the project cards, the travel carousel, and the full-bleed `.lead` figures
+// on the SAB 2026 page, whose axis labels would be unreadable at half size.
+//
+// This block sits at the end of the file because the legacy rules further up
+// set the same elements to width: 100% with equal specificity.
+// ==========================================================================
+
+@media screen and (min-width: $break-point-1) {
+  .embed,
+  .timeline__body .embed,
+  .timeline__photo,
+  .page video,
+  .post video,
+  .page p[align="center"] > img:only-child,
+  .post p[align="center"] > img:only-child {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

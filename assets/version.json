@@ -1,0 +1,5 @@
+---
+# Site-owned replacement for the theme's build-stamp file, which is a frozen
+# URL in tools/urls-baseline.txt.
+---
+{ "version": "2026.11", "generator": "jekyll {{ jekyll.version }}" }

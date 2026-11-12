@@ -1,0 +1,16 @@
+{%- comment -%}
+  News timeline from _data/news.yml: the newest ten entries are shown, the
+  rest sit behind a native <details>, so no JavaScript is involved.
+{%- endcomment -%}
+{%- assign all = site.data.news | sort: "date" | reverse -%}
+{%- assign recent = all | slice: 0, 10 -%}
+{%- assign older = all | slice: 10, 500 -%}
+
+{% include news-list.html items=recent %}
+
+{%- if older.size > 0 %}
+<details class="timeline__older">
+  <summary>Earlier updates ({{ older.size }})</summary>
+  {% include news-list.html items=older %}
+</details>
+{%- endif %}

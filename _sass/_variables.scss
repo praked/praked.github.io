@@ -1,0 +1,30 @@
+// Design tokens.
+//
+// $sidebar-width and $content-margin-5 are NOT free choices: _sass/my-style.scss
+// (which predates this theme and is kept verbatim) reads both, and the build
+// fails to compile without them. The rest of the ladder comes from
+// _data/variables.yml, which this site had already customised — note
+// $content-width-5 is 64rem here, not Hydejack's 54rem default.
+
+$sidebar-width:        21rem;   // consumed by my-style.scss
+$content-margin-5:     4rem;    // consumed by my-style.scss
+
+$content-width:        42rem;
+$content-width-2:      48rem;
+$content-width-5:      64rem;
+
+$break-point-1:        42em;
+$break-point-2:        54em;
+$break-point-3:        64em;
+$break-point-5:        86em;
+
+$border-radius:        .5rem;
+
+// Fluid type. One scale, driven by viewport, so headings stop being three
+// separate media-query overrides each.
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+            Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+// Headings are set in a book serif. System fonts only: nothing is downloaded.
+$font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+             Georgia, serif;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;

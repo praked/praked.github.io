@@ -1,0 +1,42 @@
+{%- comment -%}
+  Document head.
+
+  `{% seo %}` and `{% feed_meta %}` used to be called by the theme. They emit
+  canonical, og:*, twitter:*, JSON-LD and the RSS alternate link — if this file
+  forgets them they vanish with NO build error, which is exactly why
+  tools/check-links.sh grew a fourth check asserting they are present.
+
+  This file is also the SOLE owner of the robots meta. The old build emitted
+  two on nine pages (one from the theme's `sitemap: false` arm, one from
+  my-head.html's `noindex` block); that block is removed from my-head.html in
+  the same change that adds this one.
+{%- endcomment -%}
+<meta charset="utf-8">
+{%- comment -%} No user-scalable=no: it blocks pinch-zoom, which is a real
+  accessibility failure. viewport-fit=cover so safe-area insets work. {%- endcomment -%}
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+{%- if page.noindex %}
+<meta name="robots" content="noindex, follow">
+{%- endif %}
+
+<title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+{%- comment -%} title=false because the <title> above is ours. {%- endcomment -%}
+{% seo title=false %}
+{% feed_meta %}
+
+{%- if site.theme_color %}
+<meta name="theme-color" content="{{ site.theme_color }}">
+{%- endif %}
+
+{%- if site.favicon %}
+<link rel="icon" href="{{ site.favicon | relative_url }}">
+{%- endif %}
+<link rel="apple-touch-icon" href="{{ site.logo | relative_url }}">
+<link rel="manifest" href="{{ '/assets/site.webmanifest' | relative_url }}">
+
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{%- comment -%} Site-specific head additions: analytics, carousel CSS. {%- endcomment -%}
+{% include my-head.html %}

@@ -1,0 +1,20 @@
+---
+# Front matter (even empty) is what makes Jekyll compile this file.
+# Output: /assets/css/main.css — inside the already-excluded /assets/css/*,
+# so it costs nothing in the URL contract.
+---
+
+@import "variables";
+@import "tokens";
+@import "base";
+@import "layout";
+@import "chrome";
+@import "news";
+@import "motion";
+@import "art";
+
+// my-inline and my-style come LAST, in that order, mirroring the import order
+// Hydejack used. my-style.scss is written to override the theme, so anything
+// imported after it would defeat it.
+@import "my-inline";
+@import "my-style";

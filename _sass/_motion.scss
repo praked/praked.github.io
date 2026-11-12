@@ -1,0 +1,221 @@
+// Motion: page transitions, scroll reveal, and the sliding drawer on phones.
+//
+// Everything here is an enhancement. Without JavaScript the sidebar is a plain
+// block at the top of the page and all content is visible; with
+// "reduce motion" set in the OS, nothing animates.
+
+// --- Page-to-page transitions ----------------------------------------------
+// Cross-document view transitions: the browser animates between two ordinary
+// page loads. This is what the old theme's push-state navigation imitated
+// with about 1MB of JavaScript. Browsers without support navigate as usual.
+@view-transition { navigation: auto; }
+
+.content  { view-transition-name: content; }
+.topbar   { view-transition-name: topbar; }
+@media screen and (min-width: $break-point-3) {
+  // The sidebar is identical on every page, so it holds still while the
+  // content beside it changes.
+  .sidebar { view-transition-name: sidebar; }
+}
+
+@keyframes page-out { to   { opacity: 0; transform: translateY(-10px); } }
+@keyframes page-in  { from { opacity: 0; transform: translateY(22px); } }
+
+::view-transition-old(content) { animation: page-out .16s ease-in both; }
+::view-transition-new(content) { animation: page-in .38s cubic-bezier(.2, .7, .2, 1) both; }
+
+// --- Scroll reveal ---------------------------------------------------------
+// assets/js/site.js adds .reveal only to elements that start below the fold,
+// then .is-visible as each scrolls into view.
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .55s ease, transform .55s cubic-bezier(.2, .7, .2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+// --- Full-screen cover ------------------------------------------------------
+// Pages with `cover: true` (the homepage) open with the sidebar filling the
+// whole screen. Scrolling down, swiping, pressing a key or using the hint
+// button slides it aside to its normal place and reveals the content.
+//
+// The slide animates `width` and `padding` between two lengths. The inner
+// block has a fixed width, so its text never reflows mid-animation; it just
+// travels from the middle of the screen to the left edge.
+$cover-ease: cubic-bezier(.65, 0, .2, 1);
+
+.cover-hint { display: none; }
+
+// .cover-lock outlives .cover-open by the length of the gesture that closed
+// the cover, so that gesture only moves the cover and never the page.
+.cover-lock body { overflow: hidden; }
+
+.cover-open {
+  body { overflow: hidden; }   // the page underneath must not scroll yet
+
+  .cover-hint {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    z-index: 1;
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: .5rem 1rem;
+    color: var(--sidebar-muted);
+    font: inherit;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    animation: cover-hint 2.2s ease-in-out infinite;
+    &:hover { color: #fff; }
+  }
+}
+
+@keyframes cover-hint {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 6px); }
+}
+
+// While the sidebar is being dragged it follows the pointer directly, so
+// the slide transition has to be off or it would lag behind the hand.
+.cover-dragging {
+  user-select: none;
+  .sidebar { transition: none !important; cursor: grabbing; }
+}
+
+@media screen and (min-width: $break-point-3) {
+  // Signals that the sidebar can be dragged out into the cover and back.
+  .has-cover .sidebar { cursor: grab; }
+  .has-cover .sidebar a, .has-cover .sidebar button { cursor: pointer; }
+
+  .sidebar {
+    z-index: 10;
+    transition: width .75s $cover-ease, padding .75s $cover-ease;
+  }
+  // 21rem column minus its 1.75rem side padding.
+  .sidebar-inner { width: 17.5rem; max-width: 100%; }
+
+  .cover-open .sidebar {
+    width: 100%;   // of the viewport; 100vw can overshoot or fall short of it
+    padding-top: 24vh;
+    padding-left: calc(50vw - 8.75rem);   // centres the 17.5rem block
+  }
+}
+
+// --- Top bar and drawer (phones and tablets) -------------------------------
+.topbar, .drawer-backdrop { display: none; }
+
+@media screen and (max-width: $break-point-3 - .01em) {
+  // Scoped to .js so a visitor without JavaScript keeps the plain sidebar
+  // block instead of a drawer that can never be opened.
+  .js {
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: calc(3.25rem + env(safe-area-inset-top, 0px));
+      padding: env(safe-area-inset-top, 0px) .75rem 0;
+      background: var(--body-bg);
+      border-bottom: 1px solid var(--border);
+      transition: transform .28s ease;
+    }
+    // Slides away while reading down the page, returns on scrolling up.
+    .topbar--hidden { transform: translateY(-100%); }
+
+    .topbar-menu {
+      appearance: none;
+      background: none;
+      border: 0;
+      padding: .5rem;
+      color: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      svg { width: 1.35rem; height: 1.35rem; fill: currentColor; }
+    }
+
+    .topbar-title {
+      font-family: $font-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      z-index: 40;
+      width: min(20rem, 86vw);
+      padding: calc(2rem + env(safe-area-inset-top, 0px)) 1.5rem 1.75rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-102%);
+      visibility: hidden;      // keeps closed-drawer links out of the tab order
+      transition: transform .45s $cover-ease, visibility 0s .45s,
+                  width 0s .45s, padding 0s .45s;
+    }
+    .sidebar-inner {
+      margin: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .nav { flex-direction: column; gap: 0; a { display: inline-block; } }
+
+    .drawer-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      background: rgba(0, 0, 0, .5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .32s ease;
+    }
+
+    // The cover on a phone: the same sidebar, full width. On dismissal it
+    // slides off to the left; width and padding only snap back to drawer size
+    // once it is off screen (the delayed transitions above).
+    &.cover-open .sidebar {
+      width: 100vw;
+      transform: none;
+      visibility: visible;
+      padding-top: 20vh;
+      padding-left: calc(50vw - 8.75rem);
+      transition: none;
+    }
+    &.cover-open .sidebar-inner { width: 17.5rem; max-width: 100%; flex: 0 1 auto; }
+
+    &.drawer-open {
+      .sidebar {
+        transform: none;
+        visibility: visible;
+        transition: transform .32s cubic-bezier(.2, .7, .2, 1), visibility 0s,
+                    width 0s, padding 0s;
+      }
+      .drawer-backdrop { opacity: 1; pointer-events: auto; }
+      body { overflow: hidden; }   // the page behind must not scroll
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .topbar, .js .sidebar, .js .drawer-backdrop, .sidebar { transition: none !important; }
+  .cover-open .cover-hint { animation: none; }
+}

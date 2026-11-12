@@ -1,0 +1,32 @@
+{%- comment -%}
+  Sidebar: identity, navigation and social links. On pages with `cover: true`
+  it opens as the full-screen cover.
+
+  The background is the line-art drawing in _includes/sailswarm-art.svg, on
+  the plain sidebar colour. (It used to be the photo named by `accent_image:`
+  in _config.yml; that key is no longer read.)
+{%- endcomment -%}
+<header id="_sidebar" class="sidebar">
+  {% include sailswarm-art.svg %}
+  <div class="sidebar-inner">
+    {%- if site.logo %}
+    <img class="sidebar-avatar" src="{{ site.logo | relative_url }}"
+         alt="" width="88" height="88" decoding="async">
+    {%- endif %}
+
+    <p class="sidebar-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
+    {%- if site.tagline %}
+    <p class="sidebar-tagline">{{ site.tagline }}</p>
+    {%- endif %}
+
+    {% include nav.html %}
+    {% include social.html %}
+
+  </div>
+  {%- if page.cover %}
+  {%- comment -%} Only shown while the cover is open; see _sass/_motion.scss. {%- endcomment %}
+  <button class="cover-hint" id="_coverHint" type="button">
+    Scroll <span aria-hidden="true">&darr;</span>
+  </button>
+  {%- endif %}
+</header>

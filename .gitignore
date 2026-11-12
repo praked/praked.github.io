@@ -39,7 +39,10 @@ vendor
 .ruby-lsp
 .wrangler
 *.gem
-Gemfile.lock
+# Gemfile.lock is deliberately TRACKED. The GitHub Actions build installs
+# from it, so ignoring it would let CI resolve a different dependency set
+# than the one verified locally.
+# Gemfile.lock
 _zip
 /stats.json
 .dev.vars

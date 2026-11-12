@@ -1,0 +1,123 @@
+// Homepage "Latest" tiles and the news timeline.
+//
+// Flat on purpose: hairline borders, no shadows, no hover lift. The tile is a
+// bordered block of text, not a card floating above the page.
+
+.tiles {
+  list-style: none;
+  margin: 1.25rem 0 .75rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+
+.tile { margin: 0; }
+
+.tile__link {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  height: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    border-color: var(--muted);
+    .tile__title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+  }
+}
+
+.tile__source {
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tile__title {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.tile__meta {
+  font-size: .85rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.tile__date {
+  margin-top: auto;
+  padding-top: .35rem;
+  font-size: .82rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tiles__more {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.timeline__year {
+  margin: 2rem 0 .25rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--border);
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: .75rem;
+  margin: 0;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--border);
+
+  p { margin: 0; }
+}
+
+.timeline__month {
+  font-size: .85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: .12rem;
+}
+
+// Media under a timeline entry.
+.timeline__body {
+  min-width: 0;   // lets the 16:9 embed shrink inside the grid column
+  .embed { margin: .8rem 0 .3rem; }
+}
+
+.timeline__photo {
+  display: block;
+  margin: .8rem 0 .3rem;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.timeline__older {
+  margin-top: 1.5rem;
+
+  summary {
+    cursor: pointer;
+    color: var(--link);
+    font-size: .92rem;
+    &:hover { color: var(--link-hover); }
+  }
+}

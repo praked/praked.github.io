@@ -1,0 +1,19 @@
+{%- comment -%}
+  Kept at this exact path because _layouts/grid.html includes
+  `components/pagination.html` and that file is otherwise untouched.
+
+  Pagination is disabled site-wide (see the note in _config.yml: jekyll-paginate
+  never worked here because projects/index.html pins `permalink: /projects/`).
+  Guarded on total_pages > 1 so it renders nothing rather than the dead
+  "Older/Newer" nav the old build emitted on /projects/.
+{%- endcomment -%}
+{%- if paginator and paginator.total_pages > 1 -%}
+<nav class="pagination" aria-label="Pagination">
+  {%- if paginator.previous_page -%}
+    <a href="{{ paginator.previous_page_path | relative_url }}">Newer</a>
+  {%- endif -%}
+  {%- if paginator.next_page -%}
+    <a href="{{ paginator.next_page_path | relative_url }}">Older</a>
+  {%- endif -%}
+</nav>
+{%- endif -%}

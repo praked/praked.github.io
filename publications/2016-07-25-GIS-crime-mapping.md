@@ -2,7 +2,10 @@
 title: "Crime Mapping and Analysis using GIS"
 collection: publications
 permalink: /publications/GIS_paper
-excerpt: ''
+description: >
+  Using GIS and QGIS for crime mapping and analysis: building spatial and
+  non-spatial crime databases and KDE heat maps to identify crime hotspots and
+  guide police patrols.
 venue: 'preprint on ResearchGate'
 date: 2016-07-25
 ---

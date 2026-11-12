@@ -1,0 +1,33 @@
+{%- comment -%}
+  Social links in the sidebar.
+
+  Driven by _data/authors.yml -> author1.social, whose KEY ORDER is the render
+  order, resolved against _data/social.yml for the label and URL prefix.
+  That is exactly how Hydejack did it, reproduced so the emitted URLs stay
+  byte-identical — these are outbound links people have shared.
+
+  The "contains //" test is Hydejack's rule verbatim: three of the six entries
+  (bluesky_url, google-scholar, research-gate) are already full URLs in
+  authors.yml and must not get a prefix glued onto them.
+{%- endcomment -%}
+{%- assign me = site.data.authors.author1 -%}
+{%- if me.social -%}
+<div class="social">
+  {%- for item in me.social -%}
+    {%- assign platform = item[0] -%}
+    {%- assign username = item[1] -%}
+    {%- assign meta = site.data.social[platform] -%}
+    {%- if username and username != '' and meta -%}
+      {%- if username contains '//' or username contains 'mailto:' -%}
+        {%- assign url = username -%}
+      {%- else -%}
+        {%- assign url = username | prepend: meta.prepend | append: meta.append -%}
+      {%- endif -%}
+      <a href="{{ url }}" title="{{ meta.name }}" rel="me noopener">
+        <svg class="social-icon" aria-hidden="true" focusable="false"><use href="#{{ meta.sprite }}"/></svg>
+        <span class="sr-only">{{ meta.name }}</span>
+      </a>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+{%- endif -%}

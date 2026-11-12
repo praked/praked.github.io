@@ -1,0 +1,12 @@
+{%- comment -%}
+  Light/dark toggle.
+
+  Hidden by default and revealed by the inline script in _layouts/base.html,
+  so a visitor without JavaScript is never shown a control that does nothing.
+  The palette itself lives in _sass/_tokens.scss; this only sets data-theme.
+{%- endcomment -%}
+<button class="theme-toggle" type="button" id="_themeToggle" hidden
+        aria-label="Switch between light and dark theme">
+  <svg class="i-moon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+  <svg class="i-sun"  aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+</button>

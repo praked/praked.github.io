@@ -1,0 +1,12 @@
+# The link-preservation harness in tools/ runs on Windows locally AND on
+# ubuntu-latest in CI. Without this, a checkout on Windows can give the shell
+# scripts CRLF endings, which bash rejects with the famously opaque
+# "bad interpreter: /usr/bin/env bash^M".
+*.sh text eol=lf
+
+# Same reasoning for the CI workflow and the contract files the harness diffs:
+# a CRLF baseline would mismatch an LF-generated list on every single line.
+*.yml text eol=lf
+tools/urls-baseline.txt text eol=lf
+tools/redirects-expected.txt text eol=lf
+tools/broken-links-baseline.txt text eol=lf
