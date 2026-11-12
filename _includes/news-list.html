@@ -25,7 +25,7 @@
       </div>
       {%- endfor %}
       {%- if entry.image %}
-      <img class="timeline__photo" src="{{ entry.image | relative_url }}" alt="" loading="lazy" decoding="async">
+      <img class="timeline__photo" src="{{ entry.image | relative_url }}" alt="{{ entry.image_alt | escape }}" loading="lazy" decoding="async">
       {%- endif %}
     </div>
   </li>

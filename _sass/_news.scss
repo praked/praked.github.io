@@ -107,7 +107,11 @@
 .timeline__photo {
   display: block;
   margin: .8rem 0 .3rem;
-  width: 100%;
+  // Natural size up to the column width; tall (portrait) photos are capped
+  // so one picture never fills the whole screen.
+  width: auto;
+  max-width: 100%;
+  max-height: 26rem;
   border-radius: 3px;
 }
 

@@ -13,6 +13,7 @@
 #          The players are lazy-loaded, so they cost nothing until
 #          scrolled to.
 #   image: optional photo, shown under the entry.
+#   image_alt: optional description of the photo, for screen readers.
 #
 # Entries are sorted by date when rendered, so order here does not matter
 # (newest first by convention). The newest ten are shown; the rest sit behind
@@ -24,6 +25,8 @@
 - date: 2026-11-11
   text: >
     Hosted Oren Gal (Swarms and AI Lab, University of Haifa) in Konstanz.
+  image: /assets/img/news/2026-11-oren-gal-visit.webp
+  image_alt: Oren Gal in the lab next to a SailSwarm boat with its sail raised.
 
 - date: 2026-10-19
   kind: talk
@@ -38,6 +41,8 @@
     University of Konstanz with Hannah Williams and Heiko Hamann, hosting
     Martin Saska (CTU Prague) and Hector Garcia de Marina (University of
     Granada).
+  image: /assets/img/news/2026-10-saska-garcia-de-marina-visit.webp
+  image_alt: Discussing a SailSwarm boat in the lab with Martin Saska and Hector Garcia de Marina.
 
 - date: 2026-09-18
   text: >
