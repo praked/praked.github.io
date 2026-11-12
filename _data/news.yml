@@ -13,6 +13,129 @@
 #          The players are lazy-loaded, so they cost nothing until
 #          scrolled to.
 #   image: optional photo, shown under the entry.
+#
+# Entries are sorted by date when rendered, so order here does not matter
+# (newest first by convention). The newest ten are shown; the rest sit behind
+# "Earlier updates".
+#
+# Funded attendance is always written as <strong>Travel Grant</strong>, with
+# the amount when known.
+
+- date: 2026-11-11
+  text: >
+    Hosted Oren Gal (Swarms and AI Lab, University of Haifa) in Konstanz.
+
+- date: 2026-10-19
+  kind: talk
+  text: >
+    Presented our paper <a href="/publications/SailSwarmSim-SAB2026">"Speed-Weighted
+    Adaptive Flocking for Sailing Swarms under Dynamic Environmental
+    Forcing"</a> at SAB 2026 in Berlin.
+
+- date: 2026-10-09
+  text: >
+    Co-organised the Collective Motion and Energy Harvesting Workshop at the
+    University of Konstanz with Hannah Williams and Heiko Hamann, hosting
+    Martin Saska (CTU Prague) and Hector Garcia de Marina (University of
+    Granada).
+
+- date: 2026-09-18
+  text: >
+    Three robots, three domains: our autonomous sailboat, a robotic fish and a
+    quadrotor in one demonstration on Lake Constance, spanning the water's
+    surface, underwater and the air (with Hun Jang and Liang Li).
+
+- date: 2026-09-08
+  text: >
+    The first robot group is out: two SailSwarm boats navigated Lake Constance
+    together for the first time. Next step: autonomous sailing as a group.
+
+- date: 2026-08-03
+  text: >
+    Helped organise the Sino-German Workshop on Swarm Intelligence in Biology
+    and Robotics at the University of Konstanz.
+
+- date: 2026-07-21
+  kind: talk
+  text: >
+    Presented our paper <a href="/publications/COMB-ICARM2026">"COMB: Common
+    Open Modular robotic platform for Bees"</a>, an open-source robot that
+    lives inside an observation-hive frame, at ICARM 2026 in Paris-Saclay.
+
+- date: 2026-06-29
+  kind: grant
+  text: >
+    Attended SeaBASS, the marine bioacoustics summer school at Syracuse
+    University, New York, with a <strong>Travel Grant ($500)</strong>.
+
+- date: 2026-05-25
+  kind: talk
+  text: >
+    Presented our paper <a href="/publications/BIND-USBL-OCEANS2026">"BIND-USBL:
+    Bounding IMU Navigation Drift using USBL in Heterogeneous ASV–AUV
+    Teams"</a> at IEEE OCEANS 2026 in Sanya, China, with a <strong>Travel
+    Grant ($1,500)</strong> from the Student Poster Competition. It is the
+    first paper from our collaboration with the Indian Institute of Science.
+
+- date: 2025-09-09
+  text: >
+    Our autonomous sailboat and a robotic fish finally met on Lake Constance
+    (with Heiko Hamann, Hun Jang and Liang Li).
+
+- date: 2025-07-18
+  kind: talk
+  text: >
+    Finalist at the Falling Walls Lab Baden-Württemberg 2025 in Konstanz,
+    pitching "SailSwarm: Breaking the Wall of Autonomous Ocean Discovery".
+
+- date: 2025-07-14
+  text: >
+    Hosted Michael Benjamin (MIT Marine Autonomy Lab) in Konstanz for
+    discussions on swarms of autonomous sailboats.
+
+- date: 2025-06-16
+  text: >
+    Attended IEEE OCEANS 2025 in Brest, France.
+
+- date: 2025-01-24
+  kind: grant
+  text: >
+    Received the PANDOTA Fund for Doctoral Research (€5,000) from the
+    University of Konstanz.
+
+- date: 2024-10-14
+  kind: talk
+  text: >
+    Presented <a href="/publications/Developing-SailSwarm-IROS2024">"Developing
+    SailSwarm"</a> at the Maritime Heterogeneous Unmanned Robotic Systems
+    (MHURS) workshop at IROS 2024 in Abu Dhabi.
+
+- date: 2024-10-11
+  kind: talk
+  text: >
+    My poster <a href="/publications/Building-SailSwarm-ANTS2024">"Building
+    SailSwarm: A Swarm of Autonomous Sailing Vessels"</a> won the
+    <strong>Best Poster Award</strong> (by public vote) at ANTS 2024 in
+    Konstanz.
+
+- date: 2024-09-25
+  kind: grant
+  text: >
+    Invited to the Fulbright-Cottrell Workshop "Teaching Science
+    Communication" (25–27 September 2024), with a <strong>Travel
+    Grant</strong>.
+
+- date: 2024-09-01
+  text: >
+    First autonomous sailing on Lake Constance: our augmented RC sailboat
+    luffing, bearing off, tacking and gybing on its own (with intern Charlie
+    Apolinsky).
+
+- date: 2024-07-01
+  kind: grant
+  text: >
+    Attended the RoOT Ocean Technology Summer School at the Ocean Technology
+    Campus Rostock, with a <strong>Travel Grant (€1,000)</strong>.
 
 - date: 2024-05-01
   kind: grant
@@ -27,6 +150,10 @@
     project titled <a
     href="https://www.exc.uni-konstanz.de/collective-behaviour/research/structure/c-computational-methods/swarming-sailboats-collective-of-energy-aware-wind-powered-vessels/">Swarming
     sailboats: Collective of energy-aware wind-powered vessels</a>.
+
+- date: 2023-09-16
+  text: >
+    Started writing a book on PCB design with the publisher Packt.
 
 - date: 2023-09-01
   kind: position
@@ -91,12 +218,6 @@
     Distributed Experimental Environmental Grid for Swarm Robotics"</a> was
     accepted at <a href="http://www.icra2021.org/">ICRA 2021</a>. It is based
     on my master's thesis, co-authored with my supervisor Prof. Madhav Rao.
-
-# ---------------------------------------------------------------------------
-# Everything below is collapsed behind "Show earlier updates" by default.
-# The cutoff is positional, not dated: _includes/news.html shows the newest
-# ten and collapses the rest.
-# ---------------------------------------------------------------------------
 
 - date: 2021-01-01
   kind: position
