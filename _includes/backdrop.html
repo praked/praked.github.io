@@ -1,0 +1,180 @@
+{%- comment -%}
+  DEMO of the page backdrop ideas. Styles: _sass/_backdrop.scss (generated
+  by tools/make-backdrop.py). Nothing here shows unless the demo is on:
+  open any page with ?bg=all (or ?bg=1,2 ...) and a panel appears with a
+  checkbox per idea. The choice is kept for the browser tab while you
+  browse; the panel's x turns the demo off again.
+{%- endcomment -%}
+<div class="bd" aria-hidden="true">
+  <div class="bd-band bd-mask"></div>
+  <div class="bd-waves bd-mask"></div>
+  <div class="bd-grid bd-mask"></div>
+  <svg class="bd-depth"></svg>
+</div>
+<div class="bd-fixed" aria-hidden="true">
+  <div class="bd-contours bd-mask"></div>
+  <svg class="bd-wind" preserveAspectRatio="none"></svg>
+  <svg class="bd-arcs" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice"></svg>
+</div>
+<div class="bd-coords" aria-hidden="true">47.66&deg; N &middot; 9.18&deg; E &mdash; Konstanz</div>
+
+<aside class="bd-panel" aria-label="Background demo">
+  <button type="button" class="bd-close" aria-label="Turn the demo off">&times;</button>
+  <h2>Background demo</h2>
+  <h3>Base</h3>
+  <label><input type="checkbox" data-k="1"> 1 &middot; Horizon band</label>
+  <label><input type="checkbox" data-k="2"> 2 &middot; Margin waves</label>
+  <label><input type="checkbox" data-k="3"> 3 &middot; Chart grid + contours</label>
+  <h3>Static</h3>
+  <label><input type="checkbox" data-k="coords"> Coordinates <small>(wide screens)</small></label>
+  <label><input type="checkbox" data-k="motif"> Section motifs <small>(needs 2)</small></label>
+  <h3>Motion</h3>
+  <label><input type="checkbox" data-k="draw"> Waves draw in <small>(reload page)</small></label>
+  <label><input type="checkbox" data-k="parallax"> Parallax waves <small>(needs 2)</small></label>
+  <label><input type="checkbox" data-k="wind"> Live wind</label>
+  <h3>Page-specific</h3>
+  <label><input type="checkbox" data-k="arcs"> Travel arcs <small>(Misc page)</small></label>
+  <label><input type="checkbox" data-k="depth"> Depth contours <small>(Publications)</small></label>
+  <div class="bd-presets">
+    <button type="button" data-p="1,2">1+2</button>
+    <button type="button" data-p="1,2,3">1+2+3</button>
+    <button type="button" data-p="all">All</button>
+    <button type="button" data-p="">None</button>
+  </div>
+</aside>
+
+<script>
+  /* Block comments only: compress_html puts this script on one line. */
+  (function () {
+    var h = document.documentElement;
+    if (!h.classList.contains('bd-demo')) return;
+    var ALL = 'all,1,2,3,coords,motif,draw,parallax,wind,arcs,depth'.split(',').slice(1);
+    var NS = 'http://www.w3.org/2000/svg';
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var panel = document.querySelector('.bd-panel');
+    var boxes = panel.querySelectorAll('input[data-k]');
+    var on = function (k) { return h.classList.contains('bdx-' + k); };
+
+    var save = function () {
+      var list = ALL.filter(on);
+      h.classList.toggle('bd-on', list.length > 0);
+      try { sessionStorage.setItem('bd', list.join(',')); } catch (e) {}
+    };
+    var sync = function () { boxes.forEach(function (b) { b.checked = on(b.dataset.k); }); };
+    var set = function (list) {
+      ALL.forEach(function (k) { h.classList.toggle('bdx-' + k, list.indexOf(k) !== -1); });
+      save(); sync();
+    };
+    boxes.forEach(function (b) {
+      b.addEventListener('change', function () { h.classList.toggle('bdx-' + b.dataset.k, b.checked); save(); });
+    });
+    panel.querySelectorAll('[data-p]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var p = b.dataset.p;
+        set(p === 'all' ? ALL : p ? p.split(',') : []);
+      });
+    });
+    panel.querySelector('.bd-close').addEventListener('click', function () {
+      set([]);
+      h.classList.remove('bd-demo');
+      try { sessionStorage.removeItem('bd'); } catch (e) {}
+    });
+    sync();
+
+    var mk = function (parent, tag, attrs) {
+      var el = document.createElementNS(NS, tag);
+      for (var a in attrs) el.setAttribute(a, attrs[a]);
+      parent.appendChild(el);
+      return el;
+    };
+
+    /* Parallax: the scroll position, for the CSS transform. */
+    var sy = function () { h.style.setProperty('--sy', String(window.scrollY)); };
+    window.addEventListener('scroll', sy, { passive: true });
+    sy();
+
+    /* Live wind: short streaks drifting the way the sidebar's wind blows. */
+    var wind = document.querySelector('.bd-wind');
+    var streaks = [];
+    for (var i = 0; i < 46; i++) {
+      streaks.push({ x: Math.random(), y: Math.random(), len: 24 + Math.random() * 46, op: .11 + Math.random() * .12,
+                     el: mk(wind, 'path', {}) });
+    }
+    var last = 0;
+    var blow = function (t) {
+      requestAnimationFrame(blow);
+      if (!on('wind')) { last = t; return; }
+      var dt = Math.min(.05, (t - last) / 1000 || 0); last = t;
+      var w = window.siteWind || { to: -0.6, gust: 1 };
+      /* The simulation's ground plane: x to the right, y away from the
+         camera, which is up the screen. */
+      var dx = Math.cos(w.to), dy = -Math.sin(w.to);
+      var W = window.innerWidth, H = window.innerHeight;
+      streaks.forEach(function (s) {
+        if (!reduce) {
+          s.x += dx * 38 * w.gust * dt / W;
+          s.y += dy * 38 * w.gust * dt / H;
+          if (s.x < -.05) s.x += 1.1; if (s.x > 1.05) s.x -= 1.1;
+          if (s.y < -.05) s.y += 1.1; if (s.y > 1.05) s.y -= 1.1;
+        }
+        var x = s.x * W, y = s.y * H;
+        s.el.setAttribute('d', 'M' + x.toFixed(1) + ',' + y.toFixed(1) + ' l' + (dx * s.len).toFixed(1) + ',' + (dy * s.len).toFixed(1));
+        s.el.setAttribute('stroke-opacity', s.op);
+      });
+    };
+    wind.setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' + window.innerHeight);
+    window.addEventListener('resize', function () { wind.setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' + window.innerHeight); });
+    requestAnimationFrame(blow);
+
+    /* Travel arcs (Misc page): great-circle-like arcs from Konstanz to every
+       visited country, on an equirectangular world filling the window. */
+    if (/\/misc\/?$/.test(location.pathname)) {
+      var arcs = document.querySelector('.bd-arcs');
+      var P = { al:[20,41.1], am:[44.9,40.2], at:[14.5,47.5], be:[4.5,50.6], cn:[104,35], hr:[15.9,45.3],
+        cy:[33.2,35], cz:[15.3,49.8], eg:[30.8,26.8], ee:[25,58.6], fi:[25.7,61.9], fr:[2.2,46.2], ge:[43.4,42.3],
+        de:[10.4,51.2], hk:[114.2,22.3], hu:[19.5,47.2], 'in':[78.9,22], it:[12.6,42.8], kz:[66.9,48], kw:[47.5,29.3],
+        lv:[24.6,56.9], li:[9.55,47.16], lt:[23.9,55.2], me:[19.4,42.7], ma:[-7.1,31.8], np:[84.1,28.4], nl:[5.3,52.1],
+        no:[8.5,60.5], om:[57.6,21.5], pl:[19.1,51.9], pt:[-8.2,39.4], rs:[21,44], sk:[19.7,48.7], si:[14.9,46.1],
+        es:[-3.7,40.4], se:[18.6,60.1], ch:[8.2,46.8], th:[101,15.9], tr:[35.2,39], ae:[54,23.4], us:[-98.6,39.8] };
+      var xy = function (p) { return [(p[0] + 180) / 360 * 1000, (90 - p[1]) / 180 * 500]; };
+      var home = xy([9.18, 47.66]);
+      Object.keys(P).forEach(function (k) {
+        var b = xy(P[k]);
+        var mx = (home[0] + b[0]) / 2, my = (home[1] + b[1]) / 2;
+        var d = Math.hypot(b[0] - home[0], b[1] - home[1]);
+        mk(arcs, 'path', { d: 'M' + home[0] + ',' + home[1] + ' Q' + mx.toFixed(1) + ',' + (my - d * .35).toFixed(1) + ' ' + b[0].toFixed(1) + ',' + b[1].toFixed(1),
+                           'stroke-opacity': .42, 'stroke-dasharray': '3 3' });
+        mk(arcs, 'circle', { cx: b[0].toFixed(1), cy: b[1].toFixed(1), r: 1.8, 'fill-opacity': .5 });
+      });
+      mk(arcs, 'circle', { cx: home[0], cy: home[1], r: 2.6, 'fill-opacity': .35 });
+    }
+
+    /* Depth contours (Publications): wavy lines that crowd together and
+       darken further down the page, with sounding labels in the margin. */
+    if (/\/publications\/?$/.test(location.pathname)) {
+      var depth = document.querySelector('.bd-depth');
+      var build = function () {
+        while (depth.firstChild) depth.removeChild(depth.firstChild);
+        var W = document.documentElement.clientWidth, H = document.body.scrollHeight;
+        depth.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        var top = 260, n = 22;
+        for (var j = 0; j < n; j++) {
+          var f = j / (n - 1);
+          var y = top + (H - top - 40) * (1 - Math.pow(1 - f, 1.6));
+          var amp = 6 + 10 * f, d = 'M0,' + y.toFixed(1);
+          for (var x = 0; x <= W + 120; x += 120) {
+            d += ' Q' + (x + 60) + ',' + (y + (j % 2 ? amp : -amp) * Math.sin(x / 300 + j)).toFixed(1) + ' ' + (x + 120) + ',' + y.toFixed(1);
+          }
+          mk(depth, 'path', { d: d, 'stroke-opacity': (.075 + .12 * f).toFixed(3) });
+          if (j % 3 === 0) {
+            var lab = mk(depth, 'text', { x: W - 64, y: (y - 4).toFixed(1) });
+            lab.textContent = '−' + (10 + j * 10) + ' m';
+          }
+        }
+      };
+      build();
+      window.addEventListener('load', build);
+      window.addEventListener('resize', build);
+    }
+  })();
+</script>

@@ -406,6 +406,8 @@
     var step = function (dt) {
       simT += dt;
       var wTo = windTo(), up = wTo + Math.PI, gs = gust();
+      /* Shared with the page backdrop (_includes/backdrop.html), so its wind streaks agree with the fleet. */
+      window.siteWind = { to: wTo, gust: gs };
 
       goal.age += dt;
       var mx = 0, my = 0;

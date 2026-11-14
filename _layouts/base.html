@@ -16,6 +16,25 @@
       /* Marks that scripting works, so the phone drawer styles (which need
          it to open) only apply when they can actually be used. */
       document.documentElement.classList.add('js');
+      /* DEMO of the page backdrop (_includes/backdrop.html): ?bg=all or
+         ?bg=1,2 ... switches it on for this browser tab. Applied here, before
+         the first paint, so nothing flickers. */
+      (function (h) {
+        var q = /[?&]bg=([^&#]*)/.exec(location.search), t = null;
+        try {
+          if (q) sessionStorage.setItem('bd', decodeURIComponent(q[1]));
+          t = sessionStorage.getItem('bd');
+        } catch (e) { t = q ? decodeURIComponent(q[1]) : null; }
+        if (t === null) return;
+        if (t === 'all') t = '1,2,3,coords,motif,draw,parallax,wind,arcs,depth';
+        if (t === '12') t = '1,2';
+        if (t === '123') t = '1,2,3';
+        h.classList.add('bd-demo');
+        t.split(',').forEach(function (k) { if (k) h.classList.add('bdx-' + k); });
+        if (t) h.classList.add('bd-on');
+        var p = location.pathname;
+        h.setAttribute('data-motif', /^\/tools/.test(p) ? 'pcb' : /Hiveopolis/i.test(p) ? 'honey' : /SailSwarm/i.test(p) ? 'rose' : 'waves');
+      })(document.documentElement);
       {%- if page.cover %}
       /* Full-screen cover (front matter `cover: true`). Skipped when the
          URL points at a section, so /#news goes straight to the content. */
@@ -78,6 +97,7 @@
 
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 
+  {% include backdrop.html %}
   {% include my-body.html %}
 </body>
 </html>
