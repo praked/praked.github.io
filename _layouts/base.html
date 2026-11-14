@@ -7,7 +7,17 @@
   reason, and wrapped in try/catch because localStorage throws outright in a
   private window with site data blocked.
 {%- endcomment -%}
-<html lang="{{ site.lang | default: 'en' }}">
+{%- comment -%}
+  Page backdrop (_includes/backdrop.html, styles in _sass/_backdrop.scss).
+  Each bdx-* class switches on one layer; data-motif picks the margin
+  pattern for the section.
+{%- endcomment -%}
+{%- assign bd_motif = "waves" -%}
+{%- if page.url contains "/tools" -%}{%- assign bd_motif = "pcb" -%}
+{%- elsif page.url contains "Hiveopolis" -%}{%- assign bd_motif = "honey" -%}
+{%- elsif page.url contains "SailSwarm" and page.url contains "/projects/" -%}{%- assign bd_motif = "rose" -%}
+{%- endif %}
+<html lang="{{ site.lang | default: 'en' }}" class="bd-on bdx-1 bdx-2 bdx-3 bdx-coords bdx-motif bdx-draw bdx-parallax bdx-wind bdx-arcs bdx-depth" data-motif="{{ bd_motif }}">
 <head>
   <script>
     /* Block comments only: compress_html would collapse this onto one line and
@@ -16,25 +26,6 @@
       /* Marks that scripting works, so the phone drawer styles (which need
          it to open) only apply when they can actually be used. */
       document.documentElement.classList.add('js');
-      /* DEMO of the page backdrop (_includes/backdrop.html): ?bg=all or
-         ?bg=1,2 ... switches it on for this browser tab. Applied here, before
-         the first paint, so nothing flickers. */
-      (function (h) {
-        var q = /[?&]bg=([^&#]*)/.exec(location.search), t = null;
-        try {
-          if (q) sessionStorage.setItem('bd', decodeURIComponent(q[1]));
-          t = sessionStorage.getItem('bd');
-        } catch (e) { t = q ? decodeURIComponent(q[1]) : null; }
-        if (t === null) return;
-        if (t === 'all') t = '1,2,3,coords,motif,draw,parallax,wind,arcs,depth';
-        if (t === '12') t = '1,2';
-        if (t === '123') t = '1,2,3';
-        h.classList.add('bd-demo');
-        t.split(',').forEach(function (k) { if (k) h.classList.add('bdx-' + k); });
-        if (t) h.classList.add('bd-on');
-        var p = location.pathname;
-        h.setAttribute('data-motif', /^\/tools/.test(p) ? 'pcb' : /Hiveopolis/i.test(p) ? 'honey' : /SailSwarm/i.test(p) ? 'rose' : 'waves');
-      })(document.documentElement);
       {%- if page.cover %}
       /* Full-screen cover (front matter `cover: true`). Skipped when the
          URL points at a section, so /#news goes straight to the content. */

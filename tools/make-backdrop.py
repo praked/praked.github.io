@@ -6,8 +6,7 @@ strength is the stroke-opacity written here.
 
     python tools/make-backdrop.py
 
-DEMO: every idea is a class on <html> (bd-1, bd-2, ... bd-depth), switched by
-the panel in _includes/backdrop.html. See that file for the list.
+Each layer is switched on by a bdx-* class on <html> (_layouts/base.html).
 """
 import math
 from pathlib import Path

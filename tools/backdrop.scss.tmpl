@@ -2,8 +2,8 @@
 // Edit those, not this file.
 //
 // Faint water/chart backdrop behind the page, echoing the cover's line art.
-// DEMO: each idea is a class on <html>, switched by the panel in
-// _includes/backdrop.html. The reading column is always kept solid.
+// Each layer is switched on by a bdx-* class on <html> (_layouts/base.html);
+// the markup is _includes/backdrop.html. The reading column stays solid.
 
 $bd-band: @@BAND@@;
 $bd-waves: @@WAVES@@;
@@ -15,7 +15,7 @@ $bd-rose: @@ROSE@@;
 
 $bd-band-top: 22px;   // band tile offset from the top of the page
 
-.bd, .bd-fixed, .bd-coords, .bd-panel { display: none; }
+.bd, .bd-fixed, .bd-coords { display: none; }
 
 html.bd-on {
   body { position: relative; }
@@ -45,7 +45,7 @@ html.bd-on {
   }
 }
 
-@media print { .bd, .bd-fixed, .bd-coords, .bd-panel { display: none !important; } }
+@media print { .bd, .bd-fixed, .bd-coords { display: none !important; } }
 
 // 1  Horizon band. The second mask layer is a solid block whose width the
 // "draw" idea animates from 0 to 100%, so the band draws in left to right.
@@ -125,39 +125,3 @@ html.bdx-depth .bd-depth { display: block; left: 0; top: 0; width: 100%; height:
 .bd-wind path, .bd-arcs path, .bd-depth path { fill: none; stroke: var(--body-color); vector-effect: non-scaling-stroke; }
 .bd-arcs circle { fill: var(--body-color); }
 .bd-depth text { fill: var(--muted); font: .62rem ui-monospace, Consolas, monospace; letter-spacing: .08em; }
-
-// Demo panel
-html.bd-demo .bd-panel {
-  display: block;
-  position: fixed;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 80;
-  width: 17rem;
-  max-height: calc(100vh - 2rem);
-  overflow: auto;
-  padding: .8rem .9rem .7rem;
-  background: var(--body-bg);
-  color: var(--body-color);
-  border: 1px solid var(--border);
-  border-radius: .6rem;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, .18);
-  font-size: .8rem;
-  line-height: 1.35;
-
-  h2 { margin: 0 0 .4rem; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; }
-  h3 { margin: .6rem 0 .2rem; font-size: .7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
-  label { display: flex; gap: .45rem; align-items: baseline; padding: .12rem 0; cursor: pointer; }
-  small { color: var(--muted); }
-  .bd-presets { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .6rem; }
-  button {
-    font: inherit;
-    padding: .2rem .55rem;
-    border: 1px solid var(--border);
-    border-radius: .35rem;
-    background: var(--surface);
-    color: inherit;
-    cursor: pointer;
-  }
-  .bd-close { position: absolute; top: .45rem; right: .5rem; border: 0; background: none; font-size: 1.1rem; line-height: 1; }
-}
