@@ -7,7 +7,7 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Pranav Kedia is a Ph.D. researcher in the Cyber Physical Systems group at the University of Konstanz, affiliated with the Centre for the Advanced Study of Collective Behaviour. He completed his master's at IIIT-Bangalore, where he was also a co-founder of Enigma (the robotics club). He is an avid FOSS and open-hardware enthusiast.
+    Pranav Kedia is a Ph.D. researcher in the Cyber Physical Systems group at the University of Konstanz, affiliated with the Centre for the Advanced Study of Collective Behaviour, working on field and marine robotics, embodied intelligence and bio-inspired robotics. He completed his master's at IIIT-Bangalore, where he co-founded Enigma (the robotics club), and is an avid FOSS and open-hardware enthusiast.
 
   # This photo will be used in the about section
   # (and, via `post_addons`/`project_addons`, at the bottom of every project page).
