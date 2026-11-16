@@ -34,6 +34,16 @@
       document.documentElement.classList.add('has-cover');
       if (!location.hash) document.documentElement.classList.add('cover-open');
       {%- endif %}
+      /* The sidebar art starts top-down except on the open cover (see
+         makeRise in site.js); hide the low view's horizon until it is drawn. */
+      if (!document.documentElement.classList.contains('cover-open')
+          && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+        document.documentElement.classList.add('cam-top');
+        /* If site.js never draws the art, bring the low view back. */
+        window.addEventListener('load', function () {
+          if (!window.siteArt) document.documentElement.classList.remove('cam-top');
+        });
+      }
       try {
         var saved = localStorage.getItem('theme');
         if (saved === 'dark' || saved === 'light') {

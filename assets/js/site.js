@@ -60,12 +60,14 @@
 
      Closing: scroll down, swipe up or left, arrow/space/page-down, the hint
      button, a sidebar link to this same page, or drag the cover to the left.
+     Scrolling, swiping and the keys first raise the camera (makeRise).
      Reopening: scroll up while already at the top of the page, pull down on a
      touch screen, arrow-up/page-up/home at the top, or drag the sidebar out
      to the right. */
   var main = document.getElementById('main');
   var hasCover = root.classList.contains('has-cover');
   var lastSwitch = 0;
+  var rise = null;   /* the camera rise, set up at the end of this section */
 
   function coverOpen() { return root.classList.contains('cover-open'); }
 
@@ -73,39 +75,66 @@
      trackpad gesture keeps emitting events (momentum) well after the cover
      has started to move, and with the page unlocked those would scroll the
      content straight away. So the page stays locked until the slide has
-     finished AND the wheel has gone quiet, with a hard cap as a backstop. */
-  var lastWheel = 0;
-  window.addEventListener('wheel', function () { lastWheel = Date.now(); }, { passive: true });
+     finished AND the wheel has gone quiet, with a hard cap as a backstop.
+
+     The lock alone is not enough: a strong trackpad flick can coast for
+     longer than the cap, and on phones overflow:hidden does not reliably
+     stop a finger that is still moving. So the rest of the closing gesture
+     is also cancelled outright: wheel events until the wheel goes quiet
+     (however long that takes), and touch moves until the finger lifts. */
+  var lastWheel = 0, eatWheel = false, eatTouch = false, touching = false;
+  window.addEventListener('wheel', function (e) {
+    lastWheel = Date.now();
+    if (eatWheel) e.preventDefault();
+  }, { passive: !hasCover });
+  if (hasCover) {
+    window.addEventListener('touchstart', function () { touching = true; }, { passive: true });
+    window.addEventListener('touchmove', function (e) { if (eatTouch) e.preventDefault(); }, { passive: false });
+    var lift = function () { touching = false; eatTouch = false; };
+    window.addEventListener('touchend', lift, { passive: true });
+    window.addEventListener('touchcancel', lift, { passive: true });
+  }
 
   function lockScroll() {
-    var started = Date.now();
+    var started = Date.now(), locked = true;
     root.classList.add('cover-lock');
+    eatWheel = true;
+    eatTouch = touching;
     (function check() {
       var now = Date.now();
-      var slideDone = now - started > 800;
       var wheelQuiet = now - lastWheel > 180;
-      if ((slideDone && wheelQuiet) || now - started > 2500 || coverOpen()) {
+      if (locked && ((now - started > 800 && wheelQuiet) || now - started > 2500 || coverOpen())) {
+        locked = false;
         root.classList.remove('cover-lock');
         window.scrollTo(0, 0);
-        return;
       }
-      setTimeout(check, 60);
+      if (wheelQuiet || coverOpen()) eatWheel = false;
+      if (locked || eatWheel) setTimeout(check, 60);
     })();
   }
 
   function setCover(open) {
     if (coverOpen() === open) return;
-    if (open) window.scrollTo(0, 0);
-    else lockScroll();
+    /* Either way the page is shown from the top: also when the browser
+       restored an old scroll position on reload. */
+    window.scrollTo(0, 0);
     root.classList.toggle('cover-open', open);
+    /* After the toggle: the lock's first check, which runs at once, ends it
+       if the cover is open, so it must not still see the old state. */
+    if (!open) lockScroll();
     if (main) main.inert = open;   /* hidden content must not take focus */
     lastSwitch = Date.now();
+    if (!open && rise) rise.onClose();
   }
 
   /* One wheel or touch gesture produces a burst of events. Without a pause
      after each switch, the tail of the gesture that closed the cover would
      immediately act on the page underneath, or reopen it. */
   function settled() { return Date.now() - lastSwitch > 700; }
+
+  /* The sidebar art looks straight down on the fleet, except on the open
+     cover, which starts from the low view (see makeRise). */
+  if (!reduceMotion) window.siteCamInit = hasCover && coverOpen() ? 0 : 1;
 
   if (hasCover) {
     if (coverOpen() && main) main.inert = true;
@@ -119,6 +148,7 @@
     }, { passive: true });
 
     window.addEventListener('wheel', function (e) {
+      if (rise && rise.wheel(e)) return;
       if (!settled()) return;
       if (coverOpen()) {
         if (e.deltaY > 4) setCover(false);
@@ -144,6 +174,7 @@
       tAtTop = window.scrollY <= 0;
     }, { passive: true });
     window.addEventListener('touchmove', function (e) {
+      if (rise && rise.touch(e)) return;
       if (tY === null || !settled()) return;
       var dx = e.touches[0].clientX - tX, dy = e.touches[0].clientY - tY;
       if (coverOpen()) {
@@ -157,6 +188,7 @@
     document.addEventListener('keydown', function (e) {
       var el = document.activeElement;
       if (el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)) return;
+      if (rise && rise.key(e)) return;
       if (coverOpen()) {
         if (['ArrowDown', 'PageDown', 'End', ' ', 'Escape'].indexOf(e.key) === -1) return;
         /* Space on a focused link or button should activate it, not dismiss. */
@@ -170,7 +202,7 @@
     });
 
     var hint = document.getElementById('_coverHint');
-    if (hint) hint.addEventListener('click', function () { setCover(false); });
+    if (hint) hint.addEventListener('click', function () { if (!(rise && rise.next())) setCover(false); });
 
     /* A sidebar link to the page we are already on reveals it instead of
        reloading it. */
@@ -237,6 +269,168 @@
       sidebar.addEventListener('pointerup', endDrag);
       sidebar.addEventListener('pointercancel', endDrag);
     }
+
+    /* -- camera rise (see makeRise) -- */
+    if (!reduceMotion) {
+      root.classList.add('rise');
+      rise = makeRise();
+    }
+  }
+
+  /* ---- Cover: camera rise ---------------------------------------------- */
+  /* While the cover is open, scrolling first flies the camera of the
+     sailing-swarm art (below) up from the low view until it looks straight
+     down on the fleet; a new scroll once it is there docks the cover. It
+     reverses: from the top of the page, scrolling up reopens the cover in
+     the top-down view, and scrolling up further lowers the camera to the
+     horizon again. The docked sidebar keeps the top-down view, on every
+     page. The bar under the cover's hint shows how far the camera has come.
+     With reduced motion none of this runs and the cover simply slides. */
+  function makeRise() {
+    var clamp = function (v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; };
+    /* Wheel delta in pixels, whatever unit the device reports. */
+    var px = function (e) { return e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerHeight : 1); };
+    var DOWN = ['ArrowDown', 'PageDown', ' ', 'Enter'], UP = ['ArrowUp', 'PageUp', 'Home'], OUT = ['End', 'Escape'];
+    var TRAVEL = .55;   /* scroll distance for the whole rise, in window heights */
+    var label = document.querySelector('#_coverHint .cover-hint__label');
+
+    /* The altitude ruler on the cover's right edge: the camera's real
+       height and tilt, reported by the art (window.onSiteCam). Its scale
+       runs to the top-down height, in 10 m steps. */
+    var ruler = document.querySelector('.cover-ruler');
+    var rulerScale = ruler && ruler.querySelector('.cover-ruler__scale');
+    var rulerVal = ruler && ruler.querySelector('.cover-ruler__val');
+    var rulerMax = 0;
+    window.onSiteCam = function (h, pitch, top) {
+      if (!ruler || !coverOpen()) return;
+      var max = Math.max(40, Math.ceil(top / 10) * 10);
+      if (max !== rulerMax) {
+        rulerMax = max;
+        Array.prototype.forEach.call(ruler.querySelectorAll('.cover-ruler__tick'), function (el) { el.remove(); });
+        for (var v = 0; v <= max; v += 10) {
+          var t = document.createElement('span');
+          t.className = 'cover-ruler__tick';
+          t.style.bottom = (v / max * 100) + '%';
+          t.textContent = v;
+          rulerScale.appendChild(t);
+        }
+        root.style.setProperty('--ruler-steps', String(max / 5));
+      }
+      root.style.setProperty('--alt', (h / max).toFixed(4));
+      rulerVal.textContent = Math.round(h) + ' m \u00b7 ' + Math.round(pitch * 180 / Math.PI) + '\u00b0';
+    };
+
+    /* camT is where the camera is headed (0 low view, 1 top-down), cam where
+       it is; the art draws from cam. */
+    var camT = window.siteCamInit || 0, cam = camT, camRun = false, camLast = 0;
+    var show = function () {
+      root.style.setProperty('--rise', cam.toFixed(3));
+      if (label) label.textContent = camT >= .999 ? 'Enter' : 'Scroll';
+      root.classList.toggle('rise-done', camT >= .999);
+    };
+    var camFrame = function (t) {
+      var dt = camLast ? Math.min(.05, (t - camLast) / 1000) : 1 / 60; camLast = t;
+      cam += (camT - cam) * (1 - Math.exp(-11 * dt));
+      if (Math.abs(camT - cam) < .001) cam = camT;
+      if (window.siteCam) window.siteCam(cam);
+      show();
+      if (cam === camT) { camRun = false; camLast = 0; return; }
+      requestAnimationFrame(camFrame);
+    };
+    var camTo = function (v) {
+      camT = clamp(v, 0, 1);
+      show();
+      if (!camRun) { camRun = true; requestAnimationFrame(camFrame); }
+    };
+
+    /* A gesture is a burst of wheel events with no gap over 200 ms, or one
+       touch. Its direction is set by its first movement. A downward gesture
+       that starts with the camera already top-down docks the cover; any
+       other gesture moves the camera, which stops at either end, so one
+       long flick never both finishes the rise and docks. */
+    var g = null, gTimer = null;
+    var dock = function () { setCover(false); };
+    var down = function () { if (camT < .999) camTo(1); else dock(); };
+    var move = function (d, wheel) {
+      if (!coverOpen() || !settled()) return false;
+      var ad = Math.abs(d), first = !g;
+      /* Trackpad momentum keeps one flick going for a second or two. A new
+         flick made once the rise is complete shows as the deltas climbing
+         again after decaying: treat it as a new gesture, so it can dock. */
+      if (g && wheel && g.dir > 0 && g.from < .999 && g.fullAt && Date.now() - g.fullAt > 150 &&
+          d > 0 && ad > Math.max(2 * g.last, 8)) first = true;
+      if (first) {
+        if (ad < 1) return true;
+        g = { dir: d > 0 ? 1 : -1, from: camT, acc: 0, acted: false, last: ad, fullAt: 0 };
+      }
+      g.last = ad;
+      if (g.dir > 0 && g.from >= .999) {
+        /* One deliberate wheel notch is enough, as before the rise. */
+        if (d > 0) g.acc += d;
+        if (!g.acted && ((wheel && d > 4) || g.acc > 40)) { g.acted = true; dock(); }
+        return true;
+      }
+      var step = d / (window.innerHeight * TRAVEL);
+      /* Some mice report only a few pixels per notch: the first event of a
+         wheel gesture always moves the camera a visible step. */
+      if (first && wheel) step = (step < 0 ? -1 : 1) * Math.max(Math.abs(step), 1 / 6);
+      camTo(camT + step);
+      if (camT >= .999 && !g.fullAt) g.fullAt = Date.now();
+      return true;
+    };
+
+    var tx0 = null, ty0 = null, ty = null;
+    var touchEnd = function () { ty = ty0 = tx0 = null; g = null; };
+    window.addEventListener('touchstart', function (e) {
+      tx0 = e.touches[0].clientX; ty0 = ty = e.touches[0].clientY; g = null;
+    }, { passive: true });
+    window.addEventListener('touchend', touchEnd, { passive: true });
+    window.addEventListener('touchcancel', touchEnd, { passive: true });
+
+    show();
+    return {
+      wheel: function (e) {
+        clearTimeout(gTimer);
+        gTimer = setTimeout(function () { g = null; }, 200);
+        /* A burst that is running while the cover opens or closes belongs to
+           that switch: the original handler sees it, but its tail never
+           moves the camera. */
+        if (!coverOpen() || !settled()) { g = { dead: true }; return false; }
+        if (g && g.dead) return true;
+        return move(px(e), true);
+      },
+      touch: function (e) {
+        if (ty === null) return false;
+        var x = e.touches[0].clientX, y = e.touches[0].clientY;
+        /* A clear swipe to the left still docks the cover at once. */
+        var dx = x - tx0, dy = y - ty0;
+        if (coverOpen() && dx < -56 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          if (settled() && !(g && g.acted)) { g = { dir: 1, from: 1, acc: 0, acted: true }; dock(); }
+          return true;
+        }
+        var d = (ty - y) * 1.6;
+        ty = y;
+        return move(d, false);
+      },
+      key: function (e) {
+        if (!coverOpen()) return false;
+        var el = document.activeElement;
+        var control = el && /^(A|BUTTON)$/.test(el.tagName);
+        /* Enter or Space on a focused link or button activates it (Enter on
+           the hint button clicks it, which docks). */
+        if (control && (e.key === 'Enter' || (e.key === ' ' && el.id !== '_coverHint'))) return true;
+        if (DOWN.indexOf(e.key) !== -1) { e.preventDefault(); down(); }
+        else if (UP.indexOf(e.key) !== -1) { e.preventDefault(); camTo(0); }
+        else if (OUT.indexOf(e.key) !== -1) { e.preventDefault(); dock(); }
+        return true;
+      },
+      /* The hint button goes straight in; the camera still rises as the
+         cover slides away (onClose). */
+      next: function () { dock(); return true; },
+      /* However the cover was closed, the sidebar settles on the top-down
+         view, ready to be reversed. */
+      onClose: function () { g = null; camTo(1); }
+    };
   }
 
   /* ---- Auto-hiding top bar -------------------------------------------- */
@@ -318,6 +512,7 @@
      World units are metres: X to the right, Y away from the camera, Z up. */
   var art = document.querySelector('.sidebar-art');
   if (art) {
+    window.siteArt = true;   /* see the cam-top fallback in _layouts/base.html */
     var NS = 'http://www.w3.org/2000/svg';
     var D2R = Math.PI / 180;
     var rand = function (a, b) { return a + Math.random() * (b - a); };
@@ -330,9 +525,32 @@
        picture and the boats are large enough to read as boats. */
     var F = 900, CAM_H = 5.2, HORIZON = 345, CX = 800;
     var NEAR = 9, FAR = 44;
+
+    /* The camera can also rise and tilt down until it looks straight down
+       on the fleet (the cover's camera rise). c = 0 is the low view, c = 1
+       top-down. Looking down, it follows the fleet, and it climbs higher
+       when the picture is narrow (the docked sidebar) so the fleet still
+       fits. window.siteCamInit is where it starts on page load. */
+    var cam = { c: -1, e: 0, th: 0, ct: 1, st: 0, cx: 0, cy: 0, h: CAM_H, py: HORIZON };
+    var camWant = window.siteCamInit || 0, camDirty = true;
+    var follow = { x: 0, y: 26, h: 34, seen: 1600, ready: false };
+    var aim = function () {
+      cam.cx = follow.x * cam.e; cam.cy = follow.y * cam.e;
+      cam.h = CAM_H + (follow.h - CAM_H) * cam.e;
+      camDirty = true;
+    };
+    var setCam = function (c) {
+      var e = c * c * (3 - 2 * c);
+      cam.c = c; cam.e = e;
+      cam.th = e * Math.PI / 2; cam.ct = Math.cos(cam.th); cam.st = Math.sin(cam.th);
+      cam.py = HORIZON + (450 - HORIZON) * e;
+      aim();
+    };
+    window.siteCam = function (c) { camWant = c; };
     var px = function (X, Y, Z) {
-      var k = F / Y;
-      return (CX + X * k).toFixed(1) + ',' + (HORIZON + (CAM_H - Z) * k).toFixed(1);
+      var dy = Y - cam.cy, dz = Z - cam.h;
+      var k = F / Math.max(0.5, dy * cam.ct - dz * cam.st);
+      return (CX + (X - cam.cx) * k).toFixed(1) + ',' + (cam.py - (dy * cam.st + dz * cam.ct) * k).toFixed(1);
     };
     var halfWidth = function (Y) { return 800 * Y / F; };
 
@@ -497,7 +715,15 @@
       streaks.forEach(function (p) {
         p.x += Math.cos(wTo) * 5 * gs * dt;
         p.y += Math.sin(wTo) * 5 * gs * dt;
-        if (p.y < NEAR - 3 || p.y > FAR + 6 || Math.abs(p.x) > halfWidth(Math.max(p.y, NEAR)) * 1.25) {
+        /* Looking down, they cover the whole picture around the camera. */
+        if (cam.e > .5) {
+          /* Just wider than the visible picture, which is narrow in the
+             docked sidebar. */
+          var rx = Math.max(8, 0.55 * follow.seen * cam.h / F), ry = cam.h * 0.6;
+          if (Math.abs(p.x - cam.cx) > rx || Math.abs(p.y - cam.cy) > ry) {
+            p.x = cam.cx + rand(-rx, rx); p.y = cam.cy + rand(-ry, ry);
+          }
+        } else if (p.y < NEAR - 3 || p.y > FAR + 6 || Math.abs(p.x) > halfWidth(Math.max(p.y, NEAR)) * 1.25) {
           p.y = rand(NEAR, FAR);
           p.x = rand(-1.2, 1.2) * halfWidth(p.y);
         }
@@ -532,8 +758,59 @@
     var buoyEl = art.querySelector('.art-buoy');
     var order = '';
 
+    /* Camera move: the drawn horizon and waves slide up and fade, and a
+       chart grid on the water fades in as the view turns top-down. */
+    var statics = art.querySelectorAll('.art-horizon, .art-wave');
+    var gridEl = document.createElementNS(NS, 'path');
+    gridEl.setAttribute('class', 'art-grid');
+    gridEl.setAttribute('fill', 'none');
+    gridEl.setAttribute('stroke', 'currentColor');
+    art.insertBefore(gridEl, windEl);
+    var drawCamera = function () {
+      camDirty = false;
+      root.classList.remove('cam-top');   /* the script draws the water now */
+      var hy = cam.th < 1.5 ? cam.py - F * Math.tan(cam.th) : -1e4;
+      var fade = clamp(1 - cam.e * 2.2, 0, 1);
+      Array.prototype.forEach.call(statics, function (el) {
+        el.setAttribute('transform', 'translate(0,' + Math.max(-2000, hy - HORIZON).toFixed(1) + ')');
+        el.setAttribute('stroke-opacity', fade.toFixed(3));
+      });
+      var gd = '';
+      if (cam.e > 0.3) {
+        /* Only water at least 2 m in front of the camera. */
+        var y0 = cam.ct > 1e-3 ? cam.cy + (2 - cam.h * cam.st) / cam.ct : -1e3;
+        /* A 6 m grid fixed to the water, around wherever the camera is. */
+        var gr = Math.max(50, cam.h * 0.6);
+        var gx0 = Math.floor((cam.cx - 60) / 6) * 6, ya = Math.max(y0, cam.cy - gr), yb = cam.cy + gr;
+        for (var gx = gx0; gx <= gx0 + 120; gx += 6) gd += 'M' + px(gx, ya, 0) + ' L' + px(gx, yb, 0) + ' ';
+        for (var gy = Math.ceil(ya / 6) * 6; gy <= yb; gy += 6) gd += 'M' + px(gx0, gy, 0) + ' L' + px(gx0 + 120, gy, 0) + ' ';
+      }
+      gridEl.setAttribute('d', gd);
+      if (window.onSiteCam) window.onSiteCam(cam.h, cam.th, follow.h);
+      gridEl.setAttribute('stroke-opacity', Math.pow(clamp((cam.e - 0.3) / 0.7, 0, 1), 1.5).toFixed(3));
+    };
+
     var draw = function (dt) {
       var wTo = windTo(), up = wTo + Math.PI;
+
+      /* Where the top-down camera wants to be: over the middle of the fleet,
+         high enough for about 38 m of water across the visible picture. */
+      var fx = 0, fy = 0, fh = follow.h;
+      boats.forEach(function (b) { fx += b.x / N; fy += b.y / N; });
+      if (cam.e > 0 || camWant > 0) {
+        var box = art.getBoundingClientRect();
+        var seen = Math.min(1600, 900 * box.width / Math.max(1, box.height));
+        fh = clamp(F * 34 / Math.max(1, seen), 34, 100);
+        follow.seen = seen;
+      }
+      if (!follow.ready) { follow.x = fx; follow.y = fy; follow.h = fh; follow.ready = true; }
+      else {
+        var kp = 1 - Math.exp(-dt / 1.5), kh = 1 - Math.exp(-dt / 0.5);
+        follow.x += (fx - follow.x) * kp; follow.y += (fy - follow.y) * kp; follow.h += (fh - follow.h) * kh;
+      }
+      if (camWant !== cam.c) setCam(camWant);
+      else if (cam.e > 0) aim();
+      if (camDirty) drawCamera();
 
       boats.forEach(function (b) {
         var cs = Math.cos(b.psi), sn = Math.sin(b.psi);
@@ -602,7 +879,8 @@
         b.rig.setAttribute('d', rig);
 
         /* Fainter with distance. */
-        b.g.setAttribute('stroke-opacity', (0.4 + 0.6 * (1 - (b.y - NEAR) / (FAR - NEAR))).toFixed(2));
+        var depthFade = 0.4 + 0.6 * clamp(1 - (b.y - NEAR) / (FAR - NEAR), 0, 1);
+        b.g.setAttribute('stroke-opacity', (depthFade + (1 - depthFade) * cam.e).toFixed(2));
 
         b.wakeEl.setAttribute('d', b.wake.length > 1
           ? 'M' + b.wake.map(function (p) { return px(p[0], p[1], 0); }).join(' L') + ' L' + px(b.x, b.y, 0)
@@ -625,8 +903,8 @@
       var w = '', lx = Math.cos(wTo) * 1.1, ly = Math.sin(wTo) * 1.1;
       streaks.forEach(function (p) {
         /* Skip the ones right under the camera: perspective stretches them. */
-        if (p.y < NEAR + 3) return;
-        w += 'M' + px(p.x, p.y, 0) + ' L' + px(p.x - lx, Math.max(4, p.y - ly), 0) + ' ';
+        if (cam.e < .5 && p.y < NEAR + 3) return;
+        w += 'M' + px(p.x, p.y, 0) + ' L' + px(p.x - lx, p.y - ly, 0) + ' ';
       });
       windEl.setAttribute('d', w);
 

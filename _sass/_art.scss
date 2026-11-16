@@ -61,3 +61,10 @@
   text-decoration-thickness: 2px;
   text-underline-offset: .45em;
 }
+
+// Chart grid on the water, faded in by the camera rise (site.js, makeRise).
+.art-grid { opacity: .26; }
+
+// Pages that open on the top-down view: hide the low view's horizon and waves
+// until the script has drawn the water (it then removes .cam-top).
+.cam-top .art-horizon, .cam-top .art-wave { visibility: hidden; }
