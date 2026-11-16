@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="{{ site.logo | relative_url }}">
 <link rel="manifest" href="{{ '/assets/site.webmanifest' | relative_url }}">
 
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
 {%- comment -%} Site-specific head additions: analytics, carousel CSS. {%- endcomment -%}
 {% include my-head.html %}
