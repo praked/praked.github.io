@@ -6,8 +6,8 @@
   That is exactly how Hydejack did it, reproduced so the emitted URLs stay
   byte-identical — these are outbound links people have shared.
 
-  The "contains //" test is Hydejack's rule verbatim: three of the six entries
-  (bluesky_url, google-scholar, research-gate) are already full URLs in
+  The "contains //" test is Hydejack's rule verbatim: two of the six entries
+  (google-scholar, research-gate) are already full URLs in
   authors.yml and must not get a prefix glued onto them.
 {%- endcomment -%}
 {%- assign me = site.data.authors.author1 -%}

@@ -18,9 +18,10 @@ twitter:
   sprite: i-xtwitter
   prepend: 'https://x.com/'
 
-bluesky_url:
-  name: Bluesky
-  sprite: i-bluesky
+github:
+  name: GitHub
+  sprite: i-github
+  prepend: 'https://github.com/'
 
 google-scholar:
   name: Google Scholar
